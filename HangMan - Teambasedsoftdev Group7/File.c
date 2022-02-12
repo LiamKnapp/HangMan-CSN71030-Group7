@@ -186,6 +186,6 @@ char FileGetWord() {
 
 	/* NOW I NEED TO RETURN THE @D ARRAY BACK TO MAIN */
 
-	printf("%s\n", line[RNG]);
+	printf("Random Word: %s\n", line[RNG]);
 
 }
