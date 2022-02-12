@@ -24,3 +24,20 @@ struct BSTNode {
 	link pLeft;			//left subtree
 	link pRight;		//right subtree
 };
+
+// BSTree function to store the data of the history of the game
+// Declare function of the tree
+
+link NEW(GameInfor item, link left, link right); //Creates a new BST Node
+void BSTInit(void);							//Initialize a BST
+GameInfor BSTSearch(link h, char* szkey);		//Private Search function called by 'Search()'
+GameInfor Search(char* szkey);                   //Public Search
+link BSTInsert(link h, GameInfor item);          //Private Insert function called by 'Insert()'
+void Insert(GameInfor item);                     //Public insert function
+void BSTPrint(link h);                      //Private Print function called by 'Print()'
+void Printnode(void);						//Prints the node
+int height(link h);                         //Returns the height of the BST
+int count(link h);							//Returns number of nodes in the BST
+link getRoot(void);							//Returns a pointer to the root of the BST
+void BSTExport(FILE* fp, link h);	        //Private export function to write the history of the game to file
+void Export(void);							//Public export function 
