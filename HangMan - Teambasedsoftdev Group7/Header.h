@@ -10,3 +10,4 @@
 
 int FileEncrypt();
 int FileDecrypt();
+char FileGetWord();

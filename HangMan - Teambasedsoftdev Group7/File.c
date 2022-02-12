@@ -2,6 +2,9 @@
 //Group 7
 //HangMan
 #define _CRT_SECURE_NO_WARNINGS
+#define MAXLNS 100
+#define WRDPRLN 128
+
 #include "Header.h"
 
 int FileEncrypt() {
@@ -35,7 +38,9 @@ int FileEncrypt() {
 		}
 
 		//save the files
+		fseek(stdin, 0, SEEK_END);
 		fclose(fp);
+		fseek(stdin, 0, SEEK_END);
 		fclose(fpt);
 
 		//reopen the word file as write
@@ -64,7 +69,9 @@ int FileEncrypt() {
 		}
 
 		//save the files
+		fseek(stdin, 0, SEEK_END);
 		fclose(fp);
+		fseek(stdin, 0, SEEK_END);
 		fclose(fpt);
 }
 
@@ -102,7 +109,9 @@ int FileDecrypt() {
 	}
 
 	//save the files
+	fseek(stdin, 0, SEEK_END);
 	fclose(fp);
+	fseek(stdin, 0, SEEK_END);
 	fclose(fpt);
 
 	//reopen the word file as write
@@ -132,7 +141,51 @@ int FileDecrypt() {
 	}
 
 	//save the files
+	fseek(stdin, 0, SEEK_END);
 	fclose(fp);
+	fseek(stdin, 0, SEEK_END);
 	fclose(fpt);
+
+}
+
+char FileGetWord() {
+
+	FILE* fp;
+
+	//2d array where MAXLNS is the max lines the file can have
+	//2d array where WRDLNS is the max chars per line on the file
+	char line[MAXLNS][WRDPRLN];
+
+	//open the file as read
+	fp = fopen("Words.txt", "r");
+	if (fp == NULL) {
+		printf("error");
+		exit(0);
+	}
+
+	//start at line 0 and go through all the words on the line
+	int i = 0;
+	while (fgets(line[i], WRDPRLN, fp)) {
+		// save the contents of that line up until the next line
+		line[i][strlen(line[i]) -1] = '\0'; 
+		i++;
+	}
+
+
+	int nlines = i; // total number of lines
+
+	//reset the line the program is on and save file
+	fseek(stdin, 0, SEEK_END);
+	fclose(fp);
+
+	//create the random generator to find pick a word from the array
+
+	srand(time(0)); // seed the RNG
+
+	int RNG = rand() % nlines;
+
+	/* NOW I NEED TO RETURN THE @D ARRAY BACK TO MAIN */
+
+	printf("%s\n", line[RNG]);
 
 }
