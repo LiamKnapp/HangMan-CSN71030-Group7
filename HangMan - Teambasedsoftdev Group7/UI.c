@@ -28,6 +28,10 @@ link NEW(GameInfor item, link left, link right) {  //Creates a New BST Node
 void BSTInit(void) {                           //Initialize the BST Node
 	root = NEW(NullItem, NULL, NULL);		  //define the static root to be the first node
 }
+// ( NEED TO FIX IT TO FIND BY THE NAME OF THE PLAYER) MINH
+// Instruction to fix it later
+// Change the msg.word to msg. name player 1
+
 
 GameInfor BSTSearch(link h, char* szkey) {	//Private Search function called by 'Search()'
 	int rc;								//For recursive function
@@ -44,9 +48,24 @@ GameInfor Search(char* szkey) {				//Public Search
 	return(BSTSearch(root, szkey));		//Call the private search - this is for security
 }
 
-link BSTInsert(link h, GameInfor item) {					//Private Insert function called by 'Insert()'
+link BSTInsert(link h, GameInfor item) {			//Private Insert function called by 'Insert()' 
 	int rc;											//Variable used to compare the strings
 	if (h == NULL) return(NEW(item, NULL, NULL));   //Terminal Condition
+	
+	// Demo code to fix it
+	/*
+	if (item.Score_1 < h->msg.Score_1)
+	{
+		h->pLeft = BSTInsert(h->pLeft, item);		//inserts on the left side of tree - recurses to check if at end of tree
+	}
+	else
+	{
+		h->pRight = BSTInsert(h->pRight, item);		//inserts on the right side of tree - recurses to check if at end of tree
+	}
+	*/
+
+	// NEED TO FIX THIS TO SORT BY SCORE ( MINH )
+	/*
 	rc = strcmp(item.Words, h->msg.Words);			//Compares the strings that we want to insert
 
 	//Recursive Subcalls for traversing the tree to get to the leaf
@@ -54,6 +73,7 @@ link BSTInsert(link h, GameInfor item) {					//Private Insert function called by
 	else		h->pRight = BSTInsert(h->pRight, item);		//inserts on the right side of tree - recurses to check if at end of tree
 
 	return(h);												//returns a pointer to the new node created
+	*/
 
 }
 
@@ -71,10 +91,8 @@ void BSTPrint(link h) {         //Private Print function called by 'Print()'
 	BSTPrint(h->pRight);                    //Right
 	printf("\nKey: %s\n", h->msg.Words);		//Center
 	printf("\nKey: %s\n", h->msg.Player_1);
-	printf("\nKey: %s\n", h->msg.Player_2);
 	printf("\nKey: %s\n", h->msg.LocalTime);
-	printf("\nKey: %d\n", h->msg.Score_1);
-	printf("\nKey: %d\n", h->msg.Score_2);
+
 	BSTPrint(h->pLeft);						//Left
 }
 
