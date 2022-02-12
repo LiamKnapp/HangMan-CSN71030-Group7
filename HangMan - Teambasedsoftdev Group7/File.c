@@ -184,7 +184,7 @@ char FileGetWord() {
 
 	int RNG = rand() % nlines;
 
-	/* NOW I NEED TO RETURN THE @D ARRAY BACK TO MAIN */
+	/* NOW I NEED TO RETURN THE 2D ARRAY BACK TO MAIN */
 
 	printf("Random Word: %s\n", line[RNG]);
 
