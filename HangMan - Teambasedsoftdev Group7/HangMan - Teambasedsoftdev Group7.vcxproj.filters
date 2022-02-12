@@ -29,7 +29,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Header.h">
+    <ClInclude Include="DataPackages.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
