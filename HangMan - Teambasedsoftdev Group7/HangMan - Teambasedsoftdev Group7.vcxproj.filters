@@ -32,5 +32,16 @@
     <ClInclude Include="DataPackages.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Header.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Temp.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Words.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

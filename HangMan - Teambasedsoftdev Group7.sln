@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HangMan - Teambasedsoftdev Group7", "HangMan - Teambasedsoftdev Group7\HangMan - Teambasedsoftdev Group7.vcxproj", "{CA7E38B7-B1C4-4438-BE1C-539404A3354C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{058BAD0A-45A1-4F5C-B9D7-C283D52E1659}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
