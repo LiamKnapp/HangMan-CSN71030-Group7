@@ -151,7 +151,7 @@ int FileDecrypt() {
 
 }
 
-int FileGetWord() {
+char* FileGetWord() {
 
 	FILE* fp;
 
@@ -186,10 +186,6 @@ int FileGetWord() {
 	srand(time(0)); // seed the RNG
 
 	int RNG = rand() % nlines;
-
-	/* NOW I NEED TO RETURN THE 2D ARRAY BACK TO MAIN */
-
-	printf("Random Word: %s\n", line[RNG]);
 
 	return(line[RNG]);
 

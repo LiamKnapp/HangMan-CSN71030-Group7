@@ -8,11 +8,13 @@
 
 int main() {
 
-	//char delword = { "at" };
-	//FileDecrypt();//decrypt the word file
-	FileGetWord(); // get random word
+	char *wordtoguess = malloc(sizeof (char*));
 
-	//FileRemoveWord(delword); // remove word
+	//FileDecrypt();//decrypt the word file
+	wordtoguess = FileGetWord(); // get random word
+	printf("%s\n", wordtoguess);
+
+	FileRemoveWord(wordtoguess); // remove word
 	//FileEncrypt(); // encrypt the word file
 
 	//printf("%s", &wordguess);
@@ -22,5 +24,7 @@ int main() {
 	//GameInfor* p = NULL;						//Define node p as null
 	//p = (GameInfor*)malloc(sizeof(GameInfor));
 
+
+	free(wordtoguess);
 	return 0;
 }
