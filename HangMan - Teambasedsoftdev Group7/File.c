@@ -73,6 +73,7 @@ int FileEncrypt() {
 		fclose(fp);
 		fseek(stdin, 0, SEEK_END);
 		fclose(fpt);
+
 }
 
 
@@ -187,5 +188,113 @@ char FileGetWord() {
 	/* NOW I NEED TO RETURN THE 2D ARRAY BACK TO MAIN */
 
 	printf("Random Word: %s\n", line[RNG]);
+
+}
+
+
+char FileRemoveWord() {
+
+	FILE* fp, *fpt;
+
+	int line_num = 1;
+	int find_result = 0;
+	char temp[512];
+
+	char *delword;
+	char word = { "a" };
+
+	//Open word file as read
+	fp = fopen("Words.txt", "r");
+	if (fp == NULL) {
+		printf("error");
+		exit(0);
+	}
+
+	// find what line the word is on
+	int i = 0;
+
+	//save files and reset position
+	fseek(stdin, 0, SEEK_END);
+	fclose(fp);
+
+	//set the line needed to be deleted
+	int del = i;
+	i = 0; // reset the loop
+	char ch;
+
+	//Open word file as read
+	fp = fopen("Words.txt", "r");
+	if (fp == NULL) {
+		printf("error");
+		exit(0);
+	}
+
+	//open Temp file as write
+	fpt = fopen("Temp.txt", "w");
+	if (fpt == NULL) {
+		printf("error");
+		fclose(fp);
+		exit(0);
+	}
+
+	ch = getc(fp);
+	if (ch != EOF) { 
+		i = 1;
+	}
+
+	while (1) {
+
+		ch = getc(fp);
+
+		if (del != i) { // if the line to delete is not i copy the file
+			putc(ch, fpt);
+		}
+
+		if (ch == '\n') { // keep track of new lines
+			i++;
+		}
+
+		if (ch == EOF) {
+			break;
+		}
+	}
+
+	//save files and reset position
+	fseek(stdin, 0, SEEK_END);
+	fclose(fp);
+	fseek(stdin, 0, SEEK_END);
+	fclose(fpt);
+
+	//reopen the word file as write
+	fp = fopen("Words.txt", "w");
+	if (fp == NULL) {
+		printf("error");
+		exit(0);
+	}
+
+	//reopen the temp file as read
+	fpt = fopen("Temp.txt", "r");
+	if (fpt == NULL) {
+		printf("error");
+		fclose(fp);
+		exit(0);
+	}
+
+	//move the updated text from temp to word file
+	while (1) {
+		ch = fgetc(fpt);
+		if (ch == EOF) {
+			break;
+		}
+		else {
+			fputc(ch, fp);
+		}
+	}
+
+	//save the files
+	fseek(stdin, 0, SEEK_END);
+	fclose(fp);
+	fseek(stdin, 0, SEEK_END);
+	fclose(fpt);
 
 }

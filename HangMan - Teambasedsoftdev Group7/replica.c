@@ -1,8 +1,5 @@
-out
+bout
 act
-actually
-add
-after
 again
 against
 age

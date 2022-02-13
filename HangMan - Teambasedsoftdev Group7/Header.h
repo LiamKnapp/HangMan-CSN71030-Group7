@@ -11,3 +11,4 @@
 int FileEncrypt();
 int FileDecrypt();
 char FileGetWord();
+char FileRemoveWord();
