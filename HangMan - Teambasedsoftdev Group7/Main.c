@@ -10,7 +10,8 @@ int main() {
 
 	//char delword = { "at" };
 	//FileDecrypt();//decrypt the word file
-	FileGetWord(); // get random word
+	char* a = FileGetWord();
+	printf("%s",a); // get random word
 
 	//FileRemoveWord(delword); // remove word
 	//FileEncrypt(); // encrypt the word file
