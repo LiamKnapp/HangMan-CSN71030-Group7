@@ -8,6 +8,7 @@
 #include "Header.h"
 
 int FileEncrypt() {
+
 		char ch;
 		FILE* fp, * fpt;
 
@@ -79,6 +80,7 @@ int FileEncrypt() {
 
 
 int FileDecrypt() {
+
 	char ch;
 	FILE* fp, * fpt;
 
@@ -149,7 +151,7 @@ int FileDecrypt() {
 
 }
 
-char FileGetWord() {
+int FileGetWord() {
 
 	FILE* fp;
 
@@ -168,7 +170,7 @@ char FileGetWord() {
 	int i = 0;
 	while (fgets(line[i], WRDPRLN, fp)) {
 		// save the contents of that line up until the next line
-		line[i][strlen(line[i]) -1] = '\0'; 
+		line[i][strlen(line[i]) - 1] = '\0';
 		i++;
 	}
 
@@ -189,20 +191,18 @@ char FileGetWord() {
 
 	printf("Random Word: %s\n", line[RNG]);
 
+	return(line[RNG]);
+
 }
 
 
-char FileRemoveWord() {
+int FileRemoveWord(char delword[]) {
 
 	FILE* fp, *fpt;
 
-	int line_num = 1;
-	int find_result = 0;
-	char temp[512];
-
-	char *delword;
-	char word = { "a" };
-
+	int i = 1;
+	char temp[WRDPRLN];
+	
 	//Open word file as read
 	fp = fopen("Words.txt", "r");
 	if (fp == NULL) {
@@ -210,16 +210,24 @@ char FileRemoveWord() {
 		exit(0);
 	}
 
-	// find what line the word is on
-	int i = 0;
+	//find what line the word is on
+	while (fgets(temp, WRDPRLN, fp) != NULL) {
+		if ((strstr(temp, delword)) != NULL) {
+			printf("A match found on line: %d\n", i);
+			printf("\n%s\n", temp);
+			break;
+		}
+		i++;
+	}
+
+	int del = i;
 
 	//save files and reset position
 	fseek(stdin, 0, SEEK_END);
 	fclose(fp);
 
 	//set the line needed to be deleted
-	int del = i;
-	i = 0; // reset the loop
+	i = 1;
 	char ch;
 
 	//Open word file as read
@@ -237,11 +245,7 @@ char FileRemoveWord() {
 		exit(0);
 	}
 
-	ch = getc(fp);
-	if (ch != EOF) { 
-		i = 1;
-	}
-
+	//remove the line
 	while (1) {
 
 		ch = getc(fp);

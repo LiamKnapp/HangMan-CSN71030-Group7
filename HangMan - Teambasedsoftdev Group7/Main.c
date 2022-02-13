@@ -6,12 +6,16 @@
 #include "DataPackages.h"
 #include "Header.h"
 
-int main() 
-{
+int main() {
+
+	//char delword = { "at" };
 	//FileDecrypt();//decrypt the word file
-	//FileGetWord(); // get random word
-	FileRemoveWord(); // remove word
+	FileGetWord(); // get random word
+
+	//FileRemoveWord(delword); // remove word
 	//FileEncrypt(); // encrypt the word file
+
+	//printf("%s", &wordguess);
 
 	//// Minh: Create the trees for the program to store the data and sort it from highest to lowest
 	//BSTInit();									//Initialize the BST
