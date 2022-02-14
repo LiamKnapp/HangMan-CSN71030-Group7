@@ -150,6 +150,7 @@
     <ClInclude Include="Header.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="FrenchWords.txt" />
     <Text Include="Temp.txt" />
     <Text Include="Words.txt" />
   </ItemGroup>

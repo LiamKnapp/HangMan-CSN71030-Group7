@@ -8,7 +8,7 @@
 #include <string.h>
 #include <malloc.h>
 
-int FileEncrypt();
-int FileDecrypt();
-char* FileGetWord();
-int FileRemoveWord(char[]);
+int FileEncrypt(int);
+int FileDecrypt(int);
+char* FileGetWord(int);
+int FileRemoveWord(char[], int);

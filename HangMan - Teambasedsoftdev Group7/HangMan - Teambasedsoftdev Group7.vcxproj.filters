@@ -43,5 +43,8 @@
     <Text Include="Words.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="FrenchWords.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
