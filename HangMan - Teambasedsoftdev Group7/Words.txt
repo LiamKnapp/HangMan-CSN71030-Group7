@@ -1,5 +1,4 @@
 age
-all
 also
 always
 am
@@ -53,7 +52,6 @@ certain
 change
 check
 child
-children
 city
 class
 clear
@@ -62,7 +60,6 @@ colour
 come
 common
 community
-complete
 contain
 could
 course

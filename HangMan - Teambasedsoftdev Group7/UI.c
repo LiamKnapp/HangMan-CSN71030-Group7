@@ -172,7 +172,7 @@ void menu_French()
 	printf("------------------------------------\n");
 	printf("  Bienvenue dans le jeu du pendu   *\n");
 	printf("* 1. Jeu unique                    *\n");
-	printf("* 2. jeu d'équipe                  *\n");
+	printf("* 2. jeu d'equipe                  *\n");
 	printf("* 3. Tableau d'histoire            *\n");
 	printf("* 4. Exit                          *\n");
 	printf("------------------------------------\n");
