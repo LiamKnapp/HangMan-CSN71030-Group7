@@ -47,9 +47,10 @@ mark:
 
 	/* THIS IS ALL THE FUNCTIONS FOR FILE STUFF */
 	//FileDecrypt(lang);//decrypt the word file
-	wordtoguess = FileGetWord(lang); // get random word
+	//wordtoguess = FileGetWord(lang); // get random word
 
 	//REMOVE THIS WHEN COMPLETED THIS IS TO TEST IF WORD IS BEING RETURNED
+	/*
 	if (lang == 1) {
 		printf("\nRandom word: %s\n", wordtoguess);
 	}
@@ -58,6 +59,7 @@ mark:
 	}
 
 	FileRemoveWord(wordtoguess, lang); // remove word
+	*/
 	//FileEncrypt(lang); // encrypt the word file
 
 
