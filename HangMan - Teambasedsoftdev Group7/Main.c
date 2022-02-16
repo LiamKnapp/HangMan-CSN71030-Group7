@@ -10,30 +10,52 @@ int main() {
 	/* Liam: */	
 
 	/* This is language selection stuff */
-	int lang = 1;
-	printf("Select a language '1' for English '2' for French \nSelectionnez une langue '1' pour l'anglais '2' pour le francais: ");
+	int lang;
+mark:									
+	menu_language();
 	scanf("%d", &lang);
-	if (lang > 2 || lang < 1) {
-		printf("Error\n");
-		exit(0);
+	switch (lang)
+	{
+	case 1:
+		menu();
+	case 2:
+		menu_French();
+	case 3:
+		break;
+	default:
+		printf("Error Input. Do you want to input again\n");
+		int temp;
+		printf("1. Yes\n");
+		printf("2. No\n");
+		scanf("%d", &temp);
+		switch (temp)
+		{
+		case 1:
+			goto mark;
+		case 2:
+			break;
+		default:
+			break;
+		}
+		break;
 	}
-
+	
 	/* THIS IS THE RANDOM WORD THE USER WILL BE TRYING TO GUESS */
 	char *wordtoguess = malloc(sizeof (char*));
 
 	/* THIS IS ALL THE FUNCTIONS FOR FILE STUFF */
 	//FileDecrypt(lang);//decrypt the word file
-	//wordtoguess = FileGetWord(lang); // get random word
+	wordtoguess = FileGetWord(lang); // get random word
 
 	//REMOVE THIS WHEN COMPLETED THIS IS TO TEST IF WORD IS BEING RETURNED
-	/*if (lang == 1) {
+	if (lang == 1) {
 		printf("\nRandom word: %s\n", wordtoguess);
 	}
 	else {
 		printf("\nMot aleatoire: %s\n", wordtoguess);
-	}*/
+	}
 
-	//FileRemoveWord(wordtoguess, lang); // remove word
+	FileRemoveWord(wordtoguess, lang); // remove word
 	//FileEncrypt(lang); // encrypt the word file
 
 

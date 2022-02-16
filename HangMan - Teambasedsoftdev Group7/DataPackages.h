@@ -40,3 +40,5 @@
 //link getRoot(void);							//Returns a pointer to the root of the BST
 //void BSTExport(FILE* fp, link h);	        //Private export function to write the history of the game to file
 //void Export(void);							//Public export function 
+void menu();
+void printBody(int mistakes, char* body);

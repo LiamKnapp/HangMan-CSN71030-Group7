@@ -2,15 +2,15 @@
 ////Group 7
 ////HangMan
 //
-//#define _CRT_SECURE_NO_WARNINGS
-//#include <stdio.h>
-//#include <stdlib.h>
-//#include <string.h>
-//#include <malloc.h>
-//#include "DataPackages.h"
-//#include <time.h>
-//#include <stdbool.h>
-//
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <malloc.h>
+#include "DataPackages.h"
+#include <time.h>
+#include <stdbool.h>
+
 ////Private Variables
 //static link root;           //Root of this file, only to this file
 //static GameInfor NullItem = { "Not found - Leaf has been reached" };     //Indicate that a leaf is reached
@@ -150,47 +150,75 @@
 //}
 //*/
 //
+// 
+// 
+// 
 //// Function 1: Display the menu of the program
-//void menu()
-//{
-//	printf("--------------------------------\n");
-//	printf("*    Welcome to Hangman Game   *\n");
-//	printf("* 1. Single PLayer Mode        *\n");
-//	printf("* 2. Solo PLay Mode            *\n");
-//	printf("* 3. History board             *\n");
-//	printf("* 4. Exit                      *\n");
-//	printf("--------------------------------\n");
-//}
-//
-//void printBody(int mistakes, char* body) {
-//	printf("Mistakes :%d\n", mistakes);
-//	switch (mistakes) {
-//
-//	case 6: body[6] = '\\'; break;
-//	case 5: body[5] = '/'; break;
-//	case 4: body[4] = '\\'; break;
-//	case 3: body[3] = '|'; break;
-//	case 2: body[2] = '/'; break;
-//	case 1: body[1] = ')', body[0] = '('; break;
-//	default: break;
-//
-//	}
-//
-//	printf("\t _________\n"
-//		"\t|         |\n"
-//		"\t|        %c %c\n"
-//		"\t|        %c%c%c\n"
-//		"\t|        %c %c\n"
-//		"\t|             \n"
-//		"\t|             ", body[0], body[1], body[2],
-//		body[3], body[4], body[5], body[6]);
-//}
-//
-//void printWord(char* guess, int len) {
-//	printf("\t");
-//	for (int i = 0; i < len; ++i)
-//	{
-//		printf("%c ", guess[i]);
-//	}
-//	printf("\n\n");
-//}
+
+void menu()
+{
+	printf("--------------------------------\n");
+	printf("*    Welcome to Hangman Game   *\n");
+	printf("*    Choose the option below   *\n");
+	printf("* 1. Single PLayer Mode        *\n");
+	printf("* 2. Team Mode                 *\n");
+	printf("* 3. History board             *\n");
+	printf("* 4. Exit                      *\n");
+	printf("--------------------------------\n");
+}
+
+void menu_French()
+{
+	printf("------------------------------------\n");
+	printf("  Bienvenue dans le jeu du pendu   *\n");
+	printf("* 1. Jeu unique                    *\n");
+	printf("* 2. jeu d'équipe                  *\n");
+	printf("* 3. Tableau d'histoire            *\n");
+	printf("* 4. Exit                          *\n");
+	printf("------------------------------------\n");
+}
+
+void menu_language()
+{
+	printf("---------------------------------------\n");
+	printf("*       Choose the option below       *\n");
+	printf("*   Choisissez l'option ci-dessous    *\n");
+	printf("* 1. English                          *\n");
+	printf("* 2. French                           *\n");
+	printf("* 3. Exit                             *\n");
+	printf("---------------------------------------\n");
+}
+
+void printBody(int mistakes, char* body) {
+	printf("Mistakes :%d\n", mistakes);
+	switch (mistakes) {
+
+	case 6: body[6] = '\\'; break;
+	case 5: body[5] = '/'; break;
+	case 4: body[4] = '\\'; break;
+	case 3: body[3] = '|'; break;
+	case 2: body[2] = '/'; break;
+	case 1: body[1] = ')', body[0] = '('; break;
+	default: break;
+
+	}
+
+	printf("\t _________\n"
+		"\t|         |\n"
+		"\t|        %c %c\n"
+		"\t|        %c%c%c\n"
+		"\t|        %c %c\n"
+		"\t|             \n"
+		"\t|             ", body[0], body[1], body[2],
+		body[3], body[4], body[5], body[6]);
+}
+
+
+void printWord(char* guess, int len) {
+	printf("\t");
+	for (int i = 0; i < len; ++i)
+	{
+	printf("%c ", guess[i]);
+	}
+	printf("\n\n");
+}
