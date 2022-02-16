@@ -18,8 +18,10 @@ mark:
 	{
 	case 1:
 		menu();
+		break;
 	case 2:
 		menu_French();
+		break;
 	case 3:
 		break;
 	default:
