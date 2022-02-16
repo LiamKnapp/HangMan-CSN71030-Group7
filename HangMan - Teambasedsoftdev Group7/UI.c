@@ -149,14 +149,13 @@
 //	fclose(fp);
 //}
 //*/
-//
-// 
-// 
-// 
+
+
 //// Function 1: Display the menu of the program
 
 void menu()
 {
+	mark2:
 	printf("--------------------------------\n");
 	printf("*    Welcome to Hangman Game   *\n");
 	printf("*    Choose the option below   *\n");
@@ -165,10 +164,31 @@ void menu()
 	printf("* 3. History board             *\n");
 	printf("* 4. Exit                      *\n");
 	printf("--------------------------------\n");
+	int tmp;
+	scanf("%d", &tmp);
+	if (tmp > 4 || tmp < 1)
+	{
+		printf("Error Input. Do you want to input again\n");
+		int temp;
+		printf("1. Yes\n");
+		printf("2. No\n");
+		scanf("%d", &temp);
+		switch (temp)
+		{
+		case 1:
+			goto mark2;
+		case 2:
+			break;
+		default:
+			break;
+		}
+	}
+	return tmp;
 }
 
 void menu_French()
 {
+	mark1:
 	printf("------------------------------------\n");
 	printf("  Bienvenue dans le jeu du pendu   *\n");
 	printf("* 1. Jeu unique                    *\n");
@@ -176,6 +196,26 @@ void menu_French()
 	printf("* 3. Tableau d'histoire            *\n");
 	printf("* 4. Exit                          *\n");
 	printf("------------------------------------\n");
+	int tmp;
+	scanf("%d", &tmp);
+	if (tmp > 4 || tmp < 1)
+	{
+		printf("Erreur, veuillez saisir a nouveau l'entree\n");
+		int temp;
+		printf("1. Oui\n");
+		printf("2. Non\n");
+		scanf("%d", &temp);
+		switch (temp)
+		{
+		case 1:
+			goto mark1;
+		case 2:
+			break;
+		default:
+			break;
+		}
+	}
+	return tmp;
 }
 
 void menu_language()
