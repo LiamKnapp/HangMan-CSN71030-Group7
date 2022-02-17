@@ -151,6 +151,8 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="FrenchWords.txt" />
+    <Text Include="SaveFrenchWords.txt" />
+    <Text Include="SaveWords.txt" />
     <Text Include="Temp.txt" />
     <Text Include="Words.txt" />
   </ItemGroup>

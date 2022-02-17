@@ -50,16 +50,16 @@ mark:
 	//wordtoguess = FileGetWord(lang); // get random word
 
 	//REMOVE THIS WHEN COMPLETED THIS IS TO TEST IF WORD IS BEING RETURNED
-	/*
-	if (lang == 1) {
+
+	/*if (lang == 1) {
 		printf("\nRandom word: %s\n", wordtoguess);
 	}
 	else {
 		printf("\nMot aleatoire: %s\n", wordtoguess);
-	}
+	}*/
 
-	FileRemoveWord(wordtoguess, lang); // remove word
-	*/
+	//FileRemoveWord(wordtoguess, lang); // remove word
+	//FileReuseWords(lang);// resuse the words when file runs out
 	//FileEncrypt(lang); // encrypt the word file
 
 

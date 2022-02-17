@@ -13,6 +13,8 @@ int FileEncrypt(int);
 int FileDecrypt(int);
 char* FileGetWord(int);
 int FileRemoveWord(char[], int);
+int FileReuseWords(int);
+
 void menu();
 void printBody(int mistakes, char* body);
 void menu_language();
