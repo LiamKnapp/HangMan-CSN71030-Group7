@@ -141,7 +141,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="File.c" />
-    <ClCompile Include="Guess.c" />
+    <ClCompile Include="MathToGuess.c" />
+    <ClCompile Include="WordToGuess.c" />
     <ClCompile Include="Main.c" />
     <ClCompile Include="UI.c" />
   </ItemGroup>

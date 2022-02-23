@@ -161,12 +161,13 @@ void menu()
 	printf("*    Choose the option below   *\n");
 	printf("* 1. Single PLayer Mode        *\n");
 	printf("* 2. Team Mode                 *\n");
-	printf("* 3. History board             *\n");
-	printf("* 4. Exit                      *\n");
+	printf("* 3. Math Game-Mode            *\n");
+	printf("* 4. History board             *\n");
+	printf("* 5. Exit                      *\n");
 	printf("--------------------------------\n");
 	int tmp;
 	scanf("%d", &tmp);
-	if (tmp > 4 || tmp < 1)
+	if (tmp > 5 || tmp < 1)
 	{
 		printf("Error Input. Do you want to input again\n");
 		int temp;
@@ -191,14 +192,16 @@ void menu_French()
 	mark1:
 	printf("------------------------------------\n");
 	printf("  Bienvenue dans le jeu du pendu   *\n");
+	printf("  Choisissez l'option ci-dessous   *\n");
 	printf("* 1. Jeu unique                    *\n");
-	printf("* 2. jeu d'equipe                  *\n");
-	printf("* 3. Tableau d'histoire            *\n");
-	printf("* 4. Exit                          *\n");
+	printf("* 2. Jeu d'equipe                  *\n");
+	printf("* 3. Mode de jeu mathematique      *\n");
+	printf("* 4. Tableau d'histoire            *\n");
+	printf("* 5. Sortir                        *\n");
 	printf("------------------------------------\n");
 	int tmp;
 	scanf("%d", &tmp);
-	if (tmp > 4 || tmp < 1)
+	if (tmp > 5 || tmp < 1)
 	{
 		printf("Erreur, veuillez saisir a nouveau l'entree\n");
 		int temp;
@@ -223,9 +226,9 @@ void menu_language()
 	printf("---------------------------------------\n");
 	printf("*       Choose the option below       *\n");
 	printf("*   Choisissez l'option ci-dessous    *\n");
-	printf("* 1. English                          *\n");
-	printf("* 2. French                           *\n");
-	printf("* 3. Exit                             *\n");
+	printf("* 1. English (Anglais)                *\n");
+	printf("* 2. French  (Francais)               *\n");
+	printf("* 3. Exit    (sortir)                 *\n");
 	printf("---------------------------------------\n");
 }
 

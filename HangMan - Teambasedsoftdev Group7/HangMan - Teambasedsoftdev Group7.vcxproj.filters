@@ -24,7 +24,10 @@
     <ClCompile Include="UI.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Guess.c">
+    <ClCompile Include="WordToGuess.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MathToGuess.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
