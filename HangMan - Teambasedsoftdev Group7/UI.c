@@ -69,10 +69,6 @@
 //	BSTPrint(root);			//Calls the private print - this is for security
 //}
 //
-//int count(link h) {									//Returns number of nodes in the BST
-//	if (h == NULL) return(0);						//Base Case/Terminal condition
-//	return(count(h->pLeft) + count(h->pRight) + 1); //recursive call - add the total number of times we recurse for each branch, this totals to the total number of nodes in the BST
-//}
 //
 //link getRoot(void) {         //Returns a pointer to the root of the BST
 //	return(root);			 //the root is static for this file - it's the root of the tree
