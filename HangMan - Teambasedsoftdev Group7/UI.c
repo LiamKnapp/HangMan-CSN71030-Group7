@@ -115,7 +115,13 @@ mark2:
 		Dash(wordtoguess);
 		break;
 	case 2:
-		//WordToGuess(lang);
+		FileDecrypt(lang);                       // this must always go first because the file starts as encrypted
+		wordtoguess = FileGetWord(lang);         // get random word and save it to wordtoguess
+		FileRemoveWord(wordtoguess, lang); // remove word that getword function selects and save to savefile
+		FileReuseWords(lang);
+		FileEncrypt(lang);
+		
+		Dash(wordtoguess);
 		break;
 	case 3:
 		MathtoGuess(lang);
@@ -172,7 +178,7 @@ void menu_French(int lang)
 		//WordToGuess(lang);
 		break;
 	case 3:
-		//MathtoGuess(lang);
+		MathtoGuess(lang);
 		break;
 	case 4:
 		//Printnode();
