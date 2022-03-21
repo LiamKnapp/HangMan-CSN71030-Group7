@@ -6,7 +6,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 #include <malloc.h>
 
 int FileEncrypt(int);
@@ -14,6 +13,10 @@ int FileDecrypt(int);
 char* FileGetWord(int);
 int FileRemoveWord(char[], int);
 int FileReuseWords(int);
+
+int MathtoGuess(int);
+int getGuess(int);
+int checkGuess(int, int);
 
 void menu();
 void printBody(int mistakes, char* body);

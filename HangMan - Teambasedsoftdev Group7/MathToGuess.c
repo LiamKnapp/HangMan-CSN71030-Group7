@@ -1,8 +1,9 @@
 //Will
 //Group 7
 //HangMan
+#include "Header.h"
 
-MathtoGuess() {
+int MathtoGuess(int lang) {
 	int oper = rand() % 4;
 	int num1 = rand() % 100;
 	int num2 = rand() % 100;
@@ -24,13 +25,18 @@ MathtoGuess() {
 		ans = num1 * num2;
 		break;
 	default:
-		printf("random operator number error\n");
+		if (lang == 1) {
+			printf("random operator number error\n");
+		}
+		if (lang == 2) {
+			printf("erreur de numero d'operateur aleatoire\n");
+		}
 		break;
 	}
 	
 	for (int i = 0; i < 6; i++) {
-		int guess = getGuess();
-		if (!checkGuess(guess)) {
+		int guess = getGuess(lang);
+		if (!checkGuess(guess, lang)) {
 			printEquation(pos, oper, num1, num2, ans);
 			printBody(i);
 		}
@@ -42,38 +48,68 @@ MathtoGuess() {
 
 }
 
-int getGuess() {
+int getGuess(int lang) {
 	int ans;
 	while (1) {
-		printf("Please enter a number between 1 and 100\n");
+		if (lang == 1) {
+			printf("Please enter a number between 1 and 100\n");
+		}
+		if (lang == 2) {
+			printf("Veuillez entrer un nombre entre 1 et 100\n");
+		}
 
 		if (scanf_s("%d", &ans)) {
 			if (ans > 0 && ans < 101) {
 				return ans;
 			}
 			else {
-				printf("number must be between 1 and 100\n");
+				if (lang == 1) {
+					printf("number must be between 1 and 100\n");
+				}
+				if (lang == 2) {
+					printf("le nombre doit etre compris entre 1 et 100\n");
+				}
 			}
 		}
 		else {
-			printf("number must be an integer\n");
+			if (lang == 1) {
+				printf("number must be an integer\n");
+			}
+			if (lang == 2) {
+				printf("le nombre doit etre un entier\n");
+			}
 		}
 		fgets("");
 		return ans;
 	}
 }
 
-int checkGuess(int correct) {
-	int guess = getGuess();
-	if (guess == correct) {
-		printf("Correct!!!\n");
-		return 1;
+int checkGuess(int correct, int lang) {
+	int guess = getGuess(lang);
+	if (lang == 1) {
+		if (guess == correct) {
+			printf("Correct!!!\n");
+			return 1;
+		}
+		else if (guess < correct) {
+			printf("Too low!\n");
+		}
+		else if (guess > correct) {
+			printf("Too high!\n");
+		}
 	}
-	else if (guess < correct) {
-		printf("Too low!\n");
-	}
-	else if (guess > correct) {
-		printf("Too high!\n");
+
+	if (lang == 2) {
+		if (guess == correct) {
+			printf("Bonne reponse!!!\n");
+			return 1;
+		}
+		else if (guess < correct) {
+			printf("Trop bas!\n");
+		}
+		else if (guess > correct) {
+			printf("Trop haut!\n");
+		}
 	}
 	return 0;
 }
