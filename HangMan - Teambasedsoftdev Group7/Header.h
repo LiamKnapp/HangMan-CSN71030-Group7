@@ -30,7 +30,7 @@ int checkGuess(int, int);
 
 /* Minh */
 // UI Menu Functions
-void menu();
-void printBody(int mistakes, char* body);
+void menu(int);
+void printBody(int mistakes);
 void menu_language();
-void menu_French();
+void menu_French(int);

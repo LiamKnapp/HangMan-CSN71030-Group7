@@ -226,8 +226,10 @@ mark:
 
 }
 
-void printBody(int mistakes, char* body) { // (The number of the mistakes , and an empty dynamic (malloc) array to store the address of each character compare with each number of mistakes )
+void printBody(int mistakes) { // (The number of the mistakes , and an empty dynamic (malloc) array to store the address of each character compare with each number of mistakes )
 	printf("Mistakes :%d\n", mistakes);
+	char* body = malloc(sizeof(char*));
+
 	switch (mistakes) {
 
 	case 6: body[6] = '\\'; break;
