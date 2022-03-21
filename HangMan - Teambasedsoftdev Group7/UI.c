@@ -138,6 +138,7 @@ mark2:
 
 void menu_French(int lang)
 {
+	char* wordtoguess = malloc(sizeof(char*));
 	mark1:
 	printf("------------------------------------\n");
 	printf("  Bienvenue dans le jeu du pendu   *\n");
@@ -172,10 +173,22 @@ void menu_French(int lang)
 	switch (tmp)
 	{
 	case 1:
-		//WordToGuess(lang);
+		FileDecrypt(lang);                       // this must always go first because the file starts as encrypted
+		wordtoguess = FileGetWord(lang);         // get random word and save it to wordtoguess
+		FileRemoveWord(wordtoguess, lang); // remove word that getword function selects and save to savefile
+		FileReuseWords(lang);
+		FileEncrypt(lang);
+
+		Dash(wordtoguess);
 		break;
 	case 2:
-		//WordToGuess(lang);
+		FileDecrypt(lang);                       // this must always go first because the file starts as encrypted
+		wordtoguess = FileGetWord(lang);         // get random word and save it to wordtoguess
+		FileRemoveWord(wordtoguess, lang); // remove word that getword function selects and save to savefile
+		FileReuseWords(lang);
+		FileEncrypt(lang);
+
+		Dash(wordtoguess);
 		break;
 	case 3:
 		MathtoGuess(lang);
