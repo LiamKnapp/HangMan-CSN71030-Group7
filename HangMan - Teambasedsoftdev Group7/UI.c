@@ -2,14 +2,8 @@
 ////Group 7
 ////HangMan
 //
-#define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <malloc.h>
-#include "DataPackages.h"
-#include <time.h>
-#include <stdbool.h>
+
+#include "Header.h"
 
 ////Private Variables
 //static link root;           //Root of this file, only to this file
