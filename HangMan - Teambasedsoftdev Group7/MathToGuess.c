@@ -79,7 +79,8 @@ int getGuess(int lang) {
 				printf("le nombre doit etre un entier\n");
 			}
 		}
-		fgets("");
+		char c[2];
+		fgets(c, 2, stdin);
 		return ans;
 	}
 }

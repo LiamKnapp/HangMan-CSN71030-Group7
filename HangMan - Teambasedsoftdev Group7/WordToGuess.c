@@ -7,53 +7,55 @@
 
 int Dash(char* wordtoguess) {
 
-	int sizeofword = sizeof(wordtoguess);
+    printf("%s", wordtoguess);
 
-	for (int n = 0; n < sizeofword; n++) {
+    int sizeofword = sizeof(&wordtoguess);
 
-		printf("-");
-	}
-	userInput(wordtoguess); 
+    for (int n = 0; n < sizeofword; n++) {
+
+        printf("-");
+    }
+    userInput(wordtoguess);
 
 }
 
 int userInput(char* wordtoguess) {
-	char c;
+    char c;
 
-	printf("\n");
+    printf("\n");
 
-	printf("Enter a word to guess: \n");
-	scanf("%c", c);
+    printf("Enter a word to guess: \n");
+    scanf("%c", &c);
 
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= "Z"))
-	{
-		Guesscheck(c); 
-	}
-	else {
-		printf("Please enter a valid character: %c", c);
-	}
+    if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= "Z"))
+    {
+        GuessCheck(c, wordtoguess);
+    }
+    else {
+        printf("Please enter a valid character: %c", c);
+    }
 
 }
 
 int GuessCheck(char guess, char* wordtoguess) {
 
-	int mistake = 0;
-	char savedLetters[sizeof(wordtoguess)];
-	
-	if (strchr(wordtoguess, guess) != NULL){
-		printf("%c is in the word.\n");
-		savedLetters[0] = guess;
-		userInput(wordtoguess);
-	}
-	else{
-	mistake++;
-	printBody;
-	}
-	if (mistake == 6) {
-		printf("You Lose.\n");
+    int mistake = 0;
+    char savedLetters[sizeof(wordtoguess)];
 
-		return 0;
-	}
+    if (strchr(wordtoguess, guess) != NULL) {
+        printf("%c is in the word.\n");
+        savedLetters[0] = guess;
+        userInput(wordtoguess);
+    }
+    else {
+        mistake++;
+        printBody;
+    }
+    if (mistake == 6) {
+        printf("You Lose.\n");
+
+        return 0;
+    }
 
 
 }
@@ -61,7 +63,7 @@ int GuessCheck(char guess, char* wordtoguess) {
 
 
 int guessAmount() {
-	int guess;
+    int guess;
 
 }
 
