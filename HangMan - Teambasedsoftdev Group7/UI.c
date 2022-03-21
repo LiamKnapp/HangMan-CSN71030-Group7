@@ -106,7 +106,7 @@ void menu()
 			break;
 		}
 	}
-	return tmp;
+	return tmp; // remove it // MInh
 }
 
 void menu_French()
@@ -136,6 +136,7 @@ void menu_French()
 			goto mark1;
 		case 2:
 			break;
+		case 3:
 		default:
 			break;
 		}
