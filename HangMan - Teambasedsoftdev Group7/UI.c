@@ -71,7 +71,8 @@
 //// Function 1: Display the menu of the program
 void menu(int lang)
 {
-	mark2:
+	char* wordtoguess = malloc(sizeof(char*)); // saves the random word the user will be guessing
+mark2:
 	printf("--------------------------------\n");
 	printf("*    Welcome to Hangman Game   *\n");
 	printf("*    Choose the option below   *\n");
@@ -100,21 +101,33 @@ void menu(int lang)
 			break;
 		}
 	}
-	
+
 	// The function to direct the flow of the program due to the choosen of the player
 	switch (tmp)
 	{
 	case 1:
-		WordToGuess(lang);
+		FileDecrypt(lang);                       // this must always go first because the file starts as encrypted
+		wordtoguess = FileGetWord(lang);         // get random word and save it to wordtoguess
+		FileRemoveWord(wordtoguess, lang); // remove word that getword function selects and save to savefile
+		FileReuseWords(lang);
+		FileEncrypt(lang);
+
+		Dash(wordtoguess);
 		break;
 	case 2:
-		WordToGuess(lang);
+		FileDecrypt(lang);                       // this must always go first because the file starts as encrypted
+		wordtoguess = FileGetWord(lang);         // get random word and save it to wordtoguess
+		FileRemoveWord(wordtoguess, lang); // remove word that getword function selects and save to savefile
+		FileReuseWords(lang);
+		FileEncrypt(lang);
+		
+		Dash(wordtoguess);
 		break;
 	case 3:
 		MathtoGuess(lang);
 		break;
 	case 4:
-		Printnode();
+		//Printnode();
 		break;
 	case 5:
 		break;
@@ -125,6 +138,7 @@ void menu(int lang)
 
 void menu_French(int lang)
 {
+	char* wordtoguess = malloc(sizeof(char*));
 	mark1:
 	printf("------------------------------------\n");
 	printf("  Bienvenue dans le jeu du pendu   *\n");
@@ -159,16 +173,28 @@ void menu_French(int lang)
 	switch (tmp)
 	{
 	case 1:
-		WordToGuess(lang);
+		FileDecrypt(lang);                       // this must always go first because the file starts as encrypted
+		wordtoguess = FileGetWord(lang);         // get random word and save it to wordtoguess
+		FileRemoveWord(wordtoguess, lang); // remove word that getword function selects and save to savefile
+		FileReuseWords(lang);
+		FileEncrypt(lang);
+
+		Dash(wordtoguess);
 		break;
 	case 2:
-		WordToGuess(lang);
+		FileDecrypt(lang);                       // this must always go first because the file starts as encrypted
+		wordtoguess = FileGetWord(lang);         // get random word and save it to wordtoguess
+		FileRemoveWord(wordtoguess, lang); // remove word that getword function selects and save to savefile
+		FileReuseWords(lang);
+		FileEncrypt(lang);
+
+		Dash(wordtoguess);
 		break;
 	case 3:
 		MathtoGuess(lang);
 		break;
 	case 4:
-		Printnode();
+		//Printnode();
 		break;
 	case 5:
 		break;

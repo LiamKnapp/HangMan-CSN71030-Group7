@@ -23,10 +23,16 @@ int FileReuseWords(int);
 int MathtoGuess(int);
 int getGuess(int);
 int checkGuess(int, int);
+void printEquation(int, char, int, int, int);
 
 /* Nihchal */
 // Word Gamemode Functions
 
+int Dash(char*);
+int userInput(char*);
+int GuessCheck(char, char*);
+//int guessAmount();
+//void printResults();
 
 /* Minh */
 // UI Menu Functions
