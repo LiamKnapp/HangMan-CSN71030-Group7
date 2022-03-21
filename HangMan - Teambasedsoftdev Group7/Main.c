@@ -1,10 +1,6 @@
 //Liam, Will, Nihchal, Minh
 //Group 7
 //HangMan
-//
-// ma
-//
-//
 
 #include "DataPackages.h"
 #include "Header.h"
@@ -29,16 +25,6 @@ int main() {
 	FileReuseWords(lang);              // amends the save words file with the words file to reuse all the words previously guessed
 	
 	*/
-
-	/* uncomment the code below to use the file stuff*/
-
-	char* wordtoguess = malloc(sizeof(char*)); // saves the random word the user will be guessing
-	//FileDecrypt(lang);                       // this must always go first because the file starts as encrypted
-	//wordtoguess = FileGetWord(lang);         // get random word and save it to wordtoguess
-	
-	//FileRemoveWord(wordtoguess, lang); // remove word that getword function selects and save to savefile
-	//FileReuseWords(lang);              // only use this file if all words in the normal word file have run out
-	//FileEncrypt(lang);                 // only do this at the end of the program if files were decrypted
 
 	// ----------------------------------------------------------------------------------------------------------------------
 
