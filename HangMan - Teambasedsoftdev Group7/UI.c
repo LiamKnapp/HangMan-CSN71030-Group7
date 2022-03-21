@@ -5,69 +5,66 @@
 
 #include "Header.h"
 
-////Private Variables
-//static link root;           //Root of this file, only to this file
-//static GameInfor NullItem = { "Not found - Leaf has been reached" };     //Indicate that a leaf is reached
-//
-////Function implemenmtaion
-//
-//link NEW(GameInfor item, link left, link right) {  //Creates a New BST Node
-//	link pNew = (link)malloc(sizeof(Node));   //Creates the node
-//	pNew->msg = item;						  //Puts the node into the item
-//	pNew->pLeft = left;						  //set left link of node to be equal to the node inputed into function
-//	pNew->pRight = right;					  //set right link of node to be equal to the node inputed into function
-//	return(pNew);							  //return the node
-//}
-//
-//void BSTInit(void) {                           //Initialize the BST Node
-//	root = NEW(NullItem, NULL, NULL);		  //define the static root to be the first node
-//}
+//Private Variables
+static link root;           //Root of this file, only to this file
+static GameInfor NullItem = { "This is the end of the list" };     //Indicate that a leaf is reached
 
-//link BSTInsert(link h, GameInfor item) {			//Private Insert function called by 'Insert()' 										
-//	if (h == NULL) return(NEW(item, NULL, NULL));   //Terminal Condition
-//	
-//	// Demo code to fix it
-//	
-//	if (item.Score < h->msg.Score)
-//	{
-//		h->pLeft = BSTInsert(h->pLeft, item);		//inserts on the left side of tree - recurses to check if at end of tree
-//	}
-//	else
-//	{
-//		h->pRight = BSTInsert(h->pRight, item);		//inserts on the right side of tree - recurses to check if at end of tree
-//	}
-//	return(h);												//returns a pointer to the new node created
-//	*/
-//
-//}
-//
-//void Insert(GameInfor item) {							//Public insert function
-//	root = BSTInsert(root, item);					//Call the private insert - this is for security
-//}
-//
-//void BSTPrint(link h) {         //Private Print function called by 'Print()'
-//
-//	if (h == NULL) return;		//If node is the Leaf return
-//
-//	//Recursive SubCalls
-//
-//
-//	BSTPrint(h->pRight);                    //Right
-//	printf("\nKey: %s\n", h->msg.Words);	//Center
-//	printf("\nKey: %s\n", h->msg.Player_1);
-//
-//	BSTPrint(h->pLeft);						//Left
-//}
-//
-//void Printnode(void) {		//Public print function
-//	BSTPrint(root);			//Calls the private print - this is for security
-//}
-//
-//
-//link getRoot(void) {         //Returns a pointer to the root of the BST
-//	return(root);			 //the root is static for this file - it's the root of the tree
-//}
-//
+//Function implemenmtaion
+
+link NEW(GameInfor item, link left, link right) {  //Creates a New BST Node
+	link pNew = (link)malloc(sizeof(Node));   //Creates the node
+	pNew->msg = item;						  //Puts the node into the item
+	pNew->pLeft = left;						  //set left link of node to be equal to the node inputed into function
+	pNew->pRight = right;					  //set right link of node to be equal to the node inputed into function
+	return(pNew);							  //return the node
+}
+
+void BSTInit(void) {                           //Initialize the BST Node
+	root = NEW(NullItem, NULL, NULL);		  //define the static root to be the first node
+}
+
+link BSTInsert(link h, GameInfor item) {			//Private Insert function called by 'Insert()' 										
+	if (h == NULL) return(NEW(item, NULL, NULL));   //Terminal Condition
+
+	if (item.Score < h->msg.Score)
+	{
+		h->pLeft = BSTInsert(h->pLeft, item);		//inserts on the left side of tree - recurses to check if at end of tree
+	}
+	else
+	{
+		h->pRight = BSTInsert(h->pRight, item);		//inserts on the right side of tree - recurses to check if at end of tree
+	}
+	return(h);												//returns a pointer to the new node created
+
+
+}
+
+void Insert(GameInfor item) {							//Public insert function
+	root = BSTInsert(root, item);					//Call the private insert - this is for security
+}
+
+void BSTPrint(link h) {         //Private Print function called by 'Print()'
+
+	if (h == NULL)return;
+
+	//Recursive SubCalls
+
+
+	BSTPrint(h->pRight);                    //Right
+	printf("\nScore: %d\t", h->msg.Score);	//Center
+	printf("\tPlayer: %s\n", h->msg.Player_1);
+	BSTPrint(h->pLeft);						//Left
+}
+
+void Printnode(void) {		//Public print function
+	BSTPrint(root);			//Calls the private print - this is for security
+}
+
+
+link getRoot(void) {         //Returns a pointer to the root of the BST
+	return(root);			 //the root is static for this file - it's the root of the tree
+}
+
 //// Function 1: Display the menu of the program
 void menu(int lang)
 {
@@ -83,14 +80,14 @@ mark2:
 	printf("* 5. Exit                      *\n");
 	printf("--------------------------------\n");
 	int tmp;
-	scanf("%d", &tmp);
+	scanf_s("%d", &tmp);
 	if (tmp > 5 || tmp < 1)
 	{
 		printf("Error Input. Do you want to input again\n");
 		int temp;
 		printf("1. Yes\n");
 		printf("2. No\n");
-		scanf("%d", &temp);
+		scanf_s("%d", &temp);
 		switch (temp)
 		{
 		case 1:
@@ -127,7 +124,7 @@ mark2:
 		MathtoGuess(lang);
 		break;
 	case 4:
-		//Printnode();
+		Printnode();
 		break;
 	case 5:
 		break;
@@ -150,14 +147,14 @@ void menu_French(int lang)
 	printf("* 5. Sortir                        *\n");
 	printf("------------------------------------\n");
 	int tmp;
-	scanf("%d", &tmp);
+	scanf_s("%d", &tmp);
 	if (tmp > 5 || tmp < 1)
 	{
 		printf("Erreur, veuillez saisir a nouveau l'entree\n");
 		int temp;
 		printf("1. Oui\n");
 		printf("2. Non\n");
-		scanf("%d", &temp);
+		scanf_s("%d", &temp);
 		switch (temp)
 		{
 		case 1:
@@ -215,7 +212,7 @@ mark:
 	printf("---------------------------------------\n");
 
 	int lang;
-	scanf("%d", &lang);
+	scanf_s("%d", &lang);
 	switch (lang)
 	{
 	case 1:
@@ -231,7 +228,7 @@ mark:
 		int temp;
 		printf("1. Yes\n");
 		printf("2. No\n");
-		scanf("%d", &temp);
+		scanf_s("%d", &temp);
 		switch (temp)
 		{
 		case 1:
@@ -264,7 +261,7 @@ void printBody(int mistakes)
 		"_____________\n",
 
 		"_____________\n"
-		"	   |   	  \n"
+		"      |   	  \n"
 		"      |      \n"
 		"      |      \n"
 		"    _____    \n"
@@ -273,49 +270,31 @@ void printBody(int mistakes)
 		"    -----	  \n",
 
 		"_____________\n"
-		"	   |   	  \n"
+		"      |   	  \n"
 		"      |      \n"
 		"      |      \n"
 		"    _____    \n"
 		"   |     |   \n"
 		"   |     |   \n"
 		"    -----	  \n"
-		"	   |      \n"
+		"      |      \n"
 		"      |      \n"
 		"      |      \n"
 		"      |      \n"
 		"      |      \n",
 
-		"______________\n"
-		"	   |   	  \n"
+		"_____________\n"
+		"      |      \n"
 		"      |      \n"
 		"      |      \n"
 		"    _____    \n"
-		"	|     |   \n"
+		"   |     |   \n"
 		"   |     |   \n"
 		"    -----	  \n"
-		"	   |      \n"
+		"      |      \n"
 		"     /|      \n"
 		"    / |      \n"
 		"   /  |      \n"
-		"      |      \n"
-		"             \n"
-		"             \n"
-		"             \n"
-		"             \n",
-
-		"_____________\n"
-		"	   |   	  \n"
-		"      |      \n"
-		"      |      \n"
-		"    _____    \n"
-		"   |     |   \n"
-		"   |     |   \n"
-		"    -----	  \n"
-		"	   |      \n"
-		"     /|\     \n"
-		"    / | \    \n"
-		"   /  |  \   \n"
 		"      |      \n"
 		"             \n"
 		"             \n"
@@ -330,10 +309,28 @@ void printBody(int mistakes)
 		"   |     |   \n"
 		"   |     |   \n"
 		"    -----	  \n"
-		"	   |      \n"
-		"     /|\     \n"
-		"    / | \    \n"
-		"   /  |  \   \n"
+		"      |      \n"
+		"     /|\\     \n"
+		"    / | \\    \n"
+		"   /  |  \\   \n"
+		"      |      \n"
+		"             \n"
+		"             \n"
+		"             \n"
+		"             \n",
+
+		"_____________\n"
+		"      |   	  \n"
+		"      |      \n"
+		"      |      \n"
+		"    _____    \n"
+		"   |     |   \n"
+		"   |     |   \n"
+		"    -----	  \n"
+		"      |      \n"
+		"     /|\\     \n"
+		"    / | \\    \n"
+		"   /  |  \\   \n"
 		"      |      \n"
 		"     /       \n"
 		"    /        \n"
@@ -341,21 +338,21 @@ void printBody(int mistakes)
 		"             \n",
 
 		"_____________\n"
-		"	   |   	  \n"
+		"      |   	  \n"
 		"      |      \n"
 		"      |      \n"
 		"    _____    \n"
 		"   |     |   \n"
 		"   |     |   \n"
 		"    -----	  \n"
-		"	   |      \n"
-		"     /|\     \n"
-		"    / | \	  \n"
-		"   /  |  \   \n"
 		"      |      \n"
-		"     / \     \n"
-		"    /   \    \n"
-		"   /     \   \n"
+		"     /|\\     \n"
+		"    / | \\	  \n"
+		"   /  |  \\   \n"
+		"      |      \n"
+		"     / \\     \n"
+		"    /   \\    \n"
+		"   /     \\   \n"
 		"             \n"
 	};
 
