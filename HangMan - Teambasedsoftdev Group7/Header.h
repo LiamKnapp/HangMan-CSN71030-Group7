@@ -19,3 +19,10 @@ void menu();
 void printBody(int mistakes, char* body);
 void menu_language();
 void menu_French();
+
+int userInput(char[]);
+int inputValidation();
+int guessAmount();
+int GuessCheck(); 
+
+void printResults();
