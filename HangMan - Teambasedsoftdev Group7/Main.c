@@ -9,39 +9,8 @@ int main() {
 
 	/* Liam & Minh: */	
 	/* language selection stuff: */
-
-	int lang;
-mark:									
 	menu_language();
-	scanf("%d", &lang);
-	switch (lang)
-	{
-	case 1:
-		menu();
-		break;
-	case 2:
-		menu_French();
-		break;
-	case 3:
-		break;
-	default:
-		printf("Error Input. Do you want to input again\n");
-		int temp;
-		printf("1. Yes\n");
-		printf("2. No\n");
-		scanf("%d", &temp);
-		switch (temp)
-		{
-		case 1:
-			goto mark;
-		case 2:
-			break;
-		default:
-			break;
-		}
-		break;
-	}
-
+	
 	// ----------------------------------------------------------------------------------------------------------------------
 
 	/* Liam: */
