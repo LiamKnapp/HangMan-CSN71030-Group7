@@ -2,14 +2,8 @@
 ////Group 7
 ////HangMan
 //
-#define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <malloc.h>
-#include "DataPackages.h"
-#include <time.h>
-#include <stdbool.h>
+
+#include "Header.h"
 
 ////Private Variables
 //static link root;           //Root of this file, only to this file
@@ -75,7 +69,7 @@
 //}
 //
 //// Function 1: Display the menu of the program
-void menu()
+void menu(int lang)
 {
 	mark2:
 	printf("--------------------------------\n");
@@ -106,10 +100,30 @@ void menu()
 			break;
 		}
 	}
-	return tmp;
+	
+	// The function to direct the flow of the program due to the choosen of the player
+	switch (tmp)
+	{
+	case 1:
+		WordToGuess(lang);
+		break;
+	case 2:
+		WordToGuess(lang);
+		break;
+	case 3:
+		MathtoGuess(lang);
+		break;
+	case 4:
+		Printnode();
+		break;
+	case 5:
+		break;
+	default:
+		break;
+	}
 }
 
-void menu_French()
+void menu_French(int lang)
 {
 	mark1:
 	printf("------------------------------------\n");
@@ -136,15 +150,36 @@ void menu_French()
 			goto mark1;
 		case 2:
 			break;
+		case 3:
 		default:
 			break;
 		}
 	}
-	return tmp;
+	// The function to direct the flow of the program due to the choosen of the player
+	switch (tmp)
+	{
+	case 1:
+		WordToGuess(lang);
+		break;
+	case 2:
+		WordToGuess(lang);
+		break;
+	case 3:
+		MathtoGuess(lang);
+		break;
+	case 4:
+		Printnode();
+		break;
+	case 5:
+		break;
+	default:
+		break;
+	}
 }
 
 void menu_language()
 {
+mark:
 	printf("---------------------------------------\n");
 	printf("*       Choose the option below       *\n");
 	printf("*   Choisissez l'option ci-dessous    *\n");
@@ -152,10 +187,43 @@ void menu_language()
 	printf("* 2. French  (Francais)               *\n");
 	printf("* 3. Exit    (sortir)                 *\n");
 	printf("---------------------------------------\n");
+
+	int lang;
+	scanf("%d", &lang);
+	switch (lang)
+	{
+	case 1:
+		menu(lang);
+		break;
+	case 2:
+		menu_French(lang);
+		break;
+	case 3:
+		break;
+	default:
+		printf("Error Input. Do you want to input again\n");
+		int temp;
+		printf("1. Yes\n");
+		printf("2. No\n");
+		scanf("%d", &temp);
+		switch (temp)
+		{
+		case 1:
+			goto mark;
+		case 2:
+			break;
+		default:
+			break;
+		}
+		break;
+	}
+
 }
 
-void printBody(int mistakes, char* body) {				// (The number of the mistakes , and an empty dynamic (malloc) array to store the address of each character compare with each number of mistakes )
+void printBody(int mistakes) { // (The number of the mistakes , and an empty dynamic (malloc) array to store the address of each character compare with each number of mistakes )
 	printf("Mistakes :%d\n", mistakes);
+	char* body = malloc(sizeof(char*));
+
 	switch (mistakes) {
 
 	case 6: body[6] = '\\'; break;

@@ -12,6 +12,7 @@ int FileEncrypt(int lang) {
 	char ch;
 	FILE* fp, * fpt, *fps;
 
+	// predefine the file names so we can use the lang efficently
 	char* filename[3] = { "NA", "Words.txt", "FrenchWords.txt" };
 	char* filesavewords[3] = { "NA", "SaveWords.txt", "SaveFrenchWords.txt" };
 
@@ -152,6 +153,7 @@ int FileDecrypt(int lang) {
 	char ch;
 	FILE* fp, * fpt, * fps;
 
+	// predefine the file names so we can use the lang efficently
 	char* filename[3] = { "NA", "Words.txt", "FrenchWords.txt" };
 	char* filesavewords[3] = { "NA", "SaveWords.txt", "SaveFrenchWords.txt" };
 
@@ -290,6 +292,7 @@ char* FileGetWord(int lang) {
 
 	FILE* fp;
 
+	// predefine the file names so we can use the lang efficently
 	char* filename[3] = { "NA", "Words.txt", "FrenchWords.txt" };
 
 	//2d array where MAXLNS is the max lines the file can have
@@ -333,6 +336,7 @@ int FileRemoveWord(char delword[], int lang) {
 
 	FILE* fp, *fpt, *fps;
 
+	// predefine the file names so we can use the lang efficently
 	char* filename[3] = { "NA", "Words.txt", "FrenchWords.txt" };
 	char* filesavewords[3] = { "NA", "SaveWords.txt", "SaveFrenchWords.txt" };
 
@@ -455,6 +459,7 @@ int FileRemoveWord(char delword[], int lang) {
 int FileReuseWords(int lang) {
 	FILE* fp, * fps;
 
+	// predefine the file names so we can use the lang efficently
 	char* filename[3] = { "NA", "Words.txt", "FrenchWords.txt" };
 	char* filesavewords[3] = { "NA", "SaveWords.txt", "SaveFrenchWords.txt" };
 	char ch;
