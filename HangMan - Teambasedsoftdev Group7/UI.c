@@ -106,6 +106,11 @@ void menu()
 			break;
 		}
 	}
+
+	if (tmp == 3) {
+		mathtoguess();
+	}
+
 	return tmp;
 }
 
