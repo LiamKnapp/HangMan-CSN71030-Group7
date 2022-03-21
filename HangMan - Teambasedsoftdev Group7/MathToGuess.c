@@ -38,7 +38,7 @@ int MathtoGuess(int lang) {
 		int guess = getGuess(lang);
 		if (!checkGuess(guess, lang)) {
 			printEquation(pos, oper, num1, num2, ans);
-			printBody(i);  // the amount of the mistakes
+			printBody(i);
 		}
 		else {
 			return;

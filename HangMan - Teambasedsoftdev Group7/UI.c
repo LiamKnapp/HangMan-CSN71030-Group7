@@ -106,7 +106,7 @@ void menu()
 			break;
 		}
 	}
-	return tmp; // remove it // MInh
+	return tmp;
 }
 
 void menu_French()
