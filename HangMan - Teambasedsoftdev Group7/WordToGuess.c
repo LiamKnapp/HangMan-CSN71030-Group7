@@ -3,36 +3,49 @@
 //HangMan
 #include "Header.h"
 
-#define MAX_LEN 10
 
 int Dash(char* wordtoguess) {
+    
+    int m;
+    int charcount;
+
+    charcount = 0;
+    for (m = 0; wordtoguess[m]; m++) {
+        if (wordtoguess[m] != ' ') {
+            charcount++;
+        }
+    }
 
     printf("%s", wordtoguess);
 
-    int sizeofword = sizeof(&wordtoguess);
+ 
 
-    for (int n = 0; n < sizeofword; n++) {
+    for (int n = 0; n < charcount; n++) {
 
         printf("-");
     }
+    printf("Enter a word to guess: ");
     userInput(wordtoguess);
 
 }
 
 int userInput(char* wordtoguess) {
+
     char c;
 
     printf("\n");
 
-    printf("Enter a word to guess: \n");
+   
     scanf("%c", &c);
 
     if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= "Z"))
     {
+        printf("Enter a word to guess: \n");
         GuessCheck(c, wordtoguess);
     }
     else {
         printf("Please enter a valid character: %c", c);
+        scanf_s("%*c", &c);
     }
 
 }
@@ -40,16 +53,23 @@ int userInput(char* wordtoguess) {
 int GuessCheck(char guess, char* wordtoguess) {
 
     int mistake = 0;
-    char savedLetters[sizeof(wordtoguess)];
+    int charcount = 0;
+    int m;
+    for (m = 0; wordtoguess[m]; m++) {
+        if (wordtoguess[m] != ' ') {
+            charcount++;
+        }
+    }
 
     if (strchr(wordtoguess, guess) != NULL) {
-        printf("%c is in the word.\n");
-        savedLetters[0] = guess;
+        printf("%c is in the word.\n", guess);
+        
         userInput(wordtoguess);
     }
     else {
         mistake++;
-        printBody;
+        printBody(mistake);
+        
     }
     if (mistake == 6) {
         printf("You Lose.\n");
@@ -57,16 +77,5 @@ int GuessCheck(char guess, char* wordtoguess) {
         return 0;
     }
 
-
-}
-
-
-
-int guessAmount() {
-    int guess;
-
-}
-
-void printResults() {
-
+    userInput(wordtoguess);
 }
