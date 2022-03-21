@@ -154,7 +154,7 @@ void menu_language()
 	printf("---------------------------------------\n");
 }
 
-void printBody(int mistakes, char* body) {				// (The number of the mistakes , and an empty dynamic (malloc) array to store the address of each character compare with each number of mistakes )
+void printBody(int mistakes, char* body) { // (The number of the mistakes , and an empty dynamic (malloc) array to store the address of each character compare with each number of mistakes )
 	printf("Mistakes :%d\n", mistakes);
 	switch (mistakes) {
 

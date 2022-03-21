@@ -25,10 +25,10 @@ int MathtoGuess(int lang) {
 		ans = num1 * num2;
 		break;
 	default:
-		if (lang == 1) {
+		if (lang == 1) { // for english
 			printf("random operator number error\n");
 		}
-		if (lang == 2) {
+		if (lang == 2) { // for french
 			printf("erreur de numero d'operateur aleatoire\n");
 		}
 		break;
@@ -51,10 +51,10 @@ int MathtoGuess(int lang) {
 int getGuess(int lang) {
 	int ans;
 	while (1) {
-		if (lang == 1) {
+		if (lang == 1) { // for english
 			printf("Please enter a number between 1 and 100\n");
 		}
-		if (lang == 2) {
+		if (lang == 2) { // for french
 			printf("Veuillez entrer un nombre entre 1 et 100\n");
 		}
 
@@ -63,19 +63,19 @@ int getGuess(int lang) {
 				return ans;
 			}
 			else {
-				if (lang == 1) {
+				if (lang == 1) { // for english
 					printf("number must be between 1 and 100\n");
 				}
-				if (lang == 2) {
+				if (lang == 2) { // for french
 					printf("le nombre doit etre compris entre 1 et 100\n");
 				}
 			}
 		}
 		else {
-			if (lang == 1) {
+			if (lang == 1) { // for english
 				printf("number must be an integer\n");
 			}
-			if (lang == 2) {
+			if (lang == 2) { // for french
 				printf("le nombre doit etre un entier\n");
 			}
 		}
@@ -86,7 +86,7 @@ int getGuess(int lang) {
 
 int checkGuess(int correct, int lang) {
 	int guess = getGuess(lang);
-	if (lang == 1) {
+	if (lang == 1) { // for english
 		if (guess == correct) {
 			printf("Correct!!!\n");
 			return 1;
@@ -99,8 +99,8 @@ int checkGuess(int correct, int lang) {
 		}
 	}
 
-	if (lang == 2) {
-		if (guess == correct) {
+	if (lang == 2) { // for french
+		if (guess == correct) { 
 			printf("Bonne reponse!!!\n");
 			return 1;
 		}

@@ -1,7 +1,6 @@
-//Liam , Will, Nihchal, Minh
+//Liam, Will, Nihchal, Minh
 //Group 7
 //HangMan
-#define _CRT_SECURE_NO_WARNINGS
 
 #include "DataPackages.h"
 #include "Header.h"
