@@ -4,8 +4,8 @@
 #include "Header.h"
 
 
-int Dash(char* wordtoguess) {
-    
+int Dash(char* wordtoguess, int lang) {
+
     int m;
     int charcount;
 
@@ -18,19 +18,23 @@ int Dash(char* wordtoguess) {
 
     printf("%s", wordtoguess);
 
- 
+
 
     for (int n = 0; n < charcount; n++) {
 
         printf("-");
     }
-    printf("Enter a word to guess: ");
+    if (lang == 1) {
+        printf("Enter a word to guess: ");
+    }
+    if (lang == 2) {
     printf("Entrer un mot a deviner: ");
-    userInput(wordtoguess);
+    }
+    userInput(wordtoguess, lang);
 
 }
 
-int userInput(char* wordtoguess) {
+int userInput(char* wordtoguess, int lang) {
 
     char c;
 
@@ -41,19 +45,28 @@ int userInput(char* wordtoguess) {
 
     if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= "Z"))
     {
-        printf("Entrer un mot a deviner: \n");
-        printf("Enter a word to guess: \n");
-        GuessCheck(c, wordtoguess);
+        if (lang == 1) {
+            printf("Enter a word to guess: \n");
+        }
+        if (lang == 2) {
+            printf("Entrer un mot a deviner: \n");
+        }
+        GuessCheck(c, wordtoguess,lang);
     }
     else {
-        printf("Veuillez saisir un caractère valide: %c", c);
-        printf("Please enter a valid character: %c", c);
+        if (lang == 1) {
+            printf("Please enter a valid character: %c", c); printf("Enter a word to guess: \n");
+        }
+        if (lang == 2) {
+            printf("Veuillez saisir un caractere valide: %c", c);
+        }
+        
         scanf_s("%*c", &c);
     }
 
 }
 
-int GuessCheck(char guess, char* wordtoguess) {
+int GuessCheck(char guess, char* wordtoguess, int lang) {
 
     int mistake = 0;
     int charcount = 0;
@@ -65,9 +78,14 @@ int GuessCheck(char guess, char* wordtoguess) {
     }
 
     if (strchr(wordtoguess, guess) != NULL) {
-        printf("%c is in the word.\n", guess);
+        if (lang == 1) {
+            printf("%c is in the word.\n", guess); printf("Enter a word to guess: \n");
+        }
+        if (lang == 2) {
+            printf("%c est dans le mot. \n", guess);
+        }
         
-        userInput(wordtoguess);
+        userInput(wordtoguess, lang);
     }
     else {
         mistake++;
@@ -75,10 +93,15 @@ int GuessCheck(char guess, char* wordtoguess) {
         
     }
     if (mistake == 6) {
-        printf("You Lose.\n");
+        if (lang == 1) {
+            printf("You Lose.\n");
+        }
+        if (lang == 2) {
+            printf("Tu as perdu. \n");
+        }
 
         return 0;
     }
 
-    userInput(wordtoguess);
+    userInput(wordtoguess, lang);
 }

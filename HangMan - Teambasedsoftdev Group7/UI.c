@@ -109,7 +109,7 @@ mark2:
 		FileReuseWords(lang);
 		FileEncrypt(lang);
 
-		Dash(wordtoguess);
+		Dash(wordtoguess, lang);
 		break;
 	case 2:
 		FileDecrypt(lang);                       // this must always go first because the file starts as encrypted
@@ -118,7 +118,7 @@ mark2:
 		FileReuseWords(lang);
 		FileEncrypt(lang);
 		
-		Dash(wordtoguess);
+		Dash(wordtoguess, lang);
 		break;
 	case 3:
 		MathtoGuess(lang);
@@ -176,7 +176,7 @@ void menu_French(int lang)
 		FileReuseWords(lang);
 		FileEncrypt(lang);
 
-		Dash(wordtoguess);
+		Dash(wordtoguess, lang);
 		break;
 	case 2:
 		FileDecrypt(lang);                       // this must always go first because the file starts as encrypted
@@ -185,7 +185,7 @@ void menu_French(int lang)
 		FileReuseWords(lang);
 		FileEncrypt(lang);
 
-		Dash(wordtoguess);
+		Dash(wordtoguess, lang);
 		break;
 	case 3:
 		MathtoGuess(lang);
