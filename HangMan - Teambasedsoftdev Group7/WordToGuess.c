@@ -16,7 +16,7 @@ int Dash(char* wordtoguess, int lang) {
         }
     }
 
-    printf("%s", wordtoguess);
+    printf("%s\n", wordtoguess);
 
 
 
@@ -25,10 +25,10 @@ int Dash(char* wordtoguess, int lang) {
         printf("-");
     }
     if (lang == 1) {
-        printf("Enter a word to guess: ");
+        printf("\nEnter a word to guess: ");
     }
     if (lang == 2) {
-    printf("Entrer un mot a deviner: ");
+        printf("\nEntrer un mot a deviner: ");
     }
     userInput(wordtoguess, lang);
 
