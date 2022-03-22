@@ -25,6 +25,7 @@ int Dash(char* wordtoguess) {
         printf("-");
     }
     printf("Enter a word to guess: ");
+    printf("Entrer un mot a deviner: ");
     userInput(wordtoguess);
 
 }
@@ -40,10 +41,12 @@ int userInput(char* wordtoguess) {
 
     if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= "Z"))
     {
+        printf("Entrer un mot a deviner: \n");
         printf("Enter a word to guess: \n");
         GuessCheck(c, wordtoguess);
     }
     else {
+        printf("Veuillez saisir un caractère valide: %c", c);
         printf("Please enter a valid character: %c", c);
         scanf_s("%*c", &c);
     }

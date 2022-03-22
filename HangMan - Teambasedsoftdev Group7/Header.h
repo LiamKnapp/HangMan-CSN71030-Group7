@@ -20,7 +20,7 @@ int FileReuseWords(int);
 
 /* Will */
 // Math Gamemode Functions
-int MathtoGuess(int);
+void MathtoGuess(int);
 int getGuess(int);
 int checkGuess(int, int);
 void printEquation(int, char, int, int, int);

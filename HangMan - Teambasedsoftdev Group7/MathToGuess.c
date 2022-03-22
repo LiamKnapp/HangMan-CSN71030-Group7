@@ -52,7 +52,8 @@ void MathtoGuess(int lang) {
 		printf("Correct answer was: %d\n", correct);
 	}
 	else if (lang == 2) {
-
+		printf("JEU TERMINE!!!\n");
+		printf("La bonne reponse etait: %d\n", correct);
 	}
 }
 
