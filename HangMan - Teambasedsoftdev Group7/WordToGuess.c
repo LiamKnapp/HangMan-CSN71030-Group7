@@ -8,7 +8,7 @@ int mistake = 0;
 int saved = 0;
 
 int Dash(char* wordtoguess, int lang) {
-
+    mistake = 0;
     int charcount = 0;
 
     //check to see the length of the word
@@ -34,17 +34,19 @@ int Dash(char* wordtoguess, int lang) {
 int GuessCheck(char* wordtoguess, int lang) {
     char input;
     char savedinput[6];
-    //the size of this array will need to be the same size as the wordtoguess this is temp
-    //array might be wrong approach. should explore possibility of dynamic allocation and string
+    char* userguess = malloc(sizeof(char*));
+    
 mark:
     if (lang == 1) { // for english
-        printf("\nEnter a word to guess: ");
+        printf("Type '1' to try and guess the word if you are ready!\nEnter a letter to guess: ");
     }
     if (lang == 2) { //for french
-        printf("\nEntrer un mot a deviner: ");
+        printf("\nEntrer un lettre a deviner: ");
     }
 
     scanf("%c", &input); // to get the user input for there guess
+    char c[2];
+    fgets(c, 2, stdin);
 
     //check to see if the input is valid
     if ((input >= 'a' && input <= 'z') || (input >= 'A' && input <= 'Z')) {
@@ -53,24 +55,23 @@ mark:
         if (strchr(wordtoguess, input) != NULL) {
             if (lang == 1) { // for english
                 printf("%c : is in the word. \n", input);
+                savedinput[saved] = input; // save the guess in an element
+                for (int i = 0; i < 6; i++) {
+                    printf("%c, ", savedinput[i]);
+                }
+                printf(" : are all in the word\n");
+                saved++;
             }
             if (lang == 2) { // for french
-                printf("%c : est dans le mot. \n", input);
+                printf("%c : est dans le mot\n", input);
+                savedinput[saved] = input; // save the guess in an element
+                for (int i = 0; i < 6; i++) {
+                    printf("%c, ", savedinput[i]);
+                }
+                printf(" : sont tous dans le mot\n");
+                saved++;
             }
-            savedinput[saved] = input; // save the guess in an element
-            saved++;
         }
-
-        /*      THIS IS THE NEXT STATEMENT NEEDED TO BE MADE
-                THIS IS A ROUGH GUESS ON HOW IT SHOULD BE MADE  
-                THIS IS FOR THE WIN CONDITION TO END THE PROGRAM    */  
-
-        //if the saved char array is the same size as the word to guess
-            //if each char at each element in the saved char array is in the wordtoguess
-            //the player wins display the word
-            //return to the main menu so they can play the game again
-        //else
-            // the player hasnt won yet so continue the program
 
         //if the letter is not in the word
         if (strchr(wordtoguess, input) == NULL) {
@@ -96,13 +97,36 @@ mark:
             }
         }
     } 
-    //if the input is invalid
     else {
-        if (lang == 1) {//for english
-            printf("\nPlease enter a valid character!");
+        //if the user wants to try and guess the word
+        if (input == '1') {
+            if (lang == 1) {//for english
+                printf("\nPlease enter the word you want to guess: ");
+                scanf("%s", &userguess);
+            }
+            if (lang == 2) {//for french
+                printf("\nVeuillez entrer le mot que vous voulez deviner: ");
+                scanf("%s", &userguess);
+            }
+            // see if they got it correct
+            if (strcmp(wordtoguess, &userguess) == 0){
+                if (lang == 1) {//for english
+                    printf("\n%s : is the correct word!\nYOU WIN!",userguess);
+                    menu(lang);
+                }
+                if (lang == 2) {//for french
+                    printf("\n%s : est le bon mot!\nVOUS GAGNEZ!",userguess);
+                    menu_French(lang);
+                }
+            }
         }
-        if (lang == 2) {//for french
-            printf("Veuillez saisir un caractere valide!");
+        else {
+            if (lang == 1) {//for english
+                printf("\nPlease enter a valid character!");
+            }
+            if (lang == 2) {//for french
+                printf("\nVeuillez saisir un caractere valide!");
+            }
         }
     }
 
