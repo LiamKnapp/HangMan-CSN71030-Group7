@@ -4,6 +4,10 @@
 #include "Header.h"
 
 void MathtoGuess(int lang) {
+
+	time_t t;
+	srand((unsigned)time(&t));
+
 	int oper = rand() % 3;
 	int leftnum = rand() % 100;
 	int midnum = rand() % 100;
@@ -48,10 +52,12 @@ void MathtoGuess(int lang) {
 		}
 	}
 	if (lang == 1) {
+		printBody(6);
 		printf("GAME OVER!!!\n");
 		printf("Correct answer was: %d\n", correct);
 	}
 	else if (lang == 2) {
+		printBody(6);
 		printf("JEU TERMINE!!!\n");
 		printf("La bonne reponse etait: %d\n", correct);
 	}

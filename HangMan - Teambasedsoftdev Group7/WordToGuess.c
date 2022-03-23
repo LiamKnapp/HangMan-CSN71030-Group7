@@ -19,7 +19,6 @@ int Dash(char* wordtoguess, int lang) {
     printf("%s\n", wordtoguess);
 
 
-
     for (int n = 0; n < charcount; n++) {
 
         printf("-");
