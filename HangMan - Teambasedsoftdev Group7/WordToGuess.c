@@ -102,14 +102,13 @@ mark:
         if (input == '1') {
             if (lang == 1) {//for english
                 printf("\nPlease enter the word you want to guess: ");
-                scanf("%s", &userguess);
             }
             if (lang == 2) {//for french
                 printf("\nVeuillez entrer le mot que vous voulez deviner: ");
-                scanf("%s", &userguess);
             }
+            scanf("%s", userguess);
             // see if they got it correct
-            if (strcmp(wordtoguess, &userguess) == 0){
+            if (strcmp(wordtoguess, userguess) == 0){
                 if (lang == 1) {//for english
                     printf("\n%s : is the correct word!\nYOU WIN!",userguess);
                     menu(lang);

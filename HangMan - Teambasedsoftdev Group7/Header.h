@@ -22,7 +22,7 @@ int FileReuseWords(int);
 // Math Gamemode Functions
 void MathtoGuess(int);
 int getGuess(int);
-int checkGuess(int, int);
+int checkGuess(int, int, int);
 void printEquation(int, char, int, int, int);
 
 /* Nihchal */
