@@ -103,21 +103,21 @@ mark2:
 	switch (tmp)
 	{
 	case 1:
-		FileDecrypt(lang);                       // this must always go first because the file starts as encrypted
-		wordtoguess = FileGetWord(lang);         // get random word and save it to wordtoguess
-		FileRemoveWord(wordtoguess, lang); // remove word that getword function selects and save to savefile
-		FileReuseWords(lang);
+		FileDecrypt(lang);
+		wordtoguess = FileGetWord(lang);
+		//FileRemoveWord(wordtoguess, lang); 
+		//FileReuseWords(lang);
 		FileEncrypt(lang);
 
 		Dash(wordtoguess, lang);
 		break;
 	case 2:
-		FileDecrypt(lang);                       // this must always go first because the file starts as encrypted
-		wordtoguess = FileGetWord(lang);         // get random word and save it to wordtoguess
-		FileRemoveWord(wordtoguess, lang); // remove word that getword function selects and save to savefile
-		FileReuseWords(lang);
+		FileDecrypt(lang);
+		wordtoguess = FileGetWord(lang);
+		//FileRemoveWord(wordtoguess, lang); 
+		//FileReuseWords(lang);
 		FileEncrypt(lang);
-		
+
 		Dash(wordtoguess, lang);
 		break;
 	case 3:
@@ -136,7 +136,7 @@ mark2:
 void menu_French(int lang)
 {
 	char* wordtoguess = malloc(sizeof(char*));
-	mark1:
+mark1:
 	printf("------------------------------------\n");
 	printf("  Bienvenue dans le jeu du pendu   *\n");
 	printf("  Choisissez l'option ci-dessous   *\n");
@@ -172,17 +172,17 @@ void menu_French(int lang)
 	case 1:
 		FileDecrypt(lang);                       // this must always go first because the file starts as encrypted
 		wordtoguess = FileGetWord(lang);         // get random word and save it to wordtoguess
-		FileRemoveWord(wordtoguess, lang); // remove word that getword function selects and save to savefile
-		FileReuseWords(lang);
+		//FileRemoveWord(wordtoguess, lang); // remove word that getword function selects and save to savefile
+		//FileReuseWords(lang);
 		FileEncrypt(lang);
 
 		Dash(wordtoguess, lang);
 		break;
 	case 2:
-		FileDecrypt(lang);                       // this must always go first because the file starts as encrypted
-		wordtoguess = FileGetWord(lang);         // get random word and save it to wordtoguess
-		FileRemoveWord(wordtoguess, lang); // remove word that getword function selects and save to savefile
-		FileReuseWords(lang);
+		FileDecrypt(lang);
+		wordtoguess = FileGetWord(lang);
+		//FileRemoveWord(wordtoguess, lang);
+		//FileReuseWords(lang);
 		FileEncrypt(lang);
 
 		Dash(wordtoguess, lang);
@@ -191,7 +191,7 @@ void menu_French(int lang)
 		MathtoGuess(lang);
 		break;
 	case 4:
-		//Printnode();
+		Printnode();
 		break;
 	case 5:
 		break;
@@ -381,5 +381,3 @@ void printBody(int mistakes)
 		break;
 	}
 }
-
-

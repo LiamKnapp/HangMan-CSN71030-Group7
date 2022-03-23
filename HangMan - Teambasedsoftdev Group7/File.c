@@ -1,7 +1,6 @@
 //Liam
 //Group 7
 //HangMan
-#define _CRT_SECURE_NO_WARNINGS
 #define MAXLNS 100
 #define WRDPRLN 128
 
@@ -10,140 +9,140 @@
 int FileEncrypt(int lang) {
 
 	char ch;
-	FILE* fp, * fpt, *fps;
+	FILE* fp, * fpt, * fps;
 
 	// predefine the file names so we can use the lang efficently
 	char* filename[3] = { "NA", "Words.txt", "FrenchWords.txt" };
 	char* filesavewords[3] = { "NA", "SaveWords.txt", "SaveFrenchWords.txt" };
 
-		// open read file as read in english
-		fp = fopen(filename[lang], "r");
-		if (fp == NULL) {
-			printf("error");
-			exit(0);
-		}
-		// open temp file as write
-		fpt = fopen("Temp.txt", "w");
-		if (fpt == NULL) {
-			printf(" error ");
-			fclose(fp);
-			exit(0);
-		}
-
-		//read the file and put the encrypted words into temp
-		while (1) {
-			ch = fgetc(fp);
-			if (ch == EOF) {
-				break;
-			}
-			else {
-				ch = ch + 100; // change the ascii value of the letter
-				fputc(ch, fpt);
-			}
-		}
-
-		//save the files
-		fseek(stdin, 0, SEEK_END);
+	// open read file as read in english
+	fp = fopen(filename[lang], "r");
+	if (fp == NULL) {
+		printf("error");
+		exit(0);
+	}
+	// open temp file as write
+	fpt = fopen("Temp.txt", "w");
+	if (fpt == NULL) {
+		printf(" error ");
 		fclose(fp);
-		fseek(stdin, 0, SEEK_END);
-		fclose(fpt);
+		exit(0);
+	}
 
-		// open word file as write
-		fp = fopen(filename[lang], "w");
-		if (fp == NULL) {
-			printf("error");
-			exit(0);
+	//read the file and put the encrypted words into temp
+	while (1) {
+		ch = fgetc(fp);
+		if (ch == EOF) {
+			break;
 		}
-
-		//reopen the temp file as read
-		fpt = fopen("Temp.txt", "r");
-		if (fpt == NULL) {
-			printf("error");
-			fclose(fp);
-			exit(0);
+		else {
+			ch = ch + 100; // change the ascii value of the letter
+			fputc(ch, fpt);
 		}
+	}
 
-		//move the encrypted text from temp to word file
-		while (1) {
-			ch = fgetc(fpt);
-			if (ch == EOF) {
-				break;
-			}
-			else {
-				fputc(ch, fp);
-			}
-		}
+	//save the files
+	fseek(stdin, 0, SEEK_END);
+	fclose(fp);
+	fseek(stdin, 0, SEEK_END);
+	fclose(fpt);
 
-		//save the files
-		fseek(stdin, 0, SEEK_END);
+	// open word file as write
+	fp = fopen(filename[lang], "w");
+	if (fp == NULL) {
+		printf("error");
+		exit(0);
+	}
+
+	//reopen the temp file as read
+	fpt = fopen("Temp.txt", "r");
+	if (fpt == NULL) {
+		printf("error");
 		fclose(fp);
-		fseek(stdin, 0, SEEK_END);
-		fclose(fpt);
+		exit(0);
+	}
 
-		//open the savewords file as read
-		fps = fopen(filesavewords[lang], "r");
-		if (fps == NULL) {
-			printf("error");
-			exit(0);
+	//move the encrypted text from temp to word file
+	while (1) {
+		ch = fgetc(fpt);
+		if (ch == EOF) {
+			break;
 		}
-
-		// open temp file as write
-		fpt = fopen("Temp.txt", "w");
-		if (fpt == NULL) {
-			printf(" error ");
-			fclose(fps);
-			exit(0);
+		else {
+			fputc(ch, fp);
 		}
+	}
 
-		//read the file and put the encrypted words into temp
-		while (1) {
-			ch = fgetc(fps);
-			if (ch == EOF) {
-				break;
-			}
-			else {
-				ch = ch + 100; // change the ascii value of the letter
-				fputc(ch, fpt);
-			}
-		}
+	//save the files
+	fseek(stdin, 0, SEEK_END);
+	fclose(fp);
+	fseek(stdin, 0, SEEK_END);
+	fclose(fpt);
 
-		//save the files
-		fseek(stdin, 0, SEEK_END);
+	//open the savewords file as read
+	fps = fopen(filesavewords[lang], "r");
+	if (fps == NULL) {
+		printf("error");
+		exit(0);
+	}
+
+	// open temp file as write
+	fpt = fopen("Temp.txt", "w");
+	if (fpt == NULL) {
+		printf(" error ");
 		fclose(fps);
-		fseek(stdin, 0, SEEK_END);
-		fclose(fpt);
+		exit(0);
+	}
 
-		// open saveword file as write
-		fps = fopen(filesavewords[lang], "w");
-		if (fps == NULL) {
-			printf("error");
-			exit(0);
+	//read the file and put the encrypted words into temp
+	while (1) {
+		ch = fgetc(fps);
+		if (ch == EOF) {
+			break;
 		}
-
-		//reopen the temp file as read
-		fpt = fopen("Temp.txt", "r");
-		if (fpt == NULL) {
-			printf("error");
-			fclose(fp);
-			exit(0);
+		else {
+			ch = ch + 100; // change the ascii value of the letter
+			fputc(ch, fpt);
 		}
+	}
 
-		//move the encrypted text from temp to saveword file
-		while (1) {
-			ch = fgetc(fpt);
-			if (ch == EOF) {
-				break;
-			}
-			else {
-				fputc(ch, fps);
-			}
+	//save the files
+	fseek(stdin, 0, SEEK_END);
+	fclose(fps);
+	fseek(stdin, 0, SEEK_END);
+	fclose(fpt);
+
+	// open saveword file as write
+	fps = fopen(filesavewords[lang], "w");
+	if (fps == NULL) {
+		printf("error");
+		exit(0);
+	}
+
+	//reopen the temp file as read
+	fpt = fopen("Temp.txt", "r");
+	if (fpt == NULL) {
+		printf("error");
+		fclose(fp);
+		exit(0);
+	}
+
+	//move the encrypted text from temp to saveword file
+	while (1) {
+		ch = fgetc(fpt);
+		if (ch == EOF) {
+			break;
 		}
+		else {
+			fputc(ch, fps);
+		}
+	}
 
-		//save the files
-		fseek(stdin, 0, SEEK_END);
-		fclose(fps);
-		fseek(stdin, 0, SEEK_END);
-		fclose(fpt);
+	//save the files
+	fseek(stdin, 0, SEEK_END);
+	fclose(fps);
+	fseek(stdin, 0, SEEK_END);
+	fclose(fpt);
 }
 
 
@@ -157,135 +156,135 @@ int FileDecrypt(int lang) {
 	char* filename[3] = { "NA", "Words.txt", "FrenchWords.txt" };
 	char* filesavewords[3] = { "NA", "SaveWords.txt", "SaveFrenchWords.txt" };
 
-		// open read file as read
-		fp = fopen(filename[lang], "r");
-		if (fp == NULL) {
-			printf("error");
-			exit(0);
-		}
+	// open read file as read
+	fp = fopen(filename[lang], "r");
+	if (fp == NULL) {
+		printf("error");
+		exit(0);
+	}
 
-		// open temp file as write
-		fpt = fopen("Temp.txt", "w");
-		if (fpt == NULL) {
-			printf(" error ");
-			fclose(fp);
-			exit(0);
-		}
-
-		//read the file and put the encrypted words into temp
-		while (1) {
-			ch = fgetc(fp);
-			if (ch == EOF) {
-				break;
-			}
-			else {
-				ch = ch - 100; // change the ascii value of the symbol
-				fputc(ch, fpt);
-			}
-		}
-
-		//save the files
-		fseek(stdin, 0, SEEK_END);
+	// open temp file as write
+	fpt = fopen("Temp.txt", "w");
+	if (fpt == NULL) {
+		printf(" error ");
 		fclose(fp);
-		fseek(stdin, 0, SEEK_END);
-		fclose(fpt);
+		exit(0);
+	}
 
-		//reopen the word file as write
-		fp = fopen(filename[lang], "w");
-		if (fp == NULL) {
-			printf("error");
-			exit(0);
+	//read the file and put the encrypted words into temp
+	while (1) {
+		ch = fgetc(fp);
+		if (ch == EOF) {
+			break;
 		}
-
-		//reopen the temp file as read
-		fpt = fopen("Temp.txt", "r");
-		if (fpt == NULL) {
-			printf("error");
-			fclose(fp);
-			exit(0);
+		else {
+			ch = ch - 100; // change the ascii value of the symbol
+			fputc(ch, fpt);
 		}
+	}
 
-		//move the encrypted text from temp to word file
-		while (1) {
-			ch = fgetc(fpt);
-			if (ch == EOF) {
-				break;
-			}
-			else {
-				fputc(ch, fp);
-			}
-		}
+	//save the files
+	fseek(stdin, 0, SEEK_END);
+	fclose(fp);
+	fseek(stdin, 0, SEEK_END);
+	fclose(fpt);
 
-		//save the files
-		fseek(stdin, 0, SEEK_END);
+	//reopen the word file as write
+	fp = fopen(filename[lang], "w");
+	if (fp == NULL) {
+		printf("error");
+		exit(0);
+	}
+
+	//reopen the temp file as read
+	fpt = fopen("Temp.txt", "r");
+	if (fpt == NULL) {
+		printf("error");
 		fclose(fp);
-		fseek(stdin, 0, SEEK_END);
-		fclose(fpt);
+		exit(0);
+	}
 
-		//open the savewords file as read
-		fps = fopen(filesavewords[lang], "r");
-		if (fps == NULL) {
-			printf("error");
-			exit(0);
+	//move the encrypted text from temp to word file
+	while (1) {
+		ch = fgetc(fpt);
+		if (ch == EOF) {
+			break;
 		}
-
-		// open temp file as write
-		fpt = fopen("Temp.txt", "w");
-		if (fpt == NULL) {
-			printf(" error ");
-			fclose(fps);
-			exit(0);
+		else {
+			fputc(ch, fp);
 		}
+	}
 
-		//read the file and put the encrypted words into temp
-		while (1) {
-			ch = fgetc(fps);
-			if (ch == EOF) {
-				break;
-			}
-			else {
-				ch = ch - 100; // change the ascii value of the letter
-				fputc(ch, fpt);
-			}
-		}
+	//save the files
+	fseek(stdin, 0, SEEK_END);
+	fclose(fp);
+	fseek(stdin, 0, SEEK_END);
+	fclose(fpt);
 
-		//save the files
-		fseek(stdin, 0, SEEK_END);
+	//open the savewords file as read
+	fps = fopen(filesavewords[lang], "r");
+	if (fps == NULL) {
+		printf("error");
+		exit(0);
+	}
+
+	// open temp file as write
+	fpt = fopen("Temp.txt", "w");
+	if (fpt == NULL) {
+		printf(" error ");
 		fclose(fps);
-		fseek(stdin, 0, SEEK_END);
-		fclose(fpt);
+		exit(0);
+	}
 
-		// open saveword file as write
-		fps = fopen(filesavewords[lang], "w");
-		if (fps == NULL) {
-			printf("error");
-			exit(0);
+	//read the file and put the encrypted words into temp
+	while (1) {
+		ch = fgetc(fps);
+		if (ch == EOF) {
+			break;
 		}
-
-		//reopen the temp file as read
-		fpt = fopen("Temp.txt", "r");
-		if (fpt == NULL) {
-			printf("error");
-			fclose(fp);
-			exit(0);
+		else {
+			ch = ch - 100; // change the ascii value of the letter
+			fputc(ch, fpt);
 		}
+	}
 
-		//move the encrypted text from temp to saveword file
-		while (1) {
-			ch = fgetc(fpt);
-			if (ch == EOF) {
-				break;
-			}
-			else {
-				fputc(ch, fps);
-			}
+	//save the files
+	fseek(stdin, 0, SEEK_END);
+	fclose(fps);
+	fseek(stdin, 0, SEEK_END);
+	fclose(fpt);
+
+	// open saveword file as write
+	fps = fopen(filesavewords[lang], "w");
+	if (fps == NULL) {
+		printf("error");
+		exit(0);
+	}
+
+	//reopen the temp file as read
+	fpt = fopen("Temp.txt", "r");
+	if (fpt == NULL) {
+		printf("error");
+		fclose(fp);
+		exit(0);
+	}
+
+	//move the encrypted text from temp to saveword file
+	while (1) {
+		ch = fgetc(fpt);
+		if (ch == EOF) {
+			break;
 		}
+		else {
+			fputc(ch, fps);
+		}
+	}
 
-		//save the files
-		fseek(stdin, 0, SEEK_END);
-		fclose(fps);
-		fseek(stdin, 0, SEEK_END);
-		fclose(fpt);
+	//save the files
+	fseek(stdin, 0, SEEK_END);
+	fclose(fps);
+	fseek(stdin, 0, SEEK_END);
+	fclose(fpt);
 }
 
 char* FileGetWord(int lang) {
@@ -312,7 +311,7 @@ char* FileGetWord(int lang) {
 
 	while (fgets(line[i], WRDPRLN, fp)) {
 		//check to see if it is the end of the file
-		if (line[i][strlen(line[i]) - 1] == EOF) {
+		if (line[i][strlen(line[i])] == EOF) {
 			break;
 		}
 
@@ -335,12 +334,11 @@ char* FileGetWord(int lang) {
 	int RNG = rand() % nlines;
 
 	return(line[RNG]);
-
 }
 
 int FileRemoveWord(char delword[], int lang) {
 
-	FILE* fp, *fpt, *fps;
+	FILE* fp, * fpt, * fps;
 
 	// predefine the file names so we can use the lang efficently
 	char* filename[3] = { "NA", "Words.txt", "FrenchWords.txt" };
@@ -348,7 +346,7 @@ int FileRemoveWord(char delword[], int lang) {
 
 	int i = 1;
 	char temp[WRDPRLN];
-	
+
 	//Open word file as read
 	fp = fopen(filename[lang], "r");
 	if (fp == NULL) {
@@ -394,7 +392,7 @@ int FileRemoveWord(char delword[], int lang) {
 		printf("error");
 		fclose(fp);
 		fclose(fpt);
-		exit(0);		
+		exit(0);
 	}
 
 	//remove the line
