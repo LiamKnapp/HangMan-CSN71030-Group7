@@ -27,12 +27,8 @@ void printEquation(int, char, int, int, int);
 
 /* Nihchal */
 // Word Gamemode Functions
-
 int Dash(char*, int);
-int userInput(char*, int);
-int GuessCheck(char, char*, int);
-//int guessAmount();
-//void printResults();
+int GuessCheck(char*, int);
 
 /* Minh */
 // UI Menu Functions

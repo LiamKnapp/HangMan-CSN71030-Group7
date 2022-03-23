@@ -308,10 +308,16 @@ char* FileGetWord(int lang) {
 
 	//start at line 0 and go through all the words on the line
 	int i = 0;
+	char ch;
+
 	while (fgets(line[i], WRDPRLN, fp)) {
 		// save the contents of that line up until the next line
 		line[i][strlen(line[i]) - 1] = '\0';
 		i++;
+
+		if (line[i][strlen(line[i]) - 1] == EOF) {
+			break;
+		}
 	}
 
 
@@ -330,7 +336,6 @@ char* FileGetWord(int lang) {
 	return(line[RNG]);
 
 }
-
 
 int FileRemoveWord(char delword[], int lang) {
 

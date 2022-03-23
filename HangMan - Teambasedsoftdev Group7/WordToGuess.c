@@ -3,6 +3,7 @@
 //HangMan
 #include "Header.h"
 
+int mistake = 0;
 
 int Dash(char* wordtoguess, int lang) {
 
@@ -23,14 +24,16 @@ int Dash(char* wordtoguess, int lang) {
 
         printf("-");
     }
-    userInput(wordtoguess, lang);
+
+    GuessCheck(wordtoguess, lang);
 
 }
 
-int userInput(char* wordtoguess, int lang) {
+int GuessCheck(char* wordtoguess, int lang) {
 
     char input;
-
+mark:
+    
     if (lang == 1) { // for english
         printf("\nEnter a word to guess: ");
     }
@@ -40,32 +43,21 @@ int userInput(char* wordtoguess, int lang) {
 
     scanf("%c", &input);
 
-    //check input is good
+    //if valid
     if ((input >= 'a' && input <= 'z') || (input >= 'A' && input <= 'Z')) {
 
-    //check if the input is in the word
-    GuessCheck(input, wordtoguess, lang);
-
-    }
-}
-
-int mistake = 0;
-
-int GuessCheck(char guess, char* wordtoguess, int lang) {
-
-mark:
     //if the letter is in the word
-        if (strchr(wordtoguess, guess) != NULL) {
+        if (strchr(wordtoguess, input) != NULL) {
             if (lang == 1) { // for english
-                printf("%c is in the word.\n", guess);
+                printf("%c is in the word.\n", input);
             }
             if (lang == 2) { // for french
-                printf("%c est dans le mot. \n", guess);
+                printf("%c est dans le mot. \n", input);
             }
         }
 
         //if the letter is not in the word
-        if (strchr(wordtoguess, guess) == NULL) {
+        if (strchr(wordtoguess, input) == NULL) {
             mistake++;
             printf("Mistake = %d", mistake);
             printBody(mistake);
@@ -76,16 +68,15 @@ mark:
             if (lang == 1) { // for english
                 printf("You Lose.\n\n");
                 menu(lang);
-               // break;
+                // break;
             }
             if (lang == 2) { // for french
                 printf("Tu as perdu.\n\n");
                 menu_French(lang);
-               // break;
+                // break;
             }
 
         }
-        userInput(wordtoguess, lang);
-
-        goto mark;
+    }
+    goto mark;
 }
