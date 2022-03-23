@@ -52,10 +52,10 @@ mark:
     //if the letter is in the word
         if (strchr(wordtoguess, input) != NULL) {
             if (lang == 1) { // for english
-                printf("%c is in the word. \n", input);
+                printf("%c : is in the word. \n", input);
             }
             if (lang == 2) { // for french
-                printf("%c est dans le mot. \n", input);
+                printf("%c : est dans le mot. \n", input);
             }
             savedinput[saved] = input; // save the guess in an element
             saved++;
