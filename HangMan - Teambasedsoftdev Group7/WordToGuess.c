@@ -2,7 +2,7 @@
 //Group 7
 //HangMan
 #include "Header.h"
-
+#define MAX_LEN_NAME 100
 //global int declarations
 int mistake = 0;
 int saved = 0;
@@ -36,7 +36,13 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
     char input;
     char savedinput[30];
     char* userguess = malloc(sizeof(char*));
-// fix with the while loop
+    //
+    char name[MAX_LEN_NAME];
+    BSTInit();
+    GameInfor tmp;
+    
+    
+    //
     while (1) {
         if (lang == 1) { // for english
             printf("\nType '1' to try and guess the word if you are ready!\nEnter a letter to guess: ");
@@ -45,7 +51,7 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
             printf("\nTapez '1' pour essayer de deviner le mot si vous etes pret!\nEntrer un lettre a deviner: ");
         }
 
-        scanf_s("%c", &input,sizeof(input)); // to get the user input for there guess
+        scanf("%c", &input); // to get the user input for there guess
         char c[2];
         fgets(c, 2, stdin);
 
@@ -105,21 +111,31 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
             if (input == '1') {
                 if (lang == 1) {//for english
                     printf("\nPlease enter the word you want to guess: ");
-                    scanf_s("%s", userguess,sizeof(userguess));
+                    scanf("%s", userguess);
                 }
                 if (lang == 2) {//for french
                     printf("\nVeuillez entrer le mot que vous voulez deviner: ");
-                    scanf_s("%s", userguess,sizeof(userguess));
+                    scanf("%s", userguess);
                 }
                 // check if they got it correct
                 if (strcmp(wordtoguess, userguess) == 0) { // if correct
                     if (lang == 1) {//for english
                         printf("\n%s : is the correct word!\nYOU WIN!\n", userguess);
+                        printf("\nPlease enter your name:\n");
+                        scanf_s("%s", &name, sizeof(name));
+                        strcpy(tmp.Player_1, name);
+                        tmp.Score = charcount;
+                        Insert(tmp);
                         menu(lang);
                         break;
                     }
                     if (lang == 2) {//for french
                         printf("\n%s : est le bon mot!\nVOUS GAGNEZ!\n", userguess);
+                        printf("S'il vous plait entrez votre nom:\n");
+                        scanf_s("%s", &name, sizeof(name));
+                        strcpy(tmp.Player_1, name);
+                        tmp.Score = charcount;
+                        Insert(tmp);
                         menu_French(lang);
                         break;
                     }
@@ -148,4 +164,5 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
         }
 
     }
+
 }

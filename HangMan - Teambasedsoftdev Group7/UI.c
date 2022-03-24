@@ -24,8 +24,11 @@ void BSTInit(void) {                           //Initialize the BST Node
 }
 
 link BSTInsert(link h, GameInfor item) {			//Private Insert function called by 'Insert()' 										
-	if (h == NULL) return(NEW(item, NULL, NULL));   //Terminal Condition
-
+	if (h == NULL)
+	{
+		return(NEW(item, NULL, NULL));
+	}   //Terminal Condition
+	
 	if (item.Score < h->msg.Score)
 	{
 		h->pLeft = BSTInsert(h->pLeft, item);		//inserts on the left side of tree - recurses to check if at end of tree
@@ -41,6 +44,29 @@ link BSTInsert(link h, GameInfor item) {			//Private Insert function called by '
 
 void Insert(GameInfor item) {							//Public insert function
 	root = BSTInsert(root, item);					//Call the private insert - this is for security
+}
+
+link BSTSearch(link h, char* szkey) {	//Private Search function called by 'Search()'
+	int rc;								//For recursive function
+	if (h == NULL) {
+		return(NULL);
+	}
+	if (szkey == h->msg.Player_1)
+	{
+		return(h);
+	}
+	else if (szkey < h->msg.Player_1)
+	{
+		h->pLeft = BSTSearch(h->pLeft, szkey);
+	}
+	else
+	{
+		h->pRight = BSTSearch(h->pRight, szkey);
+	}
+}
+
+link Search(char* szkey) {				//Public Search
+	return(BSTSearch(root, szkey));		//Call the private search - this is for security
 }
 
 void BSTPrint(link h) {         //Private Print function called by 'Print()'
@@ -125,6 +151,20 @@ mark2:
 		break;
 	case 4:
 		Printnode();
+		int tmp_1;
+		printf("\nDo you want to play again\n");
+		printf("\n1. Yes\n");
+		printf("\n2. No\n");
+		scanf_s("%d", &tmp_1);
+		switch (tmp_1)
+		{
+		case 1:
+			menu(lang);
+		case 2:
+			break;
+		default:
+			break;
+		}
 		break;
 	case 5:
 		break;
@@ -192,6 +232,7 @@ mark1:
 		break;
 	case 4:
 		Printnode();
+
 		break;
 	case 5:
 		break;

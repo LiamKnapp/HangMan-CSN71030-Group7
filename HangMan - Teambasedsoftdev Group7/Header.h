@@ -46,7 +46,7 @@ typedef struct playerinfor GameInfor;
 
 struct playerinfor
 {
-    char Player_1[150];                    // name of player 
+    char Player_1[150];                   // name of player 
     int Score;                            // Score of player 
 };
 
@@ -68,3 +68,5 @@ void Insert(GameInfor item);                     //Public insert function
 void BSTPrint(link h);                      //Private Print function called by 'Print()'
 void Printnode(void);                        //Prints the node
 link getRoot(void);                            //Returns a pointer to the root of the BST
+link BSTSearch(link h, char* szkey);
+link Search(char* szkey);
