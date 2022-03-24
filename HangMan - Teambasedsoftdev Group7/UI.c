@@ -134,7 +134,6 @@ mark2:
 		//FileRemoveWord(wordtoguess, lang); 
 		//FileReuseWords(lang);
 		FileEncrypt(lang);
-
 		Dash(wordtoguess, lang);
 		break;
 	case 2:

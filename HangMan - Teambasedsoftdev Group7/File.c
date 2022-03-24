@@ -332,7 +332,6 @@ char* FileGetWord(int lang) {
 	srand(time(0)); // seed the RNG
 
 	int RNG = rand() % nlines;
-
 	return(line[RNG]);
 }
 
