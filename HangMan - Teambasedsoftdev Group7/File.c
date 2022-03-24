@@ -310,14 +310,14 @@ char* FileGetWord(int lang) {
 	char ch;
 
 	while (fgets(line[i], WRDPRLN, fp)) {
-		//check to see if it is the end of the file
-		if (line[i][strlen(line[i])] == EOF) {
-			break;
-		}
-
 		// save the contents of that line up until the next line
 		line[i][strlen(line[i]) - 1] = '\0';
 		i++;
+
+		//stop once the program hits the 100th line
+		if (i == 100) {
+			break;
+		}
 	}
 
 
