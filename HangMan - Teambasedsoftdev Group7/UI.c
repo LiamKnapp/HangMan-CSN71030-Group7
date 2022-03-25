@@ -231,7 +231,20 @@ mark1:
 		break;
 	case 4:
 		Printnode();
-
+		int tmp_1;
+		printf("\nDo you want to play again\n");
+		printf("\n1. Yes\n");
+		printf("\n2. No\n");
+		scanf_s("%d", &tmp_1);
+		switch (tmp_1)
+		{
+		case 1:
+			menu(lang);
+		case 2:
+			break;
+		default:
+			break;
+		}
 		break;
 	case 5:
 		break;
@@ -264,15 +277,17 @@ mark:
 	case 3:
 		break;
 	default:
-		printf("Error Input. Do you want to input again\n");
-		int temp;
-		printf("1. Yes\n");
-		printf("2. No\n");
-		scanf_s("%d", &temp);
-		switch (temp)
+		printf("Errors input! Please input integer from 1 to 3\n");
+		int temp_3;
+		printf("Do you want to enter again?\n");
+		printf("1.Yes\n");
+		printf("2.No\n");
+		scanf_s("%d", &temp_3);
+		switch (temp_3)
 		{
 		case 1:
 			goto mark;
+			break;
 		case 2:
 			break;
 		default:
@@ -280,7 +295,6 @@ mark:
 		}
 		break;
 	}
-
 }
 
 

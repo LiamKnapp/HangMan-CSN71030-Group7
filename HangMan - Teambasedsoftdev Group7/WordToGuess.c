@@ -122,7 +122,7 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
                     if (lang == 1) {//for english
                         printf("\n%s : is the correct word!\nYOU WIN!\n", userguess);
                         printf("\nPlease enter your name:\n");
-                        scanf_s("%s", &name, sizeof(name));
+                        scanf_s("%s", &name, sizeof(name)); 
                         strcpy(tmp.Player_1, name);
                         tmp.Score = charcount;
                         Insert(tmp);
