@@ -28,7 +28,7 @@ link BSTInsert(link h, GameInfor item) {			//Private Insert function called by '
 	{
 		return(NEW(item, NULL, NULL));
 	}   //Terminal Condition
-	
+
 	if (item.Score < h->msg.Score)
 	{
 		h->pLeft = BSTInsert(h->pLeft, item);		//inserts on the left side of tree - recurses to check if at end of tree
@@ -91,10 +91,11 @@ link getRoot(void) {         //Returns a pointer to the root of the BST
 	return(root);			 //the root is static for this file - it's the root of the tree
 }
 
+
 //// Function 1: Display the menu of the program
 void menu(int lang)
 {
-	char* wordtoguess = malloc(sizeof(char*)); // saves the random word the user will be guessing
+
 mark2:
 	printf("--------------------------------\n");
 	printf("*    Welcome to Hangman Game   *\n");
@@ -130,20 +131,19 @@ mark2:
 	{
 	case 1:
 		FileDecrypt(lang);
-		wordtoguess = FileGetWord(lang);
-		//FileRemoveWord(wordtoguess, lang); 
+		FileGetWord(lang);
+		//FileRemoveWord(g.word, lang); 
 		//FileReuseWords(lang);
 		FileEncrypt(lang);
-		Dash(wordtoguess, lang);
+		Dash(g.word, lang);
 		break;
 	case 2:
 		FileDecrypt(lang);
-		wordtoguess = FileGetWord(lang);
-		//FileRemoveWord(wordtoguess, lang); 
+		FileGetWord(lang);
+		//FileRemoveWord(g.word, lang); 
 		//FileReuseWords(lang);
 		FileEncrypt(lang);
-
-		Dash(wordtoguess, lang);
+		Dash(g.word, lang);
 		break;
 	case 3:
 		MathtoGuess(lang);
@@ -174,7 +174,6 @@ mark2:
 
 void menu_French(int lang)
 {
-	char* wordtoguess = malloc(sizeof(char*));
 mark1:
 	printf("------------------------------------\n");
 	printf("  Bienvenue dans le jeu du pendu   *\n");
@@ -209,42 +208,27 @@ mark1:
 	switch (tmp)
 	{
 	case 1:
-		FileDecrypt(lang);                       // this must always go first because the file starts as encrypted
-		wordtoguess = FileGetWord(lang);         // get random word and save it to wordtoguess
-		//FileRemoveWord(wordtoguess, lang); // remove word that getword function selects and save to savefile
+		FileDecrypt(lang);
+		FileGetWord(lang);
+		//FileRemoveWord(g.word, lang); 
 		//FileReuseWords(lang);
 		FileEncrypt(lang);
-
-		Dash(wordtoguess, lang);
+		//Dash(g.word, lang);
 		break;
 	case 2:
 		FileDecrypt(lang);
-		wordtoguess = FileGetWord(lang);
-		//FileRemoveWord(wordtoguess, lang);
+		FileGetWord(lang);
+		//FileRemoveWord(g.word, lang); 
 		//FileReuseWords(lang);
 		FileEncrypt(lang);
-
-		Dash(wordtoguess, lang);
+		Dash(g.word, lang);
 		break;
 	case 3:
 		MathtoGuess(lang);
 		break;
 	case 4:
 		Printnode();
-		int tmp_1;
-		printf("\nDo you want to play again\n");
-		printf("\n1. Yes\n");
-		printf("\n2. No\n");
-		scanf_s("%d", &tmp_1);
-		switch (tmp_1)
-		{
-		case 1:
-			menu(lang);
-		case 2:
-			break;
-		default:
-			break;
-		}
+
 		break;
 	case 5:
 		break;
@@ -277,17 +261,15 @@ mark:
 	case 3:
 		break;
 	default:
-		printf("Errors input! Please input integer from 1 to 3\n");
-		int temp_3;
-		printf("Do you want to enter again?\n");
-		printf("1.Yes\n");
-		printf("2.No\n");
-		scanf_s("%d", &temp_3);
-		switch (temp_3)
+		printf("Error Input. Do you want to input again\n");
+		int temp;
+		printf("1. Yes\n");
+		printf("2. No\n");
+		scanf_s("%d", &temp);
+		switch (temp)
 		{
 		case 1:
 			goto mark;
-			break;
 		case 2:
 			break;
 		default:
@@ -295,6 +277,7 @@ mark:
 		}
 		break;
 	}
+
 }
 
 

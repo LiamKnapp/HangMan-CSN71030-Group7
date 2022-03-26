@@ -310,14 +310,14 @@ char* FileGetWord(int lang) {
 	char ch;
 
 	while (fgets(line[i], WRDPRLN, fp)) {
-		// save the contents of that line up until the next line
-		line[i][strlen(line[i]) - 1] = '\0';
-		i++;
-
 		//stop once the program hits the 100th line
 		if (i == 100) {
 			break;
 		}
+
+		// save the contents of that line up until the next line
+		line[i][strlen(line[i]) - 1] = '\0';
+		i++;
 	}
 
 
@@ -332,7 +332,10 @@ char* FileGetWord(int lang) {
 	srand(time(0)); // seed the RNG
 
 	int RNG = rand() % nlines;
-	return(line[RNG]);
+
+	strcpy(g.word, line[RNG]);
+
+	return(g.word);
 }
 
 int FileRemoveWord(char delword[], int lang) {

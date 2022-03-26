@@ -37,6 +37,11 @@ void printBody(int mistakes);
 void menu_language();
 void menu_French(int);
 
+struct guessthisword {
+    char word[50];
+};
+struct guessthisword g;
+
 // New change to merge two header files
 
 // Declare for The Data Organization
