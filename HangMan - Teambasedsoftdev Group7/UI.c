@@ -84,12 +84,18 @@ void BSTPrint(link h, int lang) {         //Private Print function called by 'Pr
 
 	BSTPrint(h->pRight, lang);                    //Right
 	if (lang == 1) {
-		printf("\nScore: %d\t", h->msg.Score);	//Center
-		printf("\tPlayer: %s\n", h->msg.Player_1);
+		printf("\nScore: %d\n", h->msg.Score);	//Center
+		printf("Word: %s\n", h->msg.word);
+		printf("Player: %s\n", h->msg.Player_1);
+		printf("Time played : % lf secs\n", h->msg.time_count);
+		printf("Time: %s\n\n", h->msg.time);
 	}
 	if (lang == 2) {
-		printf("\nMarquer des points: %d\t", h->msg.Score);	//Center
-		printf("\tJoueur: %s\n", h->msg.Player_1);
+		printf("\nMarquer des points: %d\n", h->msg.Score);	//Center
+		printf("Le mot devine: %s\n", h->msg.word);
+		printf("Prenom du joueur: %s\n", h->msg.Player_1);
+		printf("Temps joue: % lf secs\n", h->msg.time_count);
+		printf("Temps: %s\n\n", h->msg.time);
 	}
 	BSTPrint(h->pLeft, lang);						//Left
 }
@@ -198,7 +204,9 @@ mark2:
 	}
 }
 
-void menu_French(int lang)
+void menu_French(int lang)	
+
+
 {
 mark1:
 

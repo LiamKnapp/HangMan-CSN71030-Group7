@@ -1,4 +1,4 @@
-//Nihchal & Liam
+﻿//Nihchal & Liam
 //Group 7
 //HangMan
 #include "Header.h"
@@ -36,17 +36,22 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
     char input;
     char savedinput[30];
     char* userguess = malloc(sizeof(char*));
-    //
     char name[MAX_LEN_NAME];
     
     GameInfor tmp;
-
+    time_t mytime = time(NULL);
+    char* time_str = ctime(&mytime);
+    time_str[strlen(time_str) - 1] = '\0';
+    clock_t start, end;   // Khai báo biến thời gian
+    double time_use;
+    start = clock();
     if (lang == 1) {
         printf("\n%d Total letters\n", charcount);
     }
     if (lang == 2) {
         printf("\n%d Nombre total de lettres\n", charcount);
     }
+
     //
     while (1) {
         if (lang == 1) { // for english
@@ -128,20 +133,30 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
                 if (strcmp(wordtoguess, userguess) == 0) { // if correct
                     if (lang == 1) {//for english
                         printf("\n%s : is the correct word!\nYOU WIN!\n", userguess);
+                        end = clock();
+                        time_use = (double)(end - start);
                         printf("\nPlease enter your name:\n");
                         scanf_s("%s", &name, sizeof(name)); 
                         strcpy(tmp.Player_1, name);
                         tmp.Score = charcount;
+                        strcpy(tmp.time, time_str);
+                        strcpy(tmp.word, wordtoguess);
+                        tmp.time_count = time_use / 1000; // count the second
                         Insert(tmp);
                         menu(lang);
                         break;
                     }
                     if (lang == 2) {//for french
                         printf("\n%s : est le bon mot!\nVOUS GAGNEZ!\n", userguess);
+                        end = clock();
+                        time_use = (double)(end - start);
                         printf("S'il vous plait entrez votre nom:\n");
                         scanf_s("%s", &name, sizeof(name));
                         strcpy(tmp.Player_1, name);
                         tmp.Score = charcount;
+                        strcpy(tmp.time, time_str);
+                        strcpy(tmp.word, wordtoguess);
+                        tmp.time_count = time_use / 1000;
                         Insert(tmp);
                         menu_French(lang);
                         break;

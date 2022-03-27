@@ -53,6 +53,9 @@ struct playerinfor
 {
     char Player_1[150];                   // name of player 
     int Score;                            // Score of player 
+    char time[150];
+    char word[100];
+    double time_count;
 };
 
 #pragma once
