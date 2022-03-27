@@ -112,7 +112,7 @@ mark2:
 	printf("*    Welcome to Hangman Game   *\n");
 	printf("*    Choose the option below   *\n");
 	printf("* 1. Single PLayer Mode        *\n");
-	printf("* 2. Team Mode                 *\n");
+	printf("* 2. Team Mode (Future Update) *\n");
 	printf("* 3. Math Game-Mode            *\n");
 	printf("* 4. History board             *\n");
 	printf("* 5. Exit                      *\n");
@@ -125,7 +125,7 @@ mark2:
 		printf("*    Welcome to Hangman Game   *\n");
 		printf("*    Choose the option below   *\n");
 		printf("* 1. Single PLayer Mode        *\n");
-		printf("* 2. Team Mode                 *\n");
+		printf("* 2. Team Mode (Future Update) *\n");
 		printf("* 3. Math Game-Mode            *\n");
 		printf("* 4. History board             *\n");
 		printf("* 5. Exit                      *\n");
@@ -151,12 +151,8 @@ mark2:
 		Dash(g.word, lang);
 		break;
 	case 2:
-		FileDecrypt(lang);
-		FileGetWord(lang);
-		//FileRemoveWord(g.word, lang); 
-		//FileReuseWords(lang);
-		FileEncrypt(lang);
-		Dash(g.word, lang);
+		printf("\nThis will be included in version 2.0\n\n");
+		menu(lang);
 		break;
 	case 3:
 		MathtoGuess(lang);
@@ -206,29 +202,29 @@ void menu_French(int lang)
 {
 mark1:
 
-	printf("------------------------------------\n");
-	printf("  Bienvenue dans le jeu du pendu   *\n");
-	printf("  Choisissez l'option ci-dessous   *\n");
-	printf("* 1. Jeu unique                    *\n");
-	printf("* 2. Jeu d'equipe                  *\n");
-	printf("* 3. Mode de jeu mathematique      *\n");
-	printf("* 4. Tableau d'histoire            *\n");
-	printf("* 5. Sortir                        *\n");
-	printf("------------------------------------\n");
+	printf("------------------------------------    \n");
+	printf("  Bienvenue dans le jeu du pendu       *\n");
+	printf("  Choisissez l'option ci-dessous       *\n");
+	printf("* 1. Jeu unique                        *\n");
+	printf("* 2. Jeu d'equipe (future mise a jour) *\n");
+	printf("* 3. Mode de jeu mathematique          *\n");
+	printf("* 4. Tableau d'histoire                *\n");
+	printf("* 5. Sortir                            *\n");
+	printf("------------------------------------    \n");
 	int tmp;
 
 	while (scanf("%d", &tmp) != 1) {
 		//making sure the user inputs a whole number
 		printf("\nentree d'erreur reessayer:\n");
-		printf("------------------------------------\n");
-		printf("  Bienvenue dans le jeu du pendu   *\n");
-		printf("  Choisissez l'option ci-dessous   *\n");
-		printf("* 1. Jeu unique                    *\n");
-		printf("* 2. Jeu d'equipe                  *\n");
-		printf("* 3. Mode de jeu mathematique      *\n");
-		printf("* 4. Tableau d'histoire            *\n");
-		printf("* 5. Sortir                        *\n");
-		printf("------------------------------------\n");
+		printf("------------------------------------    \n");
+		printf("  Bienvenue dans le jeu du pendu       *\n");
+		printf("  Choisissez l'option ci-dessous       *\n");
+		printf("* 1. Jeu unique                        *\n");
+		printf("* 2. Jeu d'equipe (future mise a jour) *\n");
+		printf("* 3. Mode de jeu mathematique          *\n");
+		printf("* 4. Tableau d'histoire                *\n");
+		printf("* 5. Sortir                            *\n");
+		printf("------------------------------------    \n");
 		while (getchar() != '\n');
 	}
 
@@ -250,12 +246,8 @@ mark1:
 		Dash(g.word, lang);
 		break;
 	case 2:
-		FileDecrypt(lang);
-		FileGetWord(lang);
-		//FileRemoveWord(g.word, lang); 
-		//FileReuseWords(lang);
-		FileEncrypt(lang);
-		Dash(g.word, lang);
+		printf("\nCela sera inclus dans la version 2.0\n\n");
+		menu_French(lang);
 		break;
 	case 3:
 		MathtoGuess(lang);
