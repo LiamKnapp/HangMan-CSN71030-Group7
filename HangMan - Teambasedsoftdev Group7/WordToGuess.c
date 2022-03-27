@@ -34,15 +34,16 @@ int Dash(char* wordtoguess, int lang) {
 
 int GuessCheck(char* wordtoguess, int lang, int charcount) {
     char input;
+    char wordcheck[50];
     char savedinput[30];
     char* userguess = malloc(sizeof(char*));
     char name[MAX_LEN_NAME];
-    
+
     GameInfor tmp;
     time_t mytime = time(NULL);
     char* time_str = ctime(&mytime);
     time_str[strlen(time_str) - 1] = '\0';
-    clock_t start, end;  
+    clock_t start, end;
     double time_use;
     start = clock();
     if (lang == 1) {
@@ -51,8 +52,8 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
     if (lang == 2) {
         printf("\n%d Nombre total de lettres\n", charcount);
     }
-   
-    printf("%s", wordtoguess);
+
+
     while (1) {
         if (lang == 1) { // for english
             printf("\nType '1' to try and guess the word if you are ready!\nEnter a letter to guess: ");
@@ -61,7 +62,29 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
             printf("\nTapez '1' pour essayer de deviner le mot si vous etes pret!\nEntrer un lettre a deviner: ");
         }
     mark:
-        scanf("%c", &input); // to get the user input for there guess
+
+        scanf("%s", &wordcheck); // to get the user input for there guess
+
+        //check to see if the user only entered 1 letter
+        int charamount = 0;
+        for (int i = 0; wordcheck[i]; i++) {
+            charamount++;
+        }
+
+        if (charamount > 1) {
+            if (lang == 1) {
+                printf("\nYou entered an invalid letter\nTry again: ");
+                goto mark;
+            }
+            if (lang == 2) {
+                printf("\nVous devinez deja cette lettre\nReessayer: ");
+                goto mark;
+            }
+        }
+        else {
+            input = wordcheck[0];
+        }
+
         char c[2];
         fgets(c, 2, stdin);
         int n = 0;
@@ -81,8 +104,8 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
 
                     //find if the letter appears in the word more then once
                     for (int i = 0; wordtoguess[i]; i++) {
-                        if (wordtoguess[i] == input){
-                        
+                        if (wordtoguess[i] == input) {
+
                             n++;
                         }
                     }
@@ -112,7 +135,7 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
                         }
                     }
 
-                     //find if the letter appears in the word more then once
+                    //find if the letter appears in the word more then once
                     for (int i = 0; wordtoguess[i]; i++) {
                         if (wordtoguess[i] == input) {
 
@@ -181,7 +204,7 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
                         end = clock();
                         time_use = (double)(end - start);
                         printf("\nPlease enter your name:\n");
-                        scanf_s("%s", &name, sizeof(name)); 
+                        scanf_s("%s", &name, sizeof(name));
                         // Input for History Board
                         strcpy(tmp.Player_1, name);
                         tmp.Score = charcount;
