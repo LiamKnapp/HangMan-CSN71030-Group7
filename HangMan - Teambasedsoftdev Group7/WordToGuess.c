@@ -52,7 +52,7 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
         printf("\n%d Nombre total de lettres\n", charcount);
     }
    
-    
+    printf("%s", wordtoguess);
     while (1) {
         if (lang == 1) { // for english
             printf("\nType '1' to try and guess the word if you are ready!\nEnter a letter to guess: ");
@@ -182,12 +182,15 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
                         time_use = (double)(end - start);
                         printf("\nPlease enter your name:\n");
                         scanf_s("%s", &name, sizeof(name)); 
+                        // Input for History Board
                         strcpy(tmp.Player_1, name);
                         tmp.Score = charcount;
                         strcpy(tmp.time, time_str);
                         strcpy(tmp.word, wordtoguess);
                         tmp.time_count = time_use / 1000; // count the second
+                        tmp.start_time = start;
                         Insert(tmp);
+                        //Recall
                         menu(lang);
                         break;
                     }
@@ -197,12 +200,15 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
                         time_use = (double)(end - start);
                         printf("S'il vous plait entrez votre nom:\n");
                         scanf_s("%s", &name, sizeof(name));
+                        // Input for History Board
                         strcpy(tmp.Player_1, name);
                         tmp.Score = charcount;
                         strcpy(tmp.time, time_str);
                         strcpy(tmp.word, wordtoguess);
-                        tmp.time_count = time_use / 1000;
+                        tmp.time_count = time_use / 1000; // count the second
+                        tmp.start_time = start;
                         Insert(tmp);
+                        // Recall
                         menu_French(lang);
                         break;
                     }

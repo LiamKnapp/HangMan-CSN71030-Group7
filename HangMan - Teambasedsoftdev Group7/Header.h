@@ -56,6 +56,7 @@ struct playerinfor
     char time[150];
     char word[100];
     double time_count;
+    double start_time;
 };
 
 #pragma once
