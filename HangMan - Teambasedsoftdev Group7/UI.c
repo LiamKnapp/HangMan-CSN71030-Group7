@@ -283,27 +283,39 @@ mark:
 	printf("* 3. Exit    (sortir)                 *\n");
 	printf("---------------------------------------\n");
 
-	int lang;
-	while (scanf("%d", &lang) != 1) {
-		//making sure the user inputs a whole number
-		printf("\nPlease enter an interger from 1 to 3\n");
-		while (getchar() != '\n');
-	}
-	if (lang > 0 && lang < 4)
-	{
-		switch (lang)
-		{
-		case 1:
-			menu(lang);
-			break;
-		case 2:
-			menu_French(lang);
-			break;
-		default:
-			break;
+		scanf_s("%c", &c);
+
+		if (isalpha(c) == 0) {
+			int lang = c - '0';
+			if (lang == 1) {
+				menu(lang);
+			}
+			if (lang == 2) {
+				menu_French(lang);
+			}
+			if (lang == 3) {
+				exit(0);
+			}
+			if (lang < 1 || lang > 3) {
+				printf("Error input please try again:\n");
+				char c[2];
+				fgets(c, 2, stdin);
+			}
+		}
+		else {
+			printf("Error input please try again:\n");
+			char c[2];
+			fgets(c, 2, stdin);
 		}
 	}
-	else
+
+	return 0;
+}
+
+
+void printWord(char* guess, int len) {
+	printf("\t");
+	for (int i = 0; i < len; ++i)
 	{
 		printf("Please enter an interger from 1 to 3 or Press 3 to exit the program\n");
 		goto mark;
