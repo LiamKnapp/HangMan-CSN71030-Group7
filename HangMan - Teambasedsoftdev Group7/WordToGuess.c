@@ -21,6 +21,7 @@ int Dash(char* wordtoguess, int lang) {
 
     printf("%s\n", wordtoguess); //remove this after we finish the function
 
+    printf("\n");
     //print the amount of dashs that corresponds with teh random word
     for (int i = 0; i < charcount; i++) {
 
@@ -41,6 +42,12 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
     BSTInit(lang);
     GameInfor tmp;
     
+    if (lang == 1) {
+        printf("\n%d Total letters\n", charcount);
+    }
+    if (lang == 2) {
+        printf("\n%d Nombre total de lettres\n", charcount);
+    }
     
     //
     while (1) {
