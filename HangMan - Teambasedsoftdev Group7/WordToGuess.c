@@ -95,12 +95,14 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
             //if the user runs out of guesses
             if (mistake == 6) {
                 if (lang == 1) { // for english
-                    printf("You Lose.\n\n");
+                    printf("You Lose.\n");
+                    printf("The word was: %s\n\n", wordtoguess);
                     menu(lang);
                     break;
                 }
                 if (lang == 2) { // for french
-                    printf("Tu as perdu.\n\n");
+                    printf("Tu as perdu.\n");
+                    printf("Le mot etait %s\n\n", wordtoguess);
                     menu_French(lang);
                     break;
                 }
