@@ -147,6 +147,7 @@
     <ClCompile Include="UI.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DataPackages.h" />
     <ClInclude Include="Header.h" />
   </ItemGroup>
   <ItemGroup>

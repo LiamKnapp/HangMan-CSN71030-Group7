@@ -56,7 +56,6 @@ struct playerinfor
     char time[150];
     char word[100];
     double time_count;
-    double start_time;
 };
 
 #pragma once
@@ -77,24 +76,5 @@ void Insert(GameInfor item);                     //Public insert function
 void BSTPrint(link h, int);                      //Private Print function called by 'Print()'
 void Printnode(int);                        //Prints the node
 link getRoot(void);                            //Returns a pointer to the root of the BST
-
-// Score Board
-
-typedef struct node_SCOREBOARD NODE;
-typedef NODE* LINK;
-typedef struct Playerinfor PlayerInfor;
-struct Playerinfor
-{
-    char Firstname[100];
-    int SCORE;
-};
-
-struct node_SCOREBOARD
-{
-    LINK pNext;
-    PlayerInfor Data;
-};
-
-void sortedInsert(LINK* head_ref, LINK new_node);
-LINK newNode(PlayerInfor p);
-void printList(LINK head);
+link BSTSearch(link h, char* szkey);
+link Search(char* szkey);
