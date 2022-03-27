@@ -120,7 +120,7 @@ mark2:
 		case 1:
 			goto mark2;
 		case 2:
-			break;
+			exit(0);
 		default:
 			break;
 		}
@@ -160,13 +160,13 @@ mark2:
 		case 1:
 			menu(lang);
 		case 2:
-			break;
+			exit(0);
 		default:
 			break;
 		}
 		break;
 	case 5:
-		break;
+		exit(0);
 	default:
 		break;
 	}
@@ -198,11 +198,13 @@ mark1:
 		case 1:
 			goto mark1;
 		case 2:
-			break;
+			exit(0);
 		case 3:
+			break;
 		default:
 			break;
 		}
+
 	}
 	// The function to direct the flow of the program due to the choosen of the player
 	switch (tmp)
@@ -213,7 +215,7 @@ mark1:
 		//FileRemoveWord(g.word, lang); 
 		//FileReuseWords(lang);
 		FileEncrypt(lang);
-		//Dash(g.word, lang);
+		Dash(g.word, lang);
 		break;
 	case 2:
 		FileDecrypt(lang);
@@ -231,7 +233,7 @@ mark1:
 
 		break;
 	case 5:
-		break;
+		exit(0);
 	default:
 		break;
 	}
@@ -239,45 +241,45 @@ mark1:
 
 void menu_language()
 {
-mark:
-	printf("---------------------------------------\n");
-	printf("*       Choose the option below       *\n");
-	printf("*   Choisissez l'option ci-dessous    *\n");
-	printf("* 1. English (Anglais)                *\n");
-	printf("* 2. French  (Francais)               *\n");
-	printf("* 3. Exit    (sortir)                 *\n");
-	printf("---------------------------------------\n");
+	while (1) {
 
-	int lang;
-	scanf_s("%d", &lang);
-	switch (lang)
-	{
-	case 1:
-		menu(lang);
-		break;
-	case 2:
-		menu_French(lang);
-		break;
-	case 3:
-		break;
-	default:
-		printf("Error Input. Do you want to input again\n");
-		int temp;
-		printf("1. Yes\n");
-		printf("2. No\n");
-		scanf_s("%d", &temp);
-		switch (temp)
-		{
-		case 1:
-			goto mark;
-		case 2:
-			break;
-		default:
-			break;
+		char c;
+
+		printf("---------------------------------------\n");
+		printf("*       Choose the option below       *\n");
+		printf("*   Choisissez l'option ci-dessous    *\n");
+		printf("* 1. English (Anglais)                *\n");
+		printf("* 2. French  (Francais)               *\n");
+		printf("* 3. Exit    (sortir)                 *\n");
+		printf("---------------------------------------\n");
+
+		scanf_s("%c", &c);
+
+		if (isalpha(c) == 0) {
+			int lang = c - '0';
+			if (lang == 1) {
+				menu(lang);
+			}
+			if (lang == 2) {
+				menu_French(lang);
+			}
+			if (lang == 3) {
+				exit(0);
+			}
+			if (lang < 1 || lang > 3) {
+				printf("Error input please try again:\n");
+				char c[2];
+				fgets(c, 2, stdin);
+			}
 		}
-		break;
+		else {
+			printf("Error input please try again:\n");
+			char c[2];
+			fgets(c, 2, stdin);
+		}
 	}
 
+	return 0;
 }
 
 
