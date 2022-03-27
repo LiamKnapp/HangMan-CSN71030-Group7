@@ -42,7 +42,7 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
     time_t mytime = time(NULL);
     char* time_str = ctime(&mytime);
     time_str[strlen(time_str) - 1] = '\0';
-    clock_t start, end;   // Khai báo biến thời gian
+    clock_t start, end;  
     double time_use;
     start = clock();
     if (lang == 1) {
@@ -51,8 +51,8 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
     if (lang == 2) {
         printf("\n%d Nombre total de lettres\n", charcount);
     }
-
-    //
+   
+    
     while (1) {
         if (lang == 1) { // for english
             printf("\nType '1' to try and guess the word if you are ready!\nEnter a letter to guess: ");
@@ -60,33 +60,78 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
         if (lang == 2) { //for french
             printf("\nTapez '1' pour essayer de deviner le mot si vous etes pret!\nEntrer un lettre a deviner: ");
         }
-
+    mark:
         scanf("%c", &input); // to get the user input for there guess
         char c[2];
         fgets(c, 2, stdin);
-
+        int n = 0;
         //check to see if the input is valid
         if ((input >= 'a' && input <= 'z') || (input >= 'A' && input <= 'Z')) {
-
             //if the letter is in the word
             if (strchr(wordtoguess, input) != NULL) {
                 if (lang == 1) { // for english
-                    printf("%c : is in the word. \n", input);
-                    savedinput[saved] = input; // save the guess in an element
+                    // check to see if the user has already entered that letter
+                    for (int i = 0; savedinput[i]; i++) {
+                        if (savedinput[i] == input) {
+                            printf("\nYou already guess that letter!\nTry again: ");
+                            goto mark;
+                        }
+                    }
+
+
+                    //find if the letter appears in the word more then once
+                    for (int i = 0; wordtoguess[i]; i++) {
+                        if (wordtoguess[i] == input){
+                        
+                            n++;
+                        }
+                    }
+
+                    printf("\n%c : is in the word %d times. \n", input, n);
+
+                    //save the word in the array depending on how many times it appears
+                    for (int i = 0; i < n; i++) {
+                        savedinput[saved] = input;
+                        saved++;
+                    }
+
+                    //print the letters that the user has gotten correct
                     for (int i = 0; i < charcount; i++) {
                         printf("%c, ", savedinput[i]);
                     }
                     printf(" : are all in the word\n");
-                    saved++;
                 }
+
                 if (lang == 2) { // for french
-                    printf("%c : est dans le mot\n", input);
-                    savedinput[saved] = input; // save the guess in an element
+
+                    // check to see if the user has already entered that letter
+                    for (int i = 0; savedinput[i]; i++) {
+                        if (savedinput[i] == input) {
+                            printf("\nVous devinez deja cette lettre!\nReessayer: ");
+                            goto mark;
+                        }
+                    }
+
+                     //find if the letter appears in the word more then once
+                    for (int i = 0; wordtoguess[i]; i++) {
+                        if (wordtoguess[i] == input) {
+
+                            n++;
+                        }
+                    }
+
+                    printf("%c : est dans le mot %d fois\n", input, n);
+
+                    //save the word in the array depending on how many times it appears
+                    for (int i = 0; i < n; i++) {
+                        savedinput[saved] = input;
+                        saved++;
+                    }
+
                     for (int i = 0; i < charcount; i++) {
                         printf("%c, ", savedinput[i]);
                     }
                     printf(" : sont tous dans le mot\n");
-                    saved++;
                 }
             }
 
