@@ -42,7 +42,7 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
     time_t mytime = time(NULL);
     char* time_str = ctime(&mytime);
     time_str[strlen(time_str) - 1] = '\0';
-    clock_t start, end;   // Khai báo biến thời gian
+    clock_t start, end;  
     double time_use;
     start = clock();
     if (lang == 1) {
@@ -51,8 +51,8 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
     if (lang == 2) {
         printf("\n%d Nombre total de lettres\n", charcount);
     }
-    printf("%s", wordtoguess);
-    //
+   
+    
     while (1) {
         if (lang == 1) { // for english
             printf("\nType '1' to try and guess the word if you are ready!\nEnter a letter to guess: ");
