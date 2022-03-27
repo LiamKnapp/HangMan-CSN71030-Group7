@@ -133,7 +133,7 @@ mark2:
 		while (getchar() != '\n');
 	}
 
-	if (tmp < 0 || tmp > 6)
+	if (tmp < 1 || tmp > 6)
 	{
 		printf("\nError Input try again:\n");
 		goto mark2;
@@ -177,7 +177,7 @@ mark2:
 			while (getchar() != '\n');
 		}
 
-		if (tmp_1 < 0 || tmp_1 > 2)
+		if (tmp_1 < 1 || tmp_1 > 2)
 		{
 			printf("\nError input try again:\n");
 			printf("Do you want to play again\n");
@@ -232,7 +232,7 @@ mark1:
 		while (getchar() != '\n');
 	}
 
-	if (tmp < 0 || tmp > 6)
+	if (tmp < 1 || tmp > 6)
 	{
 		printf("\nentree d'erreur reessayer:\n");
 		goto mark1;
@@ -276,7 +276,7 @@ mark1:
 			while (getchar() != '\n');
 		}
 
-		if (tmp_1 < 0 || tmp_1 > 2)
+		if (tmp_1 < 1 || tmp_1 > 2)
 		{
 			printf("\nentree d'erreur reessayer:\n");
 			goto mark4;
