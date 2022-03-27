@@ -259,9 +259,11 @@ void menu_language()
 			int lang = c - '0';
 			if (lang == 1) {
 				menu(lang);
+				break;
 			}
 			if (lang == 2) {
 				menu_French(lang);
+				break;
 			}
 			if (lang == 3) {
 				exit(0);
