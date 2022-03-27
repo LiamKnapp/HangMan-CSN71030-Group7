@@ -9,8 +9,51 @@ int main() {
 
 	/* Liam & Minh: */	
 	/* language selection stuff: */
-	menu_language();
 	
+mark:
+	printf("---------------------------------------\n");
+	printf("*       Choose the option below       *\n");
+	printf("*   Choisissez l'option ci-dessous    *\n");
+	printf("* 1. English (Anglais)                *\n");
+	printf("* 2. French  (Francais)               *\n");
+	printf("* 3. Exit    (sortir)                 *\n");
+	printf("---------------------------------------\n");
+
+	int lang;
+	while (scanf("%d", &lang) != 1) {
+		//making sure the user inputs a whole number
+		printf("\nentree d'erreur reessayer:");
+		printf("\nerror input try again:\n");
+		printf("---------------------------------------\n");
+		printf("*       Choose the option below       *\n");
+		printf("*   Choisissez l'option ci-dessous    *\n");
+		printf("* 1. English (Anglais)                *\n");
+		printf("* 2. French  (Francais)               *\n");
+		printf("* 3. Exit    (sortir)                 *\n");
+		printf("---------------------------------------\n");
+		while (getchar() != '\n');
+	}
+	if (lang > 0 && lang < 4)
+	{
+		switch (lang)
+		{
+		case 1:
+			menu(lang);
+			break;
+		case 2:
+			menu_French(lang);
+			break;
+		default:
+			break;
+		}
+	}
+	else
+	{
+		printf("\nentree d'erreur reessayer:");
+		printf("\nerror input try again:\n");
+		goto mark;
+	}
+	BSTInit(lang);
 	// ----------------------------------------------------------------------------------------------------------------------
 
 	/* Liam: */

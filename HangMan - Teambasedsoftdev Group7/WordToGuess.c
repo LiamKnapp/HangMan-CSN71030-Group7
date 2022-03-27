@@ -27,6 +27,7 @@ int Dash(char* wordtoguess, int lang) {
     }
 
     //call the function to get input and guess checking (main gamemode run code)
+
     GuessCheck(wordtoguess, lang, charcount);
 
 }
@@ -37,16 +38,15 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
     char* userguess = malloc(sizeof(char*));
     //
     char name[MAX_LEN_NAME];
-    BSTInit(lang);
-    GameInfor tmp;
     
+    GameInfor tmp;
+
     if (lang == 1) {
         printf("\n%d Total letters\n", charcount);
     }
     if (lang == 2) {
         printf("\n%d Nombre total de lettres\n", charcount);
     }
-    
     //
     while (1) {
         if (lang == 1) { // for english
