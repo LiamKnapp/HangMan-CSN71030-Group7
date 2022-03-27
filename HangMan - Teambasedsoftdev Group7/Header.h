@@ -67,11 +67,11 @@ struct BSTNode {
 // Declare function of the tree
 
 link NEW(GameInfor item, link left, link right); //Creates a new BST Node
-void BSTInit(void);                            //Initialize a BST
+void BSTInit(int);                            //Initialize a BST
 link BSTInsert(link h, GameInfor item);          //Private Insert function called by 'Insert()'
 void Insert(GameInfor item);                     //Public insert function
-void BSTPrint(link h);                      //Private Print function called by 'Print()'
-void Printnode(void);                        //Prints the node
+void BSTPrint(link h, int);                      //Private Print function called by 'Print()'
+void Printnode(int);                        //Prints the node
 link getRoot(void);                            //Returns a pointer to the root of the BST
 link BSTSearch(link h, char* szkey);
 link Search(char* szkey);

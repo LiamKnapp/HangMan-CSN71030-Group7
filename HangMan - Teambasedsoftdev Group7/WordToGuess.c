@@ -38,7 +38,7 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
     char* userguess = malloc(sizeof(char*));
     //
     char name[MAX_LEN_NAME];
-    BSTInit();
+    BSTInit(lang);
     GameInfor tmp;
     
     

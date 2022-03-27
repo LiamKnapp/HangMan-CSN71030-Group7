@@ -8,6 +8,7 @@
 //Private Variables
 static link root;           //Root of this file, only to this file
 static GameInfor NullItem = { "This is the end of the list" };     //Indicate that a leaf is reached
+static GameInfor NullItemFR = { "c'est la fin de la liste" };
 
 //Function implemenmtaion
 
@@ -19,8 +20,13 @@ link NEW(GameInfor item, link left, link right) {  //Creates a New BST Node
 	return(pNew);							  //return the node
 }
 
-void BSTInit(void) {                           //Initialize the BST Node
-	root = NEW(NullItem, NULL, NULL);		  //define the static root to be the first node
+void BSTInit(int lang) {                           //Initialize the BST Node
+	if (lang == 1) {
+		root = NEW(NullItem, NULL, NULL);		  //define the static root to be the first node
+	}
+	if (lang == 2) {
+		root = NEW(NullItemFR, NULL, NULL);		  //define the static root to be the first node
+	}
 }
 
 link BSTInsert(link h, GameInfor item) {			//Private Insert function called by 'Insert()' 										
@@ -69,21 +75,27 @@ link Search(char* szkey) {				//Public Search
 	return(BSTSearch(root, szkey));		//Call the private search - this is for security
 }
 
-void BSTPrint(link h) {         //Private Print function called by 'Print()'
+void BSTPrint(link h, int lang) {         //Private Print function called by 'Print()'
 
 	if (h == NULL)return;
 
 	//Recursive SubCalls
 
 
-	BSTPrint(h->pRight);                    //Right
-	printf("\nScore: %d\t", h->msg.Score);	//Center
-	printf("\tPlayer: %s\n", h->msg.Player_1);
-	BSTPrint(h->pLeft);						//Left
+	BSTPrint(h->pRight, lang);                    //Right
+	if (lang == 1) {
+		printf("\nScore: %d\t", h->msg.Score);	//Center
+		printf("\tPlayer: %s\n", h->msg.Player_1);
+	}
+	if (lang == 2) {
+		printf("\nMarquer des points: %d\t", h->msg.Score);	//Center
+		printf("\tJoueur: %s\n", h->msg.Player_1);
+	}
+	BSTPrint(h->pLeft, lang);						//Left
 }
 
-void Printnode(void) {		//Public print function
-	BSTPrint(root);			//Calls the private print - this is for security
+void Printnode(int lang) {		//Public print function
+	BSTPrint(root, lang);			//Calls the private print - this is for security
 }
 
 
@@ -91,18 +103,6 @@ link getRoot(void) {         //Returns a pointer to the root of the BST
 	return(root);			 //the root is static for this file - it's the root of the tree
 }
 
-
-
-
-
-void printWord(char* guess, int len) {
-	printf("\t");
-	for (int i = 0; i < len; ++i)
-	{
-		printf("%c ", guess[i]);
-	}
-	printf("\n\n");
-}
 
 //// Function 1: Display the menu of the program
 void menu(int lang)
@@ -162,7 +162,7 @@ mark2:
 		MathtoGuess(lang);
 		break;
 	case 4:
-		Printnode();
+		Printnode(lang);
 		int tmp_1;
 		printf("\nDo you want to play again\n");
 		printf("1. Yes\n");
@@ -261,7 +261,7 @@ mark1:
 		MathtoGuess(lang);
 		break;
 	case 4:
-		Printnode();
+		Printnode(lang);
 		int tmp_1;
 	mark4:
 		printf("veux-tu rejouere?\n");
