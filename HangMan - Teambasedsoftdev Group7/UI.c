@@ -35,7 +35,7 @@ link BSTInsert(link h, GameInfor item) {			//Private Insert function called by '
 		return(NEW(item, NULL, NULL));
 	}   //Terminal Condition
 
-	if (item.Score < h->msg.Score)
+	if (item.start_time < h->msg.start_time)
 	{
 		h->pLeft = BSTInsert(h->pLeft, item);		//inserts on the left side of tree - recurses to check if at end of tree
 	}
@@ -44,35 +44,10 @@ link BSTInsert(link h, GameInfor item) {			//Private Insert function called by '
 		h->pRight = BSTInsert(h->pRight, item);		//inserts on the right side of tree - recurses to check if at end of tree
 	}
 	return(h);												//returns a pointer to the new node created
-
-
 }
 
 void Insert(GameInfor item) {							//Public insert function
 	root = BSTInsert(root, item);					//Call the private insert - this is for security
-}
-
-link BSTSearch(link h, char* szkey) {	//Private Search function called by 'Search()'
-	int rc;								//For recursive function
-	if (h == NULL) {
-		return(NULL);
-	}
-	if (szkey == h->msg.Player_1)
-	{
-		return(h);
-	}
-	else if (szkey < h->msg.Player_1)
-	{
-		h->pLeft = BSTSearch(h->pLeft, szkey);
-	}
-	else
-	{
-		h->pRight = BSTSearch(h->pRight, szkey);
-	}
-}
-
-link Search(char* szkey) {				//Public Search
-	return(BSTSearch(root, szkey));		//Call the private search - this is for security
 }
 
 void BSTPrint(link h, int lang) {         //Private Print function called by 'Print()'
@@ -425,3 +400,4 @@ void printBody(int mistakes)
 		break;
 	}
 }
+
