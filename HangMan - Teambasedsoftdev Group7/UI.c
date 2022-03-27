@@ -107,7 +107,6 @@ void printWord(char* guess, int len) {
 //// Function 1: Display the menu of the program
 void menu(int lang)
 {
-	char* wordtoguess = malloc(sizeof(char*)); // saves the random word the user will be guessing
 mark2:
 	printf("--------------------------------\n");
 	printf("*    Welcome to Hangman Game   *\n");
@@ -121,13 +120,22 @@ mark2:
 	int tmp;
 	while (scanf("%d", &tmp) != 1) {
 		//making sure the user inputs a whole number
-		printf("\nPlease enter an interger from 1 to 5 or Press 5 to exit the program\n");
+		printf("\nError Input try again:\n");
+		printf("--------------------------------\n");
+		printf("*    Welcome to Hangman Game   *\n");
+		printf("*    Choose the option below   *\n");
+		printf("* 1. Single PLayer Mode        *\n");
+		printf("* 2. Team Mode                 *\n");
+		printf("* 3. Math Game-Mode            *\n");
+		printf("* 4. History board             *\n");
+		printf("* 5. Exit                      *\n");
+		printf("--------------------------------\n");
 		while (getchar() != '\n');
 	}
 
 	if (tmp < 0 || tmp > 6)
 	{
-		printf("\nPlease enter an interger from 1 to 5 or Press 5 to exit the program\n\n");
+		printf("\nError Input try again:\n");
 		goto mark2;
 	}
 
@@ -157,18 +165,24 @@ mark2:
 		Printnode();
 		int tmp_1;
 		printf("\nDo you want to play again\n");
-		printf("\n1. Yes\n");
-		printf("\n2. No\n");
+		printf("1. Yes\n");
+		printf("2. No\n");
 	mark5:
 		while (scanf("%d", &tmp_1) != 1) {
 			//making sure the user inputs a whole number
-			printf("\nPlease enter an interger 1 or 2 or Press 2 to exit the program\n");
+			printf("\nError input try again:\n");
+			printf("Do you want to play again\n");
+			printf("1. Yes\n");
+			printf("2. No\n");
 			while (getchar() != '\n');
 		}
 
 		if (tmp_1 < 0 || tmp_1 > 2)
 		{
-			printf("\nPlease enter an interger 1 or 2 or Press 2 to exit the program\n");
+			printf("\nError input try again:\n");
+			printf("Do you want to play again\n");
+			printf("1. Yes\n");
+			printf("2. No\n");
 			goto mark5;
 		}
 		switch (tmp_1)
@@ -190,7 +204,6 @@ mark2:
 
 void menu_French(int lang)
 {
-	char* wordtoguess = malloc(sizeof(char*));
 mark1:
 
 	printf("------------------------------------\n");
@@ -206,13 +219,22 @@ mark1:
 
 	while (scanf("%d", &tmp) != 1) {
 		//making sure the user inputs a whole number
-		printf("\nPlease enter an interger from 1 to 5 or Press 5 to exit the program\n");
+		printf("\nentree d'erreur reessayer:\n");
+		printf("------------------------------------\n");
+		printf("  Bienvenue dans le jeu du pendu   *\n");
+		printf("  Choisissez l'option ci-dessous   *\n");
+		printf("* 1. Jeu unique                    *\n");
+		printf("* 2. Jeu d'equipe                  *\n");
+		printf("* 3. Mode de jeu mathematique      *\n");
+		printf("* 4. Tableau d'histoire            *\n");
+		printf("* 5. Sortir                        *\n");
+		printf("------------------------------------\n");
 		while (getchar() != '\n');
 	}
 
 	if (tmp < 0 || tmp > 6)
 	{
-		printf("Please enter an interger from 1 to 5 or Press 5 to exit the program\n");
+		printf("\nentree d'erreur reessayer:\n");
 		goto mark1;
 	}
 
@@ -242,18 +264,21 @@ mark1:
 		Printnode();
 		int tmp_1;
 	mark4:
-		printf("Erreur, veuillez saisir a nouveau l'entree\n");
+		printf("veux-tu rejouere?\n");
 		printf("1. Oui\n");
 		printf("2. Non\n");
 		while (scanf("%d", &tmp_1) != 1) {
 			//making sure the user inputs a whole number
-			printf("\nPlease enter an interger 1 or 2 or Press 2 to exit the program\n");
+			printf("\nentree d'erreur reessayer:\n");
+			printf("veux-tu rejouere?\n");
+			printf("1. Oui\n");
+			printf("2. Non\n");
 			while (getchar() != '\n');
 		}
 
 		if (tmp_1 < 0 || tmp_1 > 2)
 		{
-			printf("\nPlease enter an interger 1 or 2 or Press 2 to exit the program\n");
+			printf("\nentree d'erreur reessayer:\n");
 			goto mark4;
 		}
 		switch (tmp_1)
@@ -286,7 +311,15 @@ mark:
 	int lang;
 	while (scanf("%d", &lang) != 1) {
 		//making sure the user inputs a whole number
-		printf("\nPlease enter an interger from 1 to 3\n");
+		printf("\nentree d'erreur reessayer:");
+		printf("\nerror input try again:\n");
+		printf("---------------------------------------\n");
+		printf("*       Choose the option below       *\n");
+		printf("*   Choisissez l'option ci-dessous    *\n");
+		printf("* 1. English (Anglais)                *\n");
+		printf("* 2. French  (Francais)               *\n");
+		printf("* 3. Exit    (sortir)                 *\n");
+		printf("---------------------------------------\n");
 		while (getchar() != '\n');
 	}
 	if (lang > 0 && lang < 4)
@@ -305,7 +338,8 @@ mark:
 	}
 	else
 	{
-		printf("Please enter an interger from 1 to 3 or Press 3 to exit the program\n");
+		printf("\nentree d'erreur reessayer:");
+		printf("\nerror input try again:\n");
 		goto mark;
 	}
 }
