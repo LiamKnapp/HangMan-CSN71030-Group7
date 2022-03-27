@@ -147,11 +147,15 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
                         printf("\n%s : is not the correct word!\n", userguess);
                         mistake++;
                         printBody(mistake);
+                        char c[2];
+                        fgets(c, 2, stdin);
                     }
                     if (lang == 2) {//for french
                         printf("\n%s : n'est pas le bon mot!\n", userguess);
                         mistake++;
                         printBody(mistake);
+                        char c[2];
+                        fgets(c, 2, stdin);
                     }
                 }
             }
