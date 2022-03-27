@@ -136,20 +136,19 @@ mark2:
 	{
 	case 1:
 		FileDecrypt(lang);
-		wordtoguess = FileGetWord(lang);
-		//FileRemoveWord(wordtoguess, lang); 
+		FileGetWord(lang);
+		//FileRemoveWord(g.word, lang); 
 		//FileReuseWords(lang);
 		FileEncrypt(lang);
-		Dash(wordtoguess, lang);
+		Dash(g.word, lang);
 		break;
 	case 2:
 		FileDecrypt(lang);
-		wordtoguess = FileGetWord(lang);
-		//FileRemoveWord(wordtoguess, lang); 
+		FileGetWord(lang);
+		//FileRemoveWord(g.word, lang); 
 		//FileReuseWords(lang);
 		FileEncrypt(lang);
-
-		Dash(wordtoguess, lang);
+		Dash(g.word, lang);
 		break;
 	case 3:
 		MathtoGuess(lang);
@@ -221,22 +220,20 @@ mark1:
 	switch (tmp)
 	{
 	case 1:
-		FileDecrypt(lang);                       // this must always go first because the file starts as encrypted
-		wordtoguess = FileGetWord(lang);         // get random word and save it to wordtoguess
-		//FileRemoveWord(wordtoguess, lang); // remove word that getword function selects and save to savefile
+		FileDecrypt(lang);
+		FileGetWord(lang);
+		//FileRemoveWord(g.word, lang); 
 		//FileReuseWords(lang);
 		FileEncrypt(lang);
-
-		Dash(wordtoguess, lang);
+		Dash(g.word, lang);
 		break;
 	case 2:
 		FileDecrypt(lang);
-		wordtoguess = FileGetWord(lang);
-		//FileRemoveWord(wordtoguess, lang);
+		FileGetWord(lang);
+		//FileRemoveWord(g.word, lang); 
 		//FileReuseWords(lang);
 		FileEncrypt(lang);
-
-		Dash(wordtoguess, lang);
+		Dash(g.word, lang);
 		break;
 	case 3:
 		MathtoGuess(lang);
