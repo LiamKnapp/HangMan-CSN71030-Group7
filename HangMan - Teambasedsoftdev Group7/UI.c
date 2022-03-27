@@ -92,10 +92,22 @@ link getRoot(void) {         //Returns a pointer to the root of the BST
 }
 
 
+
+
+
+void printWord(char* guess, int len) {
+	printf("\t");
+	for (int i = 0; i < len; ++i)
+	{
+		printf("%c ", guess[i]);
+	}
+	printf("\n\n");
+}
+
 //// Function 1: Display the menu of the program
 void menu(int lang)
 {
-
+	char* wordtoguess = malloc(sizeof(char*)); // saves the random word the user will be guessing
 mark2:
 	printf("--------------------------------\n");
 	printf("*    Welcome to Hangman Game   *\n");
@@ -107,23 +119,16 @@ mark2:
 	printf("* 5. Exit                      *\n");
 	printf("--------------------------------\n");
 	int tmp;
-	scanf_s("%d", &tmp);
-	if (tmp > 5 || tmp < 1)
+	while (scanf("%d", &tmp) != 1) {
+		//making sure the user inputs a whole number
+		printf("\nPlease enter an interger from 1 to 5 or Press 5 to exit the program\n");
+		while (getchar() != '\n');
+	}
+
+	if (tmp < 0 || tmp > 6)
 	{
-		printf("Error Input. Do you want to input again\n");
-		int temp;
-		printf("1. Yes\n");
-		printf("2. No\n");
-		scanf_s("%d", &temp);
-		switch (temp)
-		{
-		case 1:
-			goto mark2;
-		case 2:
-			exit(0);
-		default:
-			break;
-		}
+		printf("\nPlease enter an interger from 1 to 5 or Press 5 to exit the program\n\n");
+		goto mark2;
 	}
 
 	// The function to direct the flow of the program due to the choosen of the player
@@ -131,19 +136,20 @@ mark2:
 	{
 	case 1:
 		FileDecrypt(lang);
-		FileGetWord(lang);
-		//FileRemoveWord(g.word, lang); 
+		wordtoguess = FileGetWord(lang);
+		//FileRemoveWord(wordtoguess, lang); 
 		//FileReuseWords(lang);
 		FileEncrypt(lang);
-		Dash(g.word, lang);
+		Dash(wordtoguess, lang);
 		break;
 	case 2:
 		FileDecrypt(lang);
-		FileGetWord(lang);
-		//FileRemoveWord(g.word, lang); 
+		wordtoguess = FileGetWord(lang);
+		//FileRemoveWord(wordtoguess, lang); 
 		//FileReuseWords(lang);
 		FileEncrypt(lang);
-		Dash(g.word, lang);
+
+		Dash(wordtoguess, lang);
 		break;
 	case 3:
 		MathtoGuess(lang);
@@ -154,19 +160,30 @@ mark2:
 		printf("\nDo you want to play again\n");
 		printf("\n1. Yes\n");
 		printf("\n2. No\n");
-		scanf_s("%d", &tmp_1);
+	mark5:
+		while (scanf("%d", &tmp_1) != 1) {
+			//making sure the user inputs a whole number
+			printf("\nPlease enter an interger 1 or 2 or Press 2 to exit the program\n");
+			while (getchar() != '\n');
+		}
+
+		if (tmp_1 < 0 || tmp_1 > 2)
+		{
+			printf("\nPlease enter an interger 1 or 2 or Press 2 to exit the program\n");
+			goto mark5;
+		}
 		switch (tmp_1)
 		{
 		case 1:
 			menu(lang);
 		case 2:
-			exit(0);
+			break;
 		default:
 			break;
 		}
-		break;
+
 	case 5:
-		exit(0);
+		break;
 	default:
 		break;
 	}
@@ -174,7 +191,9 @@ mark2:
 
 void menu_French(int lang)
 {
+	char* wordtoguess = malloc(sizeof(char*));
 mark1:
+
 	printf("------------------------------------\n");
 	printf("  Bienvenue dans le jeu du pendu   *\n");
 	printf("  Choisissez l'option ci-dessous   *\n");
@@ -185,55 +204,72 @@ mark1:
 	printf("* 5. Sortir                        *\n");
 	printf("------------------------------------\n");
 	int tmp;
-	scanf_s("%d", &tmp);
-	if (tmp > 5 || tmp < 1)
-	{
-		printf("Erreur, veuillez saisir a nouveau l'entree\n");
-		int temp;
-		printf("1. Oui\n");
-		printf("2. Non\n");
-		scanf_s("%d", &temp);
-		switch (temp)
-		{
-		case 1:
-			goto mark1;
-		case 2:
-			exit(0);
-		case 3:
-			break;
-		default:
-			break;
-		}
 
+	while (scanf("%d", &tmp) != 1) {
+		//making sure the user inputs a whole number
+		printf("\nPlease enter an interger from 1 to 5 or Press 5 to exit the program\n");
+		while (getchar() != '\n');
 	}
+
+	if (tmp < 0 || tmp > 6)
+	{
+		printf("Please enter an interger from 1 to 5 or Press 5 to exit the program\n");
+		goto mark1;
+	}
+
 	// The function to direct the flow of the program due to the choosen of the player
 	switch (tmp)
 	{
 	case 1:
-		FileDecrypt(lang);
-		FileGetWord(lang);
-		//FileRemoveWord(g.word, lang); 
+		FileDecrypt(lang);                       // this must always go first because the file starts as encrypted
+		wordtoguess = FileGetWord(lang);         // get random word and save it to wordtoguess
+		//FileRemoveWord(wordtoguess, lang); // remove word that getword function selects and save to savefile
 		//FileReuseWords(lang);
 		FileEncrypt(lang);
-		Dash(g.word, lang);
+
+		Dash(wordtoguess, lang);
 		break;
 	case 2:
 		FileDecrypt(lang);
-		FileGetWord(lang);
-		//FileRemoveWord(g.word, lang); 
+		wordtoguess = FileGetWord(lang);
+		//FileRemoveWord(wordtoguess, lang);
 		//FileReuseWords(lang);
 		FileEncrypt(lang);
-		Dash(g.word, lang);
+
+		Dash(wordtoguess, lang);
 		break;
 	case 3:
 		MathtoGuess(lang);
 		break;
 	case 4:
 		Printnode();
+		int tmp_1;
+	mark4:
+		printf("Erreur, veuillez saisir a nouveau l'entree\n");
+		printf("1. Oui\n");
+		printf("2. Non\n");
+		while (scanf("%d", &tmp_1) != 1) {
+			//making sure the user inputs a whole number
+			printf("\nPlease enter an interger 1 or 2 or Press 2 to exit the program\n");
+			while (getchar() != '\n');
+		}
 
-		break;
+		if (tmp_1 < 0 || tmp_1 > 2)
+		{
+			printf("\nPlease enter an interger 1 or 2 or Press 2 to exit the program\n");
+			goto mark4;
+		}
+		switch (tmp_1)
+		{
+		case 1:
+			menu_French(lang);
+		case 2:
+			break;
+		default:
+			break;
+		}
 	case 5:
-		exit(0);
+		break;
 	default:
 		break;
 	}
@@ -241,57 +277,40 @@ mark1:
 
 void menu_language()
 {
-	while (1) {
+mark:
+	printf("---------------------------------------\n");
+	printf("*       Choose the option below       *\n");
+	printf("*   Choisissez l'option ci-dessous    *\n");
+	printf("* 1. English (Anglais)                *\n");
+	printf("* 2. French  (Francais)               *\n");
+	printf("* 3. Exit    (sortir)                 *\n");
+	printf("---------------------------------------\n");
 
-		char c;
-
-		printf("---------------------------------------\n");
-		printf("*       Choose the option below       *\n");
-		printf("*   Choisissez l'option ci-dessous    *\n");
-		printf("* 1. English (Anglais)                *\n");
-		printf("* 2. French  (Francais)               *\n");
-		printf("* 3. Exit    (sortir)                 *\n");
-		printf("---------------------------------------\n");
-
-		scanf_s("%c", &c);
-
-		if (isalpha(c) == 0) {
-			int lang = c - '0';
-			if (lang == 1) {
-				menu(lang);
-				break;
-			}
-			if (lang == 2) {
-				menu_French(lang);
-				break;
-			}
-			if (lang == 3) {
-				exit(0);
-			}
-			if (lang < 1 || lang > 3) {
-				printf("Error input please try again:\n");
-				char c[2];
-				fgets(c, 2, stdin);
-			}
-		}
-		else {
-			printf("Error input please try again:\n");
-			char c[2];
-			fgets(c, 2, stdin);
-		}
+	int lang;
+	while (scanf("%d", &lang) != 1) {
+		//making sure the user inputs a whole number
+		printf("\nPlease enter an interger from 1 to 3\n");
+		while (getchar() != '\n');
 	}
-
-	return 0;
-}
-
-
-void printWord(char* guess, int len) {
-	printf("\t");
-	for (int i = 0; i < len; ++i)
+	if (lang > 0 && lang < 4)
 	{
-		printf("%c ", guess[i]);
+		switch (lang)
+		{
+		case 1:
+			menu(lang);
+			break;
+		case 2:
+			menu_French(lang);
+			break;
+		default:
+			break;
+		}
 	}
-	printf("\n\n");
+	else
+	{
+		printf("Please enter an interger from 1 to 3 or Press 3 to exit the program\n");
+		goto mark;
+	}
 }
 
 void printBody(int mistakes)
