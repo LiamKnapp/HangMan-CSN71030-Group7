@@ -50,6 +50,27 @@ namespace HangmanTestCasesGroup7
 		
 		TEST_METHOD(TestMethod1)
 		{
+			//	Arrange
+			int a = 2;
+			int b = 3;
+
+			//	Act
+			int result = a * b;
+
+			//	Assert
+			Assert::AreEqual(6, result);
+
+		}
+		TEST_METHOD(TestMethod2)
+		{
+			int a = 7;
+			int b = 3;
+
+			int result = a * b;
+
+			Assert::AreEqual(21, result);
+
 		}
 	};
+
 }
