@@ -143,6 +143,8 @@ int FileEncrypt(int lang) {
 	fclose(fps);
 	fseek(stdin, 0, SEEK_END);
 	fclose(fpt);
+
+	return(1);
 }
 
 
@@ -285,6 +287,8 @@ int FileDecrypt(int lang) {
 	fclose(fps);
 	fseek(stdin, 0, SEEK_END);
 	fclose(fpt);
+
+	return(1);
 }
 
 char* FileGetWord(int lang) {

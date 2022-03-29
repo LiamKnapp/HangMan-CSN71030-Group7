@@ -450,6 +450,29 @@ namespace HangmanTestCasesGroup7
 			// Assert 
 			Assert::AreEqual(expect_result, actual_result);
 		}
+
+		//Liam Knapp test cases
+		TEST_METHOD(Decrypt_file) {
+			int lang = 1;
+			int expectedresult = 0;
+			expectedresult = FileDecrypt(lang);
+			Assert::AreEqual(1, expectedresult);
+		}
+		TEST_METHOD(Encrypt_file) {
+			int lang = 1;
+			int expectedresult = 0;
+			expectedresult = FileEncrypt(lang);
+			Assert::AreEqual(1, expectedresult);
+		}
+		TEST_METHOD(Get_word) {
+			
+		}
+		TEST_METHOD(Remove_word) {
+
+		}
+		TEST_METHOD(Reuse_word) {
+
+		}
 	};
 
 }
