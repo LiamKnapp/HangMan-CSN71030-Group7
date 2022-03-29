@@ -32,10 +32,10 @@ int GuessCheck(char*, int, int);
 
 /* Minh */
 // UI Menu Functions
-void menu(int);
-void printBody(int mistakes);
-void menu_language();
-void menu_French(int);
+int menu(int,int test);
+int printBody(int mistakes);
+int menu_language(int lang);
+int menu_French(int,int test);
 
 struct guessthisword {
     char word[50];
@@ -73,7 +73,7 @@ struct BSTNode {
 link NEW(GameInfor item, link left, link right); //Creates a new BST Node
 void BSTInit(int);                            //Initialize a BST
 link BSTInsert(link h, GameInfor item);          //Private Insert function called by 'Insert()'
-void Insert(GameInfor item);                     //Public insert function
+int Insert(GameInfor item);                     //Public insert function
 void BSTPrint(link h, int);                      //Private Print function called by 'Print()'
 void Printnode(int);                        //Prints the node
 link getRoot(void);                            //Returns a pointer to the root of the BST

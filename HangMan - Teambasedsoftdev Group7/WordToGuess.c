@@ -53,7 +53,6 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
         printf("\n%d Nombre total de lettres\n", charcount);
     }
 
-
     while (1) {
         if (lang == 1) { // for english
             printf("\nType '1' to try and guess the word if you are ready!\nEnter a letter to guess: ");
@@ -175,13 +174,13 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
                 if (lang == 1) { // for english
                     printf("You Lose.\n");
                     printf("The word was: %s\n\n", wordtoguess);
-                    menu(lang);
+                    menu(lang,0);
                     break;
                 }
                 if (lang == 2) { // for french
                     printf("Tu as perdu.\n");
                     printf("Le mot etait %s\n\n", wordtoguess);
-                    menu_French(lang);
+                    menu_French(lang,0);
                     break;
                 }
             }
@@ -214,7 +213,7 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
                         tmp.start_time = start;
                         Insert(tmp);
                         //Recall
-                        menu(lang);
+                        menu(lang,0);
                         break;
                     }
                     if (lang == 2) {//for french
@@ -232,7 +231,7 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
                         tmp.start_time = start;
                         Insert(tmp);
                         // Recall
-                        menu_French(lang);
+                        menu_French(lang,0);
                         break;
                     }
                 }
@@ -256,13 +255,13 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
                         if (lang == 1) { // for english
                             printf("You Lose.\n");
                             printf("The word was: %s\n\n", wordtoguess);
-                            menu(lang);
+                            menu(lang,0);
                             break;
                         }
                         if (lang == 2) { // for french
                             printf("Tu as perdu.\n");
                             printf("Le mot etait %s\n\n", wordtoguess);
-                            menu_French(lang);
+                            menu_French(lang,0);
                             break;
                         }
                     }

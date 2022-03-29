@@ -55,13 +55,13 @@ void MathtoGuess(int lang) {
 		printBody(6);
 		printf("GAME OVER!!!\n");
 		printf("Correct answer was: %d\n\n", correct);
-		menu(lang);
+		menu(lang,0);
 	}
 	else if (lang == 2) {
 		printBody(6);
 		printf("JEU TERMINE!!!\n");
 		printf("La bonne reponse etait: %d\n\n", correct);
-		menu_French(lang);
+		menu_French(lang,0);
 	}
 }
 
@@ -107,11 +107,11 @@ int checkGuess(int guess, int correct, int lang) {
 	if (guess == correct) {
 		if (lang == 1) { // for english
 			printf("Correct!!!\n\n");
-			menu(lang);
+			menu(lang,0);
 		}
 		if (lang == 2) { // for french
 			printf("Bonne reponse!!!\n\n");
-			menu_French(lang);
+			menu_French(lang,0);
 		}
 		return 1;
 	}

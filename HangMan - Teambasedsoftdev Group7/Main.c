@@ -7,9 +7,7 @@
 
 int main() {
 
-	/* Liam & Minh: */	
-	/* language selection stuff: */
-	
+
 mark:
 	printf("---------------------------------------\n");
 	printf("*       Choose the option below       *\n");
@@ -33,19 +31,10 @@ mark:
 		printf("---------------------------------------\n");
 		while (getchar() != '\n');
 	}
+
 	if (lang > 0 && lang < 4)
 	{
-		switch (lang)
-		{
-		case 1:
-			menu(lang);
-			break;
-		case 2:
-			menu_French(lang);
-			break;
-		default:
-			break;
-		}
+		menu_language(lang);
 	}
 	else
 	{
@@ -53,6 +42,7 @@ mark:
 		printf("\nerror input try again:\n");
 		goto mark;
 	}
+	
 	BSTInit(lang);
 	// ----------------------------------------------------------------------------------------------------------------------
 
@@ -81,4 +71,25 @@ mark:
 	// ----------------------------------------------------------------------------------------------------------------------
 
 	return 0;
+}
+
+int menu_language(int lang)
+{
+	/* Liam & Minh: */
+	/* language selection stuff: */
+	int test = 0;				// Variable for test not damage the program
+		switch (lang)
+		{
+		case 1:
+			//return 1;						//Return value for the test cases 
+			menu(lang,test);
+			break;
+		case 2:
+			//return 2;						//Return value for the test cases
+			menu_French(lang,test);
+			break;
+		default:
+			//return 3;						//Return value for the test cases
+			break;
+		}
 }

@@ -48,8 +48,9 @@ link BSTInsert(link h, GameInfor item) {			//Private Insert function called by '
 
 }
 
-void Insert(GameInfor item) {							//Public insert function
-	root = BSTInsert(root, item);					//Call the private insert - this is for security
+int Insert(GameInfor item) {							//Public insert function
+	root = BSTInsert(root, item);						//Call the private insert - this is for security
+	//return 1;											// For the test case
 }
 
 void BSTPrint(link h, int lang) {         //Private Print function called by 'Print()'
@@ -78,7 +79,7 @@ void BSTPrint(link h, int lang) {         //Private Print function called by 'Pr
 }
 
 void Printnode(int lang) {		//Public print function
-	BSTPrint(root, lang);			//Calls the private print - this is for security
+	BSTPrint(root, lang);		//Calls the private print - this is for security
 }
 
 
@@ -88,7 +89,7 @@ link getRoot(void) {         //Returns a pointer to the root of the BST
 
 
 //// Function 1: Display the menu of the program
-void menu(int lang)
+int menu(int lang,int test)
 {
 mark2:
 	printf("--------------------------------\n");
@@ -101,6 +102,12 @@ mark2:
 	printf("* 5. Exit                      *\n");
 	printf("--------------------------------\n");
 	int tmp;
+
+	///////////////////
+	//tmp = test;	 // Function for the navigation test, remove in final version when testing state finish
+	//return(tmp);	 //
+	///////////////////
+
 	while (scanf("%d", &tmp) != 1) {
 		//making sure the user inputs a whole number
 		printf("\nError Input try again:\n");
@@ -135,7 +142,7 @@ mark2:
 		break;
 	case 2:
 		printf("\nThis will be included in version 2.0\n\n");
-		menu(lang);
+		menu(lang,test);
 		break;
 	case 3:
 		MathtoGuess(lang);
@@ -167,7 +174,7 @@ mark2:
 		switch (tmp_1)
 		{
 		case 1:
-			menu(lang);
+			menu(lang,test);
 		case 2:
 			break;
 		default:
@@ -181,9 +188,7 @@ mark2:
 	}
 }
 
-void menu_French(int lang)	
-
-
+int menu_French(int lang,int test)	
 {
 mark1:
 
@@ -197,6 +202,11 @@ mark1:
 	printf("* 5. Sortir                            *\n");
 	printf("------------------------------------    \n");
 	int tmp;
+
+	///////////////////
+	//tmp = test;	 // Function for the navigation test, remove in final version when testing state finish
+	//return(tmp);	 //
+	///////////////////
 
 	while (scanf("%d", &tmp) != 1) {
 		//making sure the user inputs a whole number
@@ -218,7 +228,7 @@ mark1:
 		printf("\nentree d'erreur reessayer:\n");
 		goto mark1;
 	}
-
+	 
 	// The function to direct the flow of the program due to the choosen of the player
 	switch (tmp)
 	{
@@ -232,7 +242,7 @@ mark1:
 		break;
 	case 2:
 		printf("\nCela sera inclus dans la version 2.0\n\n");
-		menu_French(lang);
+		menu_French(lang,test);
 		break;
 	case 3:
 		MathtoGuess(lang);
@@ -261,7 +271,7 @@ mark1:
 		switch (tmp_1)
 		{
 		case 1:
-			menu_French(lang);
+			menu_French(lang,test);
 		case 2:
 			break;
 		default:
@@ -274,7 +284,8 @@ mark1:
 	}
 }
 
-void printBody(int mistakes)
+
+int printBody(int mistakes)
 {
 
 	char* platform[] = {
@@ -381,24 +392,31 @@ void printBody(int mistakes)
 	{
 	case 6:
 		printf("\n\n%s\n", platform[6]);
+		return 6;
 		break;
 	case 5:
 		printf("\n\n%s\n", platform[5]);
+		return 5;
 		break;
 	case 4:
 		printf("\n\n%s\n", platform[4]);
+		return 4;
 		break;
 	case 3:
 		printf("\n\n%s\n", platform[3]);
+		return 3;
 		break;
 	case 2:
 		printf("\n\n%s\n", platform[2]);
+		return 2;
 		break;
 	case 1:
 		printf("\n\n%s\n", platform[1]);
+		return 1;
 		break;
 	case 0:
 		printf("\n\n%s\n", platform[0]);
+		return 0;
 		break;
 	}
 }
