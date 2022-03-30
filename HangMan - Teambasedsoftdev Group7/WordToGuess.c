@@ -46,6 +46,8 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
     clock_t start, end;
     double time_use;
     start = clock();
+    
+    // prints the total amoint of letters in the word
     if (lang == 1) {
         printf("\n%d Total letters\n", charcount);
     }
@@ -53,6 +55,7 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
         printf("\n%d Nombre total de lettres\n", charcount);
     }
 
+    // prints the guess the full length word statements
     while (1) {
         if (lang == 1) { // for english
             printf("\nType '1' to try and guess the word if you are ready!\nEnter a letter to guess: ");
@@ -60,7 +63,8 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
         if (lang == 2) { //for french
             printf("\nTapez '1' pour essayer de deviner le mot si vous etes pret!\nEntrer un lettre a deviner: ");
         }
-    mark:
+
+    mark: // to be used to loop the program for certain functions
 
         scanf("%s", &wordcheck); // to get the user input for there guess
 
@@ -69,24 +73,25 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
         for (int i = 0; wordcheck[i]; i++) {
             charamount++;
         }
-
+        //if the user enetered more than 1 letter 
         if (charamount > 1) {
             if (lang == 1) {
                 printf("\nYou entered an invalid letter\nTry again: ");
-                goto mark;
+                goto mark; // go back to get  user inout again
             }
             if (lang == 2) {
                 printf("\nVous devinez deja cette lettre\nReessayer: ");
-                goto mark;
+                goto mark; // go back to get  user inout again
             }
         }
         else {
-            input = wordcheck[0];
+            input = wordcheck[0]; // correct input save the input to a char for input validation
         }
 
         char c[2];
-        fgets(c, 2, stdin);
+        fgets(c, 2, stdin); // reset the buffer
         int n = 0;
+
         //check to see if the input is valid
         if ((input >= 'a' && input <= 'z') || (input >= 'A' && input <= 'Z')) {
             //if the letter is in the word
@@ -100,15 +105,13 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
                         }
                     }
 
-
                     //find if the letter appears in the word more then once
                     for (int i = 0; wordtoguess[i]; i++) {
                         if (wordtoguess[i] == input) {
-
                             n++;
                         }
                     }
-
+                    //print the amount of times a letter appears in the word aswell as if the letter is in the word
                     printf("\n%c : is in the word %d times. \n", input, n);
 
                     //save the word in the array depending on how many times it appears
@@ -186,7 +189,7 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
             }
         }
         else {
-            //if the user wants to try and guess the word
+            //if the user wants to try and guess the full word
             if (input == '1') {
                 if (lang == 1) {//for english
                     printf("\nPlease enter the word you want to guess: ");
@@ -235,7 +238,7 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
                         break;
                     }
                 }
-                else { // if not correct
+                else { // if full word guess is not correct
                     if (lang == 1) {//for english
                         printf("\n%s : is not the correct word!\n", userguess);
                         mistake++;
@@ -267,7 +270,7 @@ int GuessCheck(char* wordtoguess, int lang, int charcount) {
                     }
                 }
             }
-            else {
+            else { // if input is not valid
                 if (lang == 1) {//for english
                     printf("\nPlease enter a valid character!");
                 }
