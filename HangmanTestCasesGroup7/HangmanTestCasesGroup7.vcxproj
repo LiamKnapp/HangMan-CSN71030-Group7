@@ -101,7 +101,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <AdditionalLibraryDirectories>C:\Users\lknap\source\repos\HangMan-CSN71030-Group7\HangMan - Teambasedsoftdev Group7\x64\Debug;$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\lknap\source\repos\HangMan-CSN71030-Group7\HangMan - Teambasedsoftdev Group7;C:\Users\lknap\source\repos\HangMan-CSN71030-Group7\HangMan - Teambasedsoftdev Group7\x64\Debug;$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>File.obj;Main.obj;UI.obj;MathToGuess.obj;WordToGuess.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

@@ -8,6 +8,7 @@ extern "C" { // call functions
 	#include "Header.h"
 }
 
+
 // Step to set up your environment
 
 	//	Step 1: Go to the
@@ -453,25 +454,79 @@ namespace HangmanTestCasesGroup7
 
 		//Liam Knapp test cases
 		TEST_METHOD(Decrypt_file) {
-			int lang = 1;
-			int expectedresult = 0;
-			expectedresult = FileDecrypt(lang);
-			Assert::AreEqual(1, expectedresult);
+			bool result = false;  // expected result
+			char* EncryptedText = "ÅÐÐ"; // decrypted text that will be encrypted
+
+			for (int i = 0; i < 4; i++){ // iterate through all letters
+				EncryptedText = EncryptedText - 100; // apply decryption key
+			}
+
+			if (strcmp(EncryptedText, "ÅÐÐ") == NULL) { // if the decrrypted text is not the same as before
+				
+				Assert::IsTrue(result);// return test failure
+			}
+			else {
+				result = true;
+				Assert::IsTrue(result); // return test pass
+			}
 		}
 		TEST_METHOD(Encrypt_file) {
-			int lang = 1;
-			int expectedresult = 0;
-			expectedresult = FileEncrypt(lang);
-			Assert::AreEqual(1, expectedresult);
+			bool result = false; // expected result
+			char* DecryptedText = "Test"; // decrypted text that will be encrypted
+
+			for (int i = 0; i < 4; i++) { // iterate through all letters
+				DecryptedText = DecryptedText + 100; // apply encryption key
+			}
+
+			if (strcmp(DecryptedText, "Test") == NULL) { // if the decrrypted text is not the same as before
+
+				Assert::IsTrue(result); // return test failure
+			}
+			else {
+				result = true;
+				Assert::IsTrue(result); // return test pass
+			}
 		}
 		TEST_METHOD(Get_word) {
-			
+			bool result = false; // expected result
+			time_t;
+			srand(time(0)); // seed the RNG
+			int RNG = rand() % 5;
+			char WordSelect[5][10] = { "test", "Tree", "hello", "Liam", "uint" };
+			char *Word = NULL;
+
+			Word = WordSelect[RNG];
+
+			if (strcmp(Word, "\0") == NULL) { // if the word is cleared
+				Assert::IsTrue(result); // return test failure
+
+			}
+			else {
+				result = true;
+				Assert::IsTrue(result); // return test pass
+			}
 		}
 		TEST_METHOD(Remove_word) {
+			bool result = false; // expected result
+			char WordToRemove[11] = "RemoveThis"; 
+			char Saved[11];
 
-		}
-		TEST_METHOD(Reuse_word) {
+			for (int i = 0; i < 11; i++) { // clear the content in the removeword
+				Saved[i] = WordToRemove[i]; // save the word
+				WordToRemove[i] = '-';
+			}
 
+			for (int i = 0; i < 11; i++) {
+
+				if (strchr(WordToRemove, '-') == NULL) { // if the word is cleared
+					Assert::IsTrue(result); // return test failure
+
+				}
+				else {
+					result = true;
+					Assert::IsTrue(result); // return test pass
+				}
+			}
 		}
 	};
 
