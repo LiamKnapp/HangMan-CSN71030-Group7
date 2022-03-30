@@ -9,10 +9,15 @@ void MathtoGuess(int lang) {
 	srand((unsigned)time(&t));
 
 	int oper = rand() % 3;
-	int leftnum = rand() % 100;
-	int midnum = rand() % 100;
+	
+	int leftnum = rand() % 101;
+	if (leftnum < 0 || leftnum > 100) randNumError(lang);
+	int midnum = rand() % 101;
+	if (midnum < 0 || midnum > 100) randNumError(lang);
+	
 	int rightnum;
 	int pos = rand() % 2;
+
 	char displayOper;
 	int correct;
 
@@ -30,35 +35,31 @@ void MathtoGuess(int lang) {
 		rightnum = leftnum * midnum;
 		break;
 	default:
-		if (lang == 1) { // for english
-			printf("random operator number error\n");
-		}
-		if (lang == 2) { // for french
-			printf("erreur de numero d'operateur aleatoire\n");
-		}
+		randNumError(lang);
 		break;
 	}
 	if (pos == 0) {
 		correct = leftnum;
-	} else {
+	}else if (pos == 1) {
 		correct = midnum;
+	} else {
+		randNumError(lang);
 	}
 	for (int i = 0; i < 6; i++) {
 		printBody(i);
 		printEquation(pos, displayOper, leftnum, midnum, rightnum);
+
 		int guess = getGuess(lang);
 		if (checkGuess(guess, correct, lang)) {
 			return;
 		}
 	}
+	printBody(6);
 	if (lang == 1) {
-		printBody(6);
 		printf("GAME OVER!!!\n");
 		printf("Correct answer was: %d\n\n", correct);
 		menu(lang,0);
-	}
-	else if (lang == 2) {
-		printBody(6);
+	} else if (lang == 2) {
 		printf("JEU TERMINE!!!\n");
 		printf("La bonne reponse etait: %d\n\n", correct);
 		menu_French(lang,0);
@@ -67,41 +68,55 @@ void MathtoGuess(int lang) {
 
 int getGuess(int lang) {
 	int ans;
-	while (1) {
+	int ret;
+	int valid = -2;
+
+	while(valid != 0){
 		if (lang == 1) { // for english
 			printf("Please enter your answer (as an integer)\n");
 		}
-		if (lang == 2) { // for french
+		else if (lang == 2) { // for french
 			printf("Veuillez entrer un nombre entre 1 et 100\n");
 		}
 
-		if (scanf_s("%d", &ans)) {
-			if (ans > -10000 && ans < 10000) {
-				return ans;
-			}
-			else {
-				if (lang == 1) { // for english
-					printf("number must be between -10000 and 10000\n");
-				}
-				if (lang == 2) { // for french
-					printf("le nombre doit etre compris entre -10000 et 10000\n");
-				}
-			}
-		}
-		else {
-			if (lang == 1) { // for english
-				printf("number must be an integer\n");
-			}
-			if (lang == 2) { // for french
-				printf("le nombre doit etre un entier\n");
-			}
-		}
+		ret = scanf_s("%d", &ans);
+		valid = verifyGuess(ans, ret, lang);
+
 		char c[2];
 		fgets(c, 2, stdin);
-		return ans;
 	}
+	return ans;
 }
-
+int verifyGuess(int user, int ret, int lang) {
+	if (ret == 0) {
+		if (lang == 1) { // for english
+			printf("number must be an integer\n");
+		}
+		else if (lang == 2) { // for french
+			printf("le nombre doit etre un entier\n");
+		}
+		return -1;
+	}
+	if (user < -10000) {
+		if (lang == 1) { // for english
+			printf("number must be between -10000 and 10000\n");
+		}
+		else if (lang == 2) { // for french
+			printf("le nombre doit etre compris entre -10000 et 10000\n");
+		}
+		return 1;
+	}
+	if (user > 10000) {
+		if (lang == 1) { // for english
+			printf("number must be between -10000 and 10000\n");
+		}
+		else if (lang == 2) { // for french
+			printf("le nombre doit etre compris entre -10000 et 10000\n");
+		}
+		return 2;
+	}
+	return 0;
+}
 int checkGuess(int guess, int correct, int lang) {
 	
 	if (guess == correct) {
@@ -138,3 +153,13 @@ void printEquation(int pos, char oper, int num1, int num2, int ans) {
 		printf("%d %c ___ = %d\n", num1, oper, ans);
 	}
 }
+
+void randNumError(int lang) {
+	if (lang == 1) { // for english
+		printf("random operator number error\n");
+	}
+	else if (lang == 2) { // for french
+		printf("erreur de numero d'operateur aleatoire\n");
+	}
+}
+

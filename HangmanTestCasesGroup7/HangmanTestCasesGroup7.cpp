@@ -473,6 +473,39 @@ namespace HangmanTestCasesGroup7
 		TEST_METHOD(Reuse_word) {
 
 		}
+
+		
+	};
+	TEST_CLASS(MathModule) {
+
+		TEST_METHOD(TEST_CASE_INPUT_VALIDATION_NON_INT) {
+
+			freopen("name", "r", stdin);
+			getGuess(1);
+
+		}
+
+		TEST_METHOD(TEST_CASE_CHECK_GUESS_LOW) {
+			int userGuess = 40;
+			int correctAnswer = 100;
+
+			int result = checkGuess(userGuess, correctAnswer, 1);
+			Assert::IsFalse(result);
+		}
+		TEST_METHOD(TEST_CASE_CHECK_GUESS_HIGH) {
+			int userGuess = 140;
+			int correctAnswer = 100;
+
+			int result = checkGuess(userGuess, correctAnswer, 1);
+			Assert::IsFalse(result);
+		}
+		TEST_METHOD(TEST_CASE_CHECK_GUESS_CORRECT) {
+			int userGuess = 100;
+			int correctAnswer = 100;
+
+			int result = checkGuess(userGuess, correctAnswer, 1);
+			Assert::IsTrue(result);
+		}
 	};
 
 }
