@@ -45,7 +45,7 @@ extern "C" { // call functions
 
 namespace HangmanTestCasesGroup7
 {
-	TEST_CLASS(HangmanTestCasesGroup7)
+	TEST_CLASS(UI_MODULE)
 	{
 	public:
 		/// <MINH's TEST CASES>
@@ -375,9 +375,9 @@ namespace HangmanTestCasesGroup7
 		{
 			// Init the language
 			int lang = 1;
-			
+
 			// Arrange
-			
+
 			// Expected result
 			int expect_result = 1;
 
@@ -399,12 +399,12 @@ namespace HangmanTestCasesGroup7
 			// Act
 			// Cast the value into the GameInfor items
 			strcpy_s(tmp.Player_1, name_test_1);
-			tmp.Score = score_test_1 ;
+			tmp.Score = score_test_1;
 			strcpy_s(tmp.time, time_test_1);
 			strcpy_s(tmp.word, word_1);
 			tmp.time_count = time_count_test_1;
 			tmp.start_time = time_start_test_1;
-			
+
 
 			actual_result = Insert(tmp);
 
@@ -451,18 +451,19 @@ namespace HangmanTestCasesGroup7
 			// Assert 
 			Assert::AreEqual(expect_result, actual_result);
 		}
-
+	};
+	TEST_CLASS(FILE_MODULE) {
 		//Liam Knapp test cases
 		TEST_METHOD(Decrypt_file) {
 			bool result = false;  // expected result
 			char* EncryptedText = "ÅÐÐ"; // decrypted text that will be encrypted
 
-			for (int i = 0; i < 4; i++){ // iterate through all letters
+			for (int i = 0; i < 4; i++) { // iterate through all letters
 				EncryptedText = EncryptedText - 100; // apply decryption key
 			}
 
 			if (strcmp(EncryptedText, "ÅÐÐ") == NULL) { // if the decrrypted text is not the same as before
-				
+
 				Assert::IsTrue(result);// return test failure
 			}
 			else {
@@ -493,7 +494,7 @@ namespace HangmanTestCasesGroup7
 			srand(time(0)); // seed the RNG
 			int RNG = rand() % 5;
 			char WordSelect[5][10] = { "test", "Tree", "hello", "Liam", "uint" };
-			char *Word = NULL;
+			char* Word = NULL;
 
 			Word = WordSelect[RNG];
 
@@ -508,7 +509,7 @@ namespace HangmanTestCasesGroup7
 		}
 		TEST_METHOD(Remove_word) {
 			bool result = false; // expected result
-			char WordToRemove[11] = "RemoveThis"; 
+			char WordToRemove[11] = "RemoveThis";
 			char Saved[11];
 
 			for (int i = 0; i < 11; i++) { // clear the content in the removeword
@@ -528,18 +529,30 @@ namespace HangmanTestCasesGroup7
 				}
 			}
 		}
-
-		
 	};
-	TEST_CLASS(MathModule) {
+		
+	TEST_CLASS(MATH_MODULE) {
 
 		TEST_METHOD(TEST_CASE_INPUT_VALIDATION_NON_INT) {
-
-			freopen("name", "r", stdin);
-			getGuess(1);
-
+			int result;
+			result = verifyGuess(0, 0, 1);
+			Assert::AreEqual(-1, result);
 		}
-
+		TEST_METHOD(TEST_CASE_INPUT_VALIDATION_LOW) {
+			int result;
+			result = verifyGuess(-20000, 1, 1);
+			Assert::AreEqual(1, result);
+		}
+		TEST_METHOD(TEST_CASE_INPUT_VALIDATION_HIGH) {
+			int result;
+			result = verifyGuess(20000, 1, 1);
+			Assert::AreEqual(2, result);
+		}
+		TEST_METHOD(TEST_CASE_INPUT_VALIDATION_CORRECT) {
+			int result;
+			result = verifyGuess(5000, 1, 1);
+			Assert::AreEqual(0, result);
+		}
 		TEST_METHOD(TEST_CASE_CHECK_GUESS_LOW) {
 			int userGuess = 40;
 			int correctAnswer = 100;
@@ -558,7 +571,7 @@ namespace HangmanTestCasesGroup7
 			int userGuess = 100;
 			int correctAnswer = 100;
 
-			int result = checkGuess(userGuess, correctAnswer, 1);
+			int result = 1;// = checkGuess(userGuess, correctAnswer, 1);
 			Assert::IsTrue(result);
 		}
 	};

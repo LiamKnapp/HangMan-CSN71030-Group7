@@ -22,8 +22,11 @@ int FileReuseWords(int);
 // Math Gamemode Functions
 void MathtoGuess(int);
 int getGuess(int);
+int verifyGuess(int, int, int);
 int checkGuess(int, int, int);
 void printEquation(int, char, int, int, int);
+void randNumError(int);
+
 
 /* Nihchal */
 // Word Gamemode Functions

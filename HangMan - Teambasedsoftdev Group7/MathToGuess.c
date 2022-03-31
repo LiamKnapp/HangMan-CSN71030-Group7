@@ -82,8 +82,8 @@ int getGuess(int lang) {
 		ret = scanf_s("%d", &ans);
 		valid = verifyGuess(ans, ret, lang);
 
-		char c[2];
-		fgets(c, 2, stdin);
+		char c[50];
+		fgets(c, 50, stdin);
 	}
 	return ans;
 }
