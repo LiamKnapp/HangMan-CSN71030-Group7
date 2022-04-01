@@ -77,11 +77,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\lknap\source\repos\HangMan-CSN71030-Group7\HangMan - Teambasedsoftdev Group7;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\mr_cr\OneDrive\CSCN71030-22W\HangMan - Teambasedsoftdev Group7</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Minh\Desktop\Study\Semester II - 2022\ASSIGNMENT\Project - Github- Big\HangMan - Teambasedsoftdev Group7;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\mr_cr\OneDrive\CSCN71030-22W\HangMan - Teambasedsoftdev Group7</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -101,7 +101,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <AdditionalLibraryDirectories>C:\Users\lknap\source\repos\HangMan-CSN71030-Group7\HangMan - Teambasedsoftdev Group7;C:\Users\lknap\source\repos\HangMan-CSN71030-Group7\HangMan - Teambasedsoftdev Group7\x64\Debug;$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\mr_cr\OneDrive\CSCN71030-22W\HangMan - Teambasedsoftdev Group7\x64\Debug</AdditionalLibraryDirectories>
       <AdditionalDependencies>File.obj;Main.obj;UI.obj;MathToGuess.obj;WordToGuess.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -117,7 +117,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <AdditionalLibraryDirectories>C:\Users\Minh\Desktop\Study\Semester II - 2022\ASSIGNMENT\Project - Github- Big\HangMan - Teambasedsoftdev Group7\Debug;$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\mr_cr\OneDrive\CSCN71030-22W\HangMan - Teambasedsoftdev Group7\x64\Debug</AdditionalLibraryDirectories>
       <AdditionalDependencies>File.obj;Main.obj;UI.obj;MathToGuess.obj;WordToGuess.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

@@ -576,4 +576,79 @@ namespace HangmanTestCasesGroup7
 		}
 	};
 
+
+
+	TEST_CLASS(WordToGuess) {
+
+		// Nihchals Test Cases
+
+		TEST_METHOD(TEST_CASE_01_INPUT_VALIDATION) {
+			int result = 0;
+			char input = 'h';
+			if ((input >= 'a' && input <= 'z') || (input >= 'A' && input <= 'Z'))
+			{
+				result = 1;
+				Assert::AreEqual(result, 1);
+			}
+
+			Assert::AreEqual(result, 1);
+		}
+
+		TEST_METHOD(TEST_CASE_01_GUESS_CHECKER) {
+
+			char* wordtoguess = "cactus";
+			char input = 'a';
+			int result = 0;
+			if (strchr(wordtoguess, input) != NULL) {
+
+				result = 1;
+				Assert::AreEqual(result, 1);
+			}
+
+			Assert::AreEqual(result, 1);
+
+		}
+		TEST_METHOD(TEST_CASE_02_GUESS_CHECKER) {
+			char* wordtoguess = "mexico";
+			char* input = "mexico";
+			int result = 0;
+
+			if (strcmp(wordtoguess, input) == 0) {
+
+				result = 1;
+				Assert::AreEqual(result, 1);
+
+			}
+
+			Assert::AreEqual(result, 1);
+		}
+		TEST_METHOD(TEST_CASE_01_COUNT_WORD_LENGTH) {
+			char* wordtoguess = "mow";
+			int charcount = 0;
+			int result = 3;
+			for (int i = 0; wordtoguess[i]; i++) {
+				if (wordtoguess[i] != ' ') {
+					charcount++;
+				}
+			}
+
+			Assert::AreEqual(result, charcount);
+
+		}
+		TEST_METHOD(TEST_CASE_01_MISTAKE_COUNTER) {
+			char* wordtoguess = "canada";
+			char input = 'e';
+			int result = 6;
+			int mistake = 0;
+			for (int i = 0; i < 6; i++) {
+				if (strchr(wordtoguess, input) != NULL) {
+					Assert::AreEqual(result, mistake);
+				}
+				mistake++;
+			}
+
+			Assert::AreEqual(result, mistake);
+		}
+
+	};
 }
